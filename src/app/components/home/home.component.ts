@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from '../auth/token-storage.service';
+import {TokenStorageService} from '../../auth/token-storage.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -23,9 +23,11 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
-    this.token.signOut();
-    // window.location.reload();
-    alert('Đăng xuất thành công!')
-    this.router.navigateByUrl('/login');
-  }
+    const choice = confirm('Are you sure to logout?');
+    if (choice) {
+      this.token.signOut();
+      // window.location.reload();
+      this.router.navigateByUrl('/login');
+    }
+    }
 }
