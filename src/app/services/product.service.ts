@@ -15,8 +15,8 @@ export class ProductService {
   }
 
   // tslint:disable-next-line:ban-types
-  createProduct(employee: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, employee);
+  createProduct(product: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, product);
   }
 
   // tslint:disable-next-line:ban-types
