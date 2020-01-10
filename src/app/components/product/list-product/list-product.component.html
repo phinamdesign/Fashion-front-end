@@ -1,1 +1,14 @@
-<p>list-product works!</p>
+<div class="row">
+  <div class="col-md-3"   *ngFor="let product of products | async">
+    <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <a href="#" class="card-link">{{product.quantity}}</a>
+        <a href="#" class="card-link">{{product.price}}</a>
+      </div>
+    </div>
+
+  </div>
+</div>
