@@ -9,13 +9,17 @@ import { HomeComponent } from './components/home/home.component';
 import {httpInterceptorProviders} from './auth/auth-interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { OderDetailListComponent } from './components/oderDetail/oder-detail-list/oder-detail-list.component';
+import { ListOderDetailComponent } from './components/oderDetail/list-oder-detail/list-oder-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    OderDetailListComponent,
+    ListOderDetailComponent
   ],
   imports: [
     BrowserModule,

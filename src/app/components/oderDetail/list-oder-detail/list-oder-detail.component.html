@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2> OderDetail List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let oderdetail of oderdetails | async">
+        <td>{{oderdetail.price}}</td>
+        <td>{{oderdetail.quantity}}</td>
+        <td><button (click)="deleteOderdetail(oderdetail.id)" class="btn btn-danger">Delete</button>
+            <button (click)="updateOderdetail(oderdetail.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            <button (click)="Oderdetail(oderdetail.id)" class="btn btn-info" style="margin-left: 10px">Detail</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
