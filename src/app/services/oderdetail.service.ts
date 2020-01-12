@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class OderdetailService {
-private baseUrl = '';
+private baseUrl = 'http://localhost:8080/api/oderdetail';
   constructor(private http: HttpClient) { }
   getOderdetail(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);

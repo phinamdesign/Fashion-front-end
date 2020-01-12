@@ -9,7 +9,6 @@ import { HomeComponent } from './components/home/home.component';
 import {httpInterceptorProviders} from './auth/auth-interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { OderDetailListComponent } from './components/oderDetail/oder-detail-list/oder-detail-list.component';
 import { ListOderDetailComponent } from './components/oderDetail/list-oder-detail/list-oder-detail.component';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { ListOderDetailComponent } from './components/oderDetail/list-oder-detai
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    OderDetailListComponent,
     ListOderDetailComponent
   ],
   imports: [
