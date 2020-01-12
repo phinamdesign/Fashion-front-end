@@ -1,1 +1,15 @@
-
+<h2 class="text-center">form edit</h2>
+<form [formGroup]="editForm" (ngSubmit)="editCategory()" class="col-md-6 offset-md-3">
+  <div class="form-group row">
+    <label class="col">
+      <b>Category name</b>
+      <input type="text" class="form-control" formControlName="categoryName">
+    </label>
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="editForm.get('categoryName').invalid && editForm.get('categoryName').touched">
+    Invalid category, please enter again!
+  </div>
+  <div class="form-group">
+    <button class="btn btn-info" type="submit" [disabled]='editForm.invalid'>Edit category</button>
+  </div>
+</form>
