@@ -19,7 +19,7 @@ export class CategoryListComponent implements OnInit {
     this.reloadData();
   }
   deleteCategory(id: number) {
-    const choice = (confirm('Are you sure to delete this catagory?'));
+    const choice = (confirm('Are you sure to delete this category?'));
     if (choice) {
       this.categoryService.deleteCategory(id)
         .subscribe(

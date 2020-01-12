@@ -5,8 +5,7 @@ import {RegisterComponent} from './auth/register/register.component';
 import {LoginComponent} from './auth/login/login.component';
 import {CategoryListComponent} from './components/category/category-list/category-list.component';
 import {CategoryEditComponent} from './components/category/category-edit/category-edit.component';
-import {CategoryDeleteComponent} from './components/category/category-delete/category-delete.component';
-import {CategoryCreateComponent} from "./components/category/category-create/category-create.component";
+import {CategoryCreateComponent} from './components/category/category-create/category-create.component';
 
 const routes: Routes = [
   // {
@@ -37,9 +36,6 @@ const routes: Routes = [
   {
     path: 'category/:id/edit',
     component: CategoryEditComponent
-  }, {
-    path: 'category/:id/delete',
-    component: CategoryDeleteComponent
   }
 ];
 

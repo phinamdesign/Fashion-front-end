@@ -12,8 +12,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CategoryCreateComponent } from './components/category/category-create/category-create.component';
 import { CategoryEditComponent } from './components/category/category-edit/category-edit.component';
-import { CategoryDeleteComponent } from './components/category/category-delete/category-delete.component';
-import { CtegoryDeleteComponent } from './ctegory-delete/ctegory-delete.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +21,7 @@ import { CtegoryDeleteComponent } from './ctegory-delete/ctegory-delete.componen
     HomeComponent,
     CategoryListComponent,
     CategoryCreateComponent,
-    CategoryEditComponent,
-    CategoryDeleteComponent,
-    CtegoryDeleteComponent
+    CategoryEditComponent
   ],
   imports: [
     BrowserModule,
