@@ -10,6 +10,9 @@ import {httpInterceptorProviders} from './auth/auth-interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ListOderDetailComponent } from './components/oderDetail/list-oder-detail/list-oder-detail.component';
+import { DetailOderDetailComponent } from './components/oderDetail/detail-oder-detail/detail-oder-detail.component';
+import { UpdateOderDetailComponent } from './components/oderDetail/update-oder-detail/update-oder-detail.component';
+import { CreateOderDetailComponent } from './components/oderDetail/create-oder-detail/create-oder-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { ListOderDetailComponent } from './components/oderDetail/list-oder-detai
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ListOderDetailComponent
+    ListOderDetailComponent,
+    DetailOderDetailComponent,
+    UpdateOderDetailComponent,
+    CreateOderDetailComponent,
   ],
   imports: [
     BrowserModule,

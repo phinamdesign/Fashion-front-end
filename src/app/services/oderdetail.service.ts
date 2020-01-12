@@ -19,7 +19,7 @@ private baseUrl = 'http://localhost:8080/api/oderdetail';
     return this.http.post(`${this.baseUrl}`, oderdetail);
   }
   deleteOderdetail(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}`, {responseType: 'text'});
+    return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
   }
   updateOderdetail(id: number, value: any): Observable<object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
