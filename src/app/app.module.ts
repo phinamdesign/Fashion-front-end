@@ -13,6 +13,7 @@ import { ListOderDetailComponent } from './components/oderDetail/list-oder-detai
 import { DetailOderDetailComponent } from './components/oderDetail/detail-oder-detail/detail-oder-detail.component';
 import { UpdateOderDetailComponent } from './components/oderDetail/update-oder-detail/update-oder-detail.component';
 import { CreateOderDetailComponent } from './components/oderDetail/create-oder-detail/create-oder-detail.component';
+import { ListSizeComponent } from './components/size/list-size/list-size.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CreateOderDetailComponent } from './components/oderDetail/create-oder-d
     DetailOderDetailComponent,
     UpdateOderDetailComponent,
     CreateOderDetailComponent,
+    ListSizeComponent,
   ],
   imports: [
     BrowserModule,

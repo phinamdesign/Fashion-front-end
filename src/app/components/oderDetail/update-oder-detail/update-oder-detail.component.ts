@@ -29,6 +29,6 @@ export class UpdateOderDetailComponent implements OnInit {
     this.updateOderdetail();
   }
   gotoList() {
-    this.router.navigate(['']);
+    this.router.navigate(['oderdetails']);
   }
 }

@@ -29,7 +29,7 @@ export class CreateOderDetailComponent implements OnInit {
     this.save();
   }
   gotoList() {
-    this.router.navigate(['']);
+    this.router.navigate(['oderdetails']);
   }
 
 }

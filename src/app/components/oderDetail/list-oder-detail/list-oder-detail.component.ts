@@ -22,9 +22,12 @@ export class ListOderDetailComponent implements OnInit {
     this.oderdetails = this.oderdetailService.getOderdetailList();
   }
   deleteOderdetail(id: number) {
-    this.oderdetailService.deleteOderdetail(id).subscribe(data => {console.log(data); this.reloadData(); },
-      // tslint:disable-next-line:no-shadowed-variable
-      error => console.log(error));
+    const choice = confirm('Are you sure to delete this order detail?');
+    if (choice) {
+      this.oderdetailService.deleteOderdetail(id).subscribe(data => {console.log(data); this.reloadData(); },
+        // tslint:disable-next-line:no-shadowed-variable
+        error => console.log(error));
+    }
   }
   Oderdetail(id: number) {
     this.router.navigate(['details', id]);

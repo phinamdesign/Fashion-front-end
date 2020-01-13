@@ -10,6 +10,7 @@ import {CreateOderDetailComponent} from './components/oderDetail/create-oder-det
 
 const routes: Routes = [
   {path: '', component: ListOderDetailComponent},
+  {path: 'oderdetails', component: ListOderDetailComponent},
   {path: 'details/:id', component: DetailOderDetailComponent},
   {path: 'update/:id', component: UpdateOderDetailComponent},
   {path: 'add', component: CreateOderDetailComponent},
