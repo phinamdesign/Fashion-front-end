@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CategoryService} from "../../../services/category.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Category} from "../../../models/Category";
+import {TokenStorageService} from "../../../auth/token-storage.service";
 
 @Component({
   selector: 'app-category-edit',
@@ -12,11 +13,13 @@ import {Category} from "../../../models/Category";
 export class CategoryEditComponent implements OnInit {
   private editForm: FormGroup;
   category: Category;
+  info: any;
   constructor(
     private categoryService: CategoryService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenStorageService
   ) { }
 
   ngOnInit() {
@@ -36,6 +39,10 @@ export class CategoryEditComponent implements OnInit {
         this.category = null;
       }
     );
+    this.info = {
+      token: this.tokenService.getToken(),
+      username: this
+    };
   }
   editCategory() {
     const { value } = this.editForm;
