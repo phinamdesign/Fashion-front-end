@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   private authority: string;
 
   constructor(private tokenStorage: TokenStorageService) { }
+
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.roles = this.tokenStorage.getAuthorities();
