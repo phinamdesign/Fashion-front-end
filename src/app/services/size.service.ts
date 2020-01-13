@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class SizeService {
-  private baseUrl = '';
+  private baseUrl = 'http://localhost:8080/api/size';
   constructor(private http: HttpClient) { }
   getSize(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);

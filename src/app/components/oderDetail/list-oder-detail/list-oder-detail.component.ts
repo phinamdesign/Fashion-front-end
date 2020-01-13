@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {error} from 'util';
 import {OderDetail} from '../../../models/oderdetail';
 import {OderdetailService} from '../../../services/oderdetail.service';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-list-oder-detail',
@@ -11,7 +12,9 @@ import {OderdetailService} from '../../../services/oderdetail.service';
   styleUrls: ['./list-oder-detail.component.css']
 })
 export class ListOderDetailComponent implements OnInit {
-  oderdetails: Observable<OderDetail[]>;
+  oderdetails: Observable<any>;
+  // items = [];
+  // pageOfItems: Array<any>;
   constructor(private oderdetailService: OderdetailService,
               private router: Router) { }
 
@@ -35,5 +38,4 @@ export class ListOderDetailComponent implements OnInit {
   updateOderdetail(id: number) {
     this.router.navigate(['update', id]);
   }
-
 }
