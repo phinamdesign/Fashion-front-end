@@ -8,6 +8,10 @@ import {CreateProductComponent} from './components/product/create-product/create
 import {CategoryCreateComponent} from './components/category/category-create/category-create.component';
 import {CategoryEditComponent} from './components/category/category-edit/category-edit.component';
 import {CategoryListComponent} from './components/category/category-list/category-list.component';
+import {ListOderDetailComponent} from './components/oderDetail/list-oder-detail/list-oder-detail.component';
+import {DetailOderDetailComponent} from './components/oderDetail/detail-oder-detail/detail-oder-detail.component';
+import { UpdateOderDetailComponent } from './components/oderDetail/update-oder-detail/update-oder-detail.component';
+import {CreateOderDetailComponent} from './components/oderDetail/create-oder-detail/create-oder-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -47,7 +51,10 @@ const routes: Routes = [
     path: 'category/:id/edit',
     component: CategoryEditComponent
   },
-
+  {path: 'oderdetails', component: ListOderDetailComponent},
+  {path: 'details/:id', component: DetailOderDetailComponent},
+  {path: 'update/:id', component: UpdateOderDetailComponent},
+  {path: 'add', component: CreateOderDetailComponent},
 ];
 
 @NgModule({
