@@ -46,7 +46,7 @@ const routes: Routes = [
   {
     path: 'category/:id/edit',
     component: CategoryEditComponent
-  }
+  },
 
 ];
 
