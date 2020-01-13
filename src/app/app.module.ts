@@ -25,6 +25,9 @@ import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
 import {SlideShowProductComponent} from './components/slide-show-product/slide-show-product.component';
 import {DeleteProductComponent} from './components/product/delete-product/delete-product.component';
+import { CategoryCreateComponent } from './components/category/category-create/category-create.component';
+import { CategoryEditComponent } from './components/category/category-edit/category-edit.component';
+import { CategoryListComponent } from './components/category/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import {DeleteProductComponent} from './components/product/delete-product/delete
     HomeComponent,
     SlideShowProductComponent,
     DeleteProductComponent,
+    CategoryCreateComponent,
+    CategoryEditComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,
