@@ -19,6 +19,11 @@ import { UpdateCommenterComponent } from './components/commenter/update-commente
 import { ListCommenterComponent } from './components/commenter/list-commenter/list-commenter.component';
 import { CreateCommenterComponent } from './components/commenter/create-commenter/create-commenter.component';
 import { DetailsCommenterComponent } from './components/commenter/details-commenter/details-commenter.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { SlideShowProductComponent } from './components/slide-show-product/slide-show-product.component';
+import { DeleteProductComponent } from './components/product/delete-product/delete-product.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,11 @@ import { DetailsCommenterComponent } from './components/commenter/details-commen
     ListCommenterComponent,
     CreateCommenterComponent,
     DetailsCommenterComponent,
+    FooterComponent,
+    HeaderComponent,
+    HomeComponent,
+    SlideShowProductComponent,
+    DeleteProductComponent,
   ],
   imports: [
     BrowserModule,
