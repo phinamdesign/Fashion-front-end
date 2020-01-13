@@ -27,15 +27,17 @@ export class DeleteProductComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    this.productService.deleteProduct(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          alert('Delete Successfully');
-          this.reloadData();
-          this.router.navigate(['product']);
-        },
-        error => console.log(error)
-      );
+   const choice = confirm('Bạn có chắc chắn muốn xoa ?');
+   if (choice) {
+     this.productService.deleteProduct(id)
+       .subscribe(
+         data => {
+           console.log(data);
+           this.reloadData();
+           this.router.navigate(['product']);
+         },
+         error => console.log(error)
+       );
+   }
   }
 }
