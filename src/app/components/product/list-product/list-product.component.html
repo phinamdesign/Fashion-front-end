@@ -1,0 +1,51 @@
+<app-home></app-home>
+<div class="container">
+  <div class="center">
+    <form [formGroup]="productForm" class="form-inline ml-auto">
+      <input type="text" class="form-control mr-sm-2" formControlName="name" name="name" placeholder="Search">
+      <button (click)="searchProduct()" type="submit" class="btn btn-dark">Search</button>
+    </form>
+  </div>
+</div>
+<div class="container" *ngIf="this.listProduct && !this.status">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of listProduct">
+        <div class="card" style="width: 15rem;">
+          <div>
+            <img class="card-img-top img-thumbnail" src="{{product.image}}" alt="Card image cap">
+          </div>
+          <div class="card-body" align="center">
+            <h5 class="card-title">{{product.name}}</h5>
+            <div align="left">
+              <p class="card-text">{{product.description}}</p>
+              <p>Quantity : <a href="#" class="card-link">{{product.quantity}}</a></p>
+              <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+            </div>
+            <button class="btn btn-success">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container" *ngIf="this.status">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of products | async">
+      <div class="card" style="width: 15rem;">
+        <div>
+          <img class="card-img-top img-thumbnail" src="{{product.image}}" alt="Card image cap">
+        </div>
+        <div class="card-body" align="center">
+          <h5 class="card-title">{{product.name}}</h5>
+         <div align="left">
+           <p class="card-text">{{product.description}}</p>
+           <p>Quantity : <a href="#" class="card-link">{{product.quantity}}</a></p>
+           <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+         </div>
+          <button class="btn btn-success">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
