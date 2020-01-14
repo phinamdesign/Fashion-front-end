@@ -9,13 +9,19 @@ import { HomeComponent } from './components/home/home.component';
 import {httpInterceptorProviders} from './auth/auth-interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { SupplierListComponent } from './components/suppliers/supplier-list/supplier-list.component';
+import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
+import { SupplierEditComponent } from './components/suppliers/supplier-edit/supplier-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    SupplierListComponent,
+    SupplierCreateComponent,
+    SupplierEditComponent
   ],
   imports: [
     BrowserModule,
