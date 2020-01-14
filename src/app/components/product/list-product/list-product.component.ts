@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Category} from '../../../models/category';
+import {Supplier} from '../../../models/supplier';
 
 @Component({
   selector: 'app-list-product',
@@ -19,6 +21,8 @@ export class ListProductComponent implements OnInit {
   private description: string;
   private quantity: number;
   private status = true;
+  private category: Category;
+  private supplier: Supplier;
   listProduct: Product[] = [];
   productForm = new FormGroup({
     name: new FormControl('')
@@ -52,6 +56,8 @@ export class ListProductComponent implements OnInit {
       price: this.price,
       description: this.description,
       quantity: this.quantity,
+      category: this.category,
+      supplier: this.supplier,
       name
     };
     this.productService.searchByName(product).subscribe(

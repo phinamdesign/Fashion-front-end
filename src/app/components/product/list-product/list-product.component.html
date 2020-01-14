@@ -43,6 +43,8 @@
          <div align="left">
            <p class="card-text">{{product.description}}</p>
            <p>Quantity : <a href="#" class="card-link">{{product.quantity}}</a></p>
+           <p>The loai : <a href="#" class="card-link">{{product.category.categoryName}}</a></p>
+           <p>Hang : <a href="#" class="card-link">{{product.supplier.supplierName}}</a></p>
            <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
          </div>
           <button class="btn btn-success">Add to cart</button>
