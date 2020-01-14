@@ -1,1 +1,31 @@
-<p>details-product works!</p>
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-12 col-sm-7 col-md-7">
+      <img src="{{product.image}}" height="500px" alt="">
+    </div>
+    <div class="col-12 col-sm-5 col-md-5">
+      <h2>Thông tin chi tiết</h2>
+
+      <hr/>
+      <div *ngIf="product">
+        <div>
+          <label><b>Name : </b></label> {{product.id}}
+        </div>
+        <div>
+          <label><b>Price : </b></label> {{product.price}}
+        </div>
+        <div>
+          <label><b>Description : </b></label> {{product.description}}
+        </div>
+        <div>
+          <label><b>Quantity : </b></label> {{product.quantity}}
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <button (click)="listProduct()" class="btn btn-primary">Back to Employee List</button><br>
+
+    </div>
+  </div>
+</div>

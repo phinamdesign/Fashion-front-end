@@ -38,7 +38,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/product']);
+    this.router.navigate(['product']);
   }
 
 }

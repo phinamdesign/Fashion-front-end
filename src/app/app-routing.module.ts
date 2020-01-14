@@ -8,6 +8,7 @@ import {CreateProductComponent} from './components/product/create-product/create
 import {CategoryCreateComponent} from './components/category/category-create/category-create.component';
 import {CategoryEditComponent} from './components/category/category-edit/category-edit.component';
 import {CategoryListComponent} from './components/category/category-list/category-list.component';
+import {DetailsProductComponent} from './components/product/details-product/details-product.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'product',
     component: ListProductComponent
+  },
+  {
+    path: 'details/:id',
+    component: DetailsProductComponent
   },
   {
     path: 'delete-product',

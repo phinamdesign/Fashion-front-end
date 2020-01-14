@@ -44,15 +44,10 @@ export class ListProductComponent implements OnInit {
     this.products = this.productService.getListProduct();
   }
 
-  detailsProduct(id: number) {
-    this.router.navigate(['details', id]);
-  }
-
   searchProduct() {
     const {name} = this.productForm.value;
     const product: Product = {
       id: this.id,
-      // name: this.name,
       image: this.image,
       price: this.price,
       description: this.description,
@@ -67,6 +62,10 @@ export class ListProductComponent implements OnInit {
       }
     );
     this.status = false;
+  }
+
+  detailsProduct(id: number) {
+    this.router.navigate(['details', id]);
   }
 
 }

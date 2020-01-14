@@ -5,3 +5,13 @@
 .center input{
   width: 600px;
 }
+.size img{
+  cursor: pointer;
+  max-width: 100%;
+  height: auto;
+}
+.size{
+  width: 15em;
+  height: 10em;
+  overflow: hidden;
+}

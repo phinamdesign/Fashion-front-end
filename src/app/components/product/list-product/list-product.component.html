@@ -12,7 +12,9 @@
     <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of listProduct">
         <div class="card" style="width: 15rem;">
           <div>
-            <img class="card-img-top img-thumbnail" src="{{product.image}}" alt="Card image cap">
+            <a routerLink="details-product" class="size">
+              <img class="card-img-top img-thumbnail" (click)="detailsProduct(product.id)" src="{{product.image}}" alt="Card image cap">
+            </a>
           </div>
           <div class="card-body" align="center">
             <h5 class="card-title">{{product.name}}</h5>
@@ -32,7 +34,9 @@
     <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of products | async">
       <div class="card" style="width: 15rem;">
         <div>
-          <img class="card-img-top img-thumbnail" src="{{product.image}}" alt="Card image cap">
+          <a class="size">
+            <img class="card-img-top img-thumbnail" width="20px" (click)="detailsProduct(product.id)" src="{{product.image}}" alt="Card image cap">
+          </a>
         </div>
         <div class="card-body" align="center">
           <h5 class="card-title">{{product.name}}</h5>
