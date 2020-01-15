@@ -62,14 +62,16 @@ export class CreateProductComponent implements OnInit {
   }
 
   create() {
-    const {name, description, quantity, supplierSelect, categorySelect} = this.productForm.value;
-    if (name === '' || description === '' || quantity === '' || supplierSelect === '' || categorySelect === '') {
+    const {name, description, quantity, supplierSelect, categorySelect, price} = this.productForm.value;
+    if (name === '' || description === '' || quantity === ''
+      || supplierSelect === '' || categorySelect === '' || price === '') {
       return alert('Fill Data Fields !');
     }
     const iProduct: Product = {
       name,
       description,
       quantity,
+      price,
       category: {
         categoryId: categorySelect
       },
