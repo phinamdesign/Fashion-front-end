@@ -9,6 +9,7 @@ import {TokenStorageService} from './auth/token-storage.service';
 export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
+  isShow = false;
 
   constructor(private tokenStorage: TokenStorageService) { }
 
@@ -27,5 +28,8 @@ export class AppComponent implements OnInit {
         return true;
       });
     }
+  }
+  setIsShow(isShow: boolean) {
+    this.isShow = isShow;
   }
 }

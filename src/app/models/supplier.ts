@@ -1,4 +1,4 @@
 export class Supplier {
-  supplierId: number;
-  supplierName: string;
+  supplierId?: number;
+  supplierName?: string;
 }

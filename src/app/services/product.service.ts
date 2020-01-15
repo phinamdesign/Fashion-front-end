@@ -9,7 +9,7 @@ import {Product} from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/api/auth/product';
+  private baseUrl = 'http://localhost:8080/api/admin/product';
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   // tslint:disable-next-line:ban-types
-  createProduct(product: Object): Observable<Object> {
+  createProduct(product: Product): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, product);
   }
 

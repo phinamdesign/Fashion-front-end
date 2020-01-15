@@ -1,0 +1,54 @@
+<h2 class="text-center">Create a new product</h2>
+<form [formGroup]="productForm" (ngSubmit)="create()" class="col-md-6 offset-md-3">
+  <div class="form-group row">
+    <label class="col">
+      Product name
+      <input type="text" class="form-control" formControlName="name">
+    </label>
+  </div>
+
+  <div class="form-group row">
+    <label class="col">
+      Description
+      <input type="text" class="form-control" formControlName="description">
+    </label>
+  </div>
+
+  <div class="form-group row">
+    <label class="col">
+      price
+      <input type="text" class="form-control" formControlName="price">
+    </label>
+  </div>
+
+  <div class="form-group row">
+    <label class="col">
+      Quantity
+      <input type="text" class="form-control" formControlName="quantity">
+    </label>
+  </div>
+
+  <div class="form-group row">
+    <label class="col">
+      Supplier
+      <select class="custom-select " formControlName="supplierSelect">
+        <option value="" selected disabled hidden>Please select Tag</option>
+        <option *ngFor="let supplier of suppliers" value="{{supplier.supplierId}}">{{supplier.supplierName}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-group row">
+    <label class="col">
+      Category
+      <select class="custom-select " formControlName="categorySelect">
+        <option value="" selected disabled hidden>Please select Tag</option>
+        <option *ngFor="let category of categories" value="{{category.categoryId}}">{{category.categoryName}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-info" type="submit">Create</button>
+  </div>
+</form>
