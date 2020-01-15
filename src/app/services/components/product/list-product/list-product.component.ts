@@ -52,12 +52,11 @@ export class ListProductComponent implements OnInit {
     const {name} = this.productForm.value;
     const product: Product = {
       id: this.id,
-      image: this.image,
       price: this.price,
       description: this.description,
       quantity: this.quantity,
-      category: this.category,
-      supplier: this.supplier,
+      // category: this.category,
+      // supplier: this.supplier,
       name
     };
     this.productService.searchByName(product).subscribe(

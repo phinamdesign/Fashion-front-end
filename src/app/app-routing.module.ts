@@ -13,9 +13,9 @@ import {ListOderDetailComponent} from './services/components/oderDetail/list-ode
 import {DetailOderDetailComponent} from './services/components/oderDetail/detail-oder-detail/detail-oder-detail.component';
 import { UpdateOderDetailComponent } from './services/components/oderDetail/update-oder-detail/update-oder-detail.component';
 import {CreateOderDetailComponent} from './services/components/oderDetail/create-oder-detail/create-oder-detail.component';
-import {SupplierListComponent} from "./services/components/suppliers/supplier-list/supplier-list.component";
-import {SupplierCreateComponent} from "./services/components/suppliers/supplier-create/supplier-create.component";
-import {SupplierEditComponent} from "./services/components/suppliers/supplier-edit/supplier-edit.component";
+import {SupplierListComponent} from './services/components/suppliers/supplier-list/supplier-list.component';
+import {SupplierCreateComponent} from './services/components/suppliers/supplier-create/supplier-create.component';
+import {SupplierEditComponent} from './services/components/suppliers/supplier-edit/supplier-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},

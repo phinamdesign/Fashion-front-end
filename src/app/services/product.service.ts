@@ -16,15 +16,29 @@ export class ProductService {
   getProduct(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
-
-  // tslint:disable-next-line:ban-types
-  createProduct(product: Product): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, product);
+  createProduct(product: Product): Observable<any> {
+    console.log(product);
+    return this.http.post(this.baseUrl, {
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      quantity: product.quantity,
+      pictures: product.pictures,
+      category: product.category,
+      supplier: product.supplier
+    });
   }
 
-  // tslint:disable-next-line:ban-types
-  updateProduct(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.http}/${id}`, value);
+  updateProduct(product: Product): Observable<any> {
+    return this.http.put(this.baseUrl + '/' + product.id, {
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      quantity: product.quantity,
+      pictures: product.pictures,
+      category: product.category,
+      supplier: product.supplier
+    });
   }
 
   deleteProduct(id: number): Observable<any> {

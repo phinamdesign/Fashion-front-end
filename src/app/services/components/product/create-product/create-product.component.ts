@@ -8,9 +8,8 @@ import {SupplierService} from '../../../supplier.service';
 import {PictureService} from '../../../picture.service';
 import {AppComponent} from '../../../../app.component';
 import {TokenStorageService} from '../../../../auth/token-storage.service';
-import {Picture} from '../../../../models/Picture';
-import {Category} from "../../../../models/category";
-import {Supplier} from "../../../../models/supplier";
+import {Category} from '../../../../models/category';
+import {Supplier} from '../../../../models/supplier';
 
 @Component({
   selector: 'app-create-product',
@@ -18,20 +17,19 @@ import {Supplier} from "../../../../models/supplier";
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
+  productForm: FormGroup;
   product: Product;
-  categories: Category[] = [];
-  suppliers: Supplier[] = [];
-
-
-  productForm = new FormGroup({
-    name: new FormControl(''),
-    description: new FormControl(''),
-    price: new FormControl(''),
-    categorySelect: new FormControl(''),
-    quantity: new FormControl(''),
-    supplierSelect: new FormControl('')
-  });
-
+  message = false;
+  category: any;
+  supplier: any;
+  previewUrl: any[];
+  useFile: any[];
+  pictures: any[];
+  price: any;
+  name: any;
+  quantity: any;
+  supplierList: Supplier[];
+  categoryList: Category[];
   constructor(
     private categoryService: CategoryService,
     private supplierService: SupplierService,
@@ -40,50 +38,94 @@ export class CreateProductComponent implements OnInit {
     private router: Router,
     private productService: ProductService,
     private app: AppComponent,
-    private token: TokenStorageService,
+    private token: TokenStorageService
   ) {
   }
-
   ngOnInit() {
-    this.categoryService.getCategory().subscribe(next => {
-      this.categories = next;
-    }, error => {
-      console.log(error);
-    }, () => {
-      console.log(this.categories);
+    if (!this.token.getToken()) {
+      this.router.navigate(['/login']);
+    }
+    this.app.setIsShow(true);
+    this.productForm = this.fb.group({
+      id: '',
+      name: ['', [Validators.required, Validators.minLength(1)]],
+      price: ['', [Validators.required, Validators.min(0)]],
+      description: ['', [Validators.required]],
+      quantity: ['', [Validators.required, Validators.min(0)]],
+      // category: [''],
+      // supplier: [''],
     });
-    this.supplierService.getAllSupplier().subscribe(next => {
-      this.suppliers = next;
-    }, error => {
-      console.log(error);
-    }, () => {
-      console.log('complete');
+    this.supplierService.getAllSupplier().subscribe(next => this.supplierList = next);
+    this.categoryService.getCategory().subscribe(next => this.categoryList = next);
+    this.useFile = [];
+    this.previewUrl = [];
+    this.pictures = [];
+    this.category = [];
+    this.supplier = [];
+  }
+
+  onSubmit() {
+    if (this.productForm.valid) {
+      const {value} = this.productForm;
+      this.product = value;
+      for (const preview of this.previewUrl) {
+        this.pictureService.createPicture(preview).subscribe(
+          next => {
+            this.pictures.push({
+              id: next
+            });
+          }
+        );
+      }
+    } else {
+      console.log('error');
+    }
+    setTimeout(() => {
+      this.createProduct();
+    }, 1000);
+  }
+
+  onSelectFile(event) {
+    this.useFile = [];
+    this.useFile = event.srcElement.files;
+    console.log(this.useFile);
+    this.preview();
+  }
+
+  createProduct() {
+    this.product.pictures = this.pictures;
+    this.product.category = this.category;
+    this.product.supplier = this.supplier;
+    this.productService.createProduct(this.product).subscribe(next => {
+      this.ngOnInit();
+      this.message = true;
+      alert('Created a new product!');
     });
   }
 
-  create() {
-    const {name, description, quantity, supplierSelect, categorySelect, price} = this.productForm.value;
-    if (name === '' || description === '' || quantity === ''
-      || supplierSelect === '' || categorySelect === '' || price === '') {
-      return alert('Fill Data Fields !');
-    }
-    const iProduct: Product = {
-      name,
-      description,
-      quantity,
-      price,
-      category: {
-        categoryId: categorySelect
-      },
-      supplier: {
-        supplierId: supplierSelect
+  preview() {
+    // Show preview
+    for (let i = 0; i < this.useFile.length; i++) {
+      const mimeType = this.useFile[i].type;
+      if (mimeType.match(/image\/*/) == null) {
+        return;
       }
-    };
-    this.productService.createProduct(iProduct).subscribe(next => {
-      this.productService;
-      console.log(iProduct);
-      alert('Created a new product!')
-      this.productForm.reset({});
-    });
+
+      const reader = new FileReader();
+      reader.readAsDataURL(this.useFile[i]);
+      reader.onload = event => {
+        if (typeof reader.result === 'string') {
+          this.previewUrl[i] = reader.result;
+        }
+      };
+    }
+    console.log(this.previewUrl);
   }
+  addCategory(id) {
+    this.categoryService.getCategoryById(id).subscribe(next => this.category = next);
+  }
+
+  addSupplier(id) {
+      this.supplierService.getSupplierById(id).subscribe(next => this.supplier = next);
+    }
 }

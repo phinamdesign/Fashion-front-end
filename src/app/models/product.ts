@@ -5,11 +5,10 @@ import {Picture} from './Picture';
 export class Product {
   id?: number;
   name?: string;
-  image?: string;
   price?: number;
   description?: string;
   quantity?: number;
-  category?: Category;
-  supplier?: Supplier;
-  pictureList?: any[];
+  category?: any;
+  supplier?: any;
+  pictures?: any[];
 }
