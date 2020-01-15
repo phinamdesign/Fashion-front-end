@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 import { Router } from '@angular/router';
+import {Category} from '../../../models/category';
 
 @Component({
   selector: 'app-create-product',
@@ -29,6 +30,7 @@ export class CreateProductComponent implements OnInit {
     this.productService.createProduct(this.product)
       .subscribe(data => console.log(data), error => console.log(error));
     this.product = new Product();
+    alert('Them moi thanh cong !')
     this.gotoList();
   }
 
