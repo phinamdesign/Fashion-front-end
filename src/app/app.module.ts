@@ -35,6 +35,9 @@ import {CreateOderDetailComponent} from './components/oderDetail/create-oder-det
 import { SupplierListComponent } from './components/suppliers/supplier-list/supplier-list.component';
 import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
 import { SupplierEditComponent } from './components/suppliers/supplier-edit/supplier-edit.component';
+import { ProductDetailCreateComponent } from './components/product-detail/product-detail-create/product-detail-create.component';
+import { ProductDetailListComponent } from './components/product-detail/product-detail-list/product-detail-list.component';
+import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { SupplierEditComponent } from './components/suppliers/supplier-edit/supp
     HomeComponent,
     SupplierListComponent,
     SupplierCreateComponent,
-    SupplierEditComponent
+    SupplierEditComponent,
+    ProductDetailCreateComponent,
+    ProductDetailListComponent,
+    ProductDetailEditComponent
   ],
   imports: [
     BrowserModule,
