@@ -18,6 +18,7 @@ export class CategoryCreateComponent implements OnInit {
   }
 
   addCategory() {
+    console.log('aaa');
     const {value} = this.createForm;
     this.categoryService.createCategory(value).subscribe(next => {
       this.categoryService;

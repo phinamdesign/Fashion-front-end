@@ -29,7 +29,7 @@
       </div>
     </div>
   </div>
-<div class="container" *ngIf="this.status">
+<div class="container height" *ngIf="this.status">
   <div class="row">
     <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of products | async">
       <div class="card" style="width: 15rem;">
@@ -43,8 +43,9 @@
          <div align="left">
            <p class="card-text">{{product.description}}</p>
            <p>Quantity : <a href="#" class="card-link">{{product.quantity}}</a></p>
-           <p>The loai : <a href="#" class="card-link">{{product.category.categoryName}}</a></p>
-           <p>Hang : <a href="#" class="card-link">{{product.supplier.supplierName}}</a></p>
+<!--           <p>The loai : <a href="#" class="card-link">{{product.category.categoryName}}</a></p>-->
+<!--           <p>Hang : <a href="#" class="card-link">{{product.supplier.supplierName}}</a></p>-->
+<!--           <p>Hang : <a href="#" class="card-link">{{product.supplier.supplierName}}</a></p>-->
            <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
          </div>
           <button class="btn btn-success">Add to cart</button>

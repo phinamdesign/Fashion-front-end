@@ -41,6 +41,9 @@ import { DetailColorComponent } from './components/color/detail-color/detail-col
 import { UpdateColorComponent } from './components/color/update-color/update-color.component';
 import { CreateColorComponent } from './components/color/create-color/create-color.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SupplierListComponent } from './components/suppliers/supplier-list/supplier-list.component';
+import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
+import { SupplierEditComponent } from './components/suppliers/supplier-edit/supplier-edit.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ListColorComponent,
     DetailColorComponent,
     UpdateColorComponent,
-    CreateColorComponent
+    CreateColorComponent,
+    CreateOderDetailComponent,
+    HomeComponent,
+    SupplierListComponent,
+    SupplierCreateComponent,
+    SupplierEditComponent
   ],
   imports: [
     BrowserModule,

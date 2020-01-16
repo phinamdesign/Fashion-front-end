@@ -17,6 +17,9 @@ import {ListSizeComponent} from './components/size/list-size/list-size.component
 import {DetailSizeComponent} from './components/size/detail-size/detail-size.component';
 import {UpdateSizeComponent} from './components/size/update-size/update-size.component';
 import {CreateSizeComponent} from './components/size/create-size/create-size.component';
+import {SupplierListComponent} from './components/suppliers/supplier-list/supplier-list.component';
+import {SupplierCreateComponent} from './components/suppliers/supplier-create/supplier-create.component';
+import {SupplierEditComponent} from './components/suppliers/supplier-edit/supplier-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -70,6 +73,19 @@ const routes: Routes = [
   {path: 'sizes/:id', component: DetailSizeComponent},
   {path: 'updatesizes/:id', component: UpdateSizeComponent},
   {path: 'createsizes', component: CreateSizeComponent},
+  {path: 'add', component: CreateOderDetailComponent},
+  {
+    path: 'suppliers',
+    component: SupplierListComponent
+  },
+  {
+    path: 'create/supplier',
+    component: SupplierCreateComponent
+  },
+  {
+    path: 'supplier/:id/edit',
+    component: SupplierEditComponent
+  },
 ];
 
 @NgModule({

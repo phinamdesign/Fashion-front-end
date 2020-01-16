@@ -1,47 +1,73 @@
-<div class="card w">
-  <h3 class="card-title" align="center">Create Product</h3>
-  <div class="card-body">
-    <div [hidden]="submitted" style="width: 400px;">
-      <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="name">Name Product</label>
-          <input type="text" class="form-control" id="name" required [(ngModel)]="product.name" name="name">
-        </div>
-
-        <div class="form-group">
-          <label for="image">Image</label>
-          <input type="text" class="form-control" id="image" required [(ngModel)]="product.image" name="image">
-        </div>
-
-        <div class="form-group">
-          <label for="price">Price</label>
-          <input type="text" class="form-control" id="price" required [(ngModel)]="product.price" name="price">
-        </div>
-
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" required [(ngModel)]="product.description" name="description">
-        </div>
-
-        <div class="form-group">
-          <label for="quantity">Quantity</label>
-          <input type="text" class="form-control" id="quantity" required [(ngModel)]="product.quantity" name="quantity">
-        </div>
-
-        <div class="form-group">
-          <label for="upload-image">Upload-image</label><br>
-          <input type="file" id="upload-image" name="upload-image">
-        </div>
-
-        <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
-      </form>
+<div class="col-6 offset-3">
+  <h2 class="text-center">Create new Product</h2>
+<form
+  name="form"
+  [formGroup]="productForm"
+  (ngSubmit)="productForm.valid && onSubmit()"
+  novalidate
+>
+  <div class="form-group">
+    <label>Product name</label>
+    <input type="text" class="form-control" formControlName="name"/>
+    <div class="alert-danger" *ngIf="productForm.get('name').invalid && productForm.get('name').touched"
+         style="color: red">
+      Product name must be at least 1 characters
     </div>
-
-    <div [hidden]="!submitted">
-      <h4>You submitted successfully!</h4>
-      <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input type="number" class="form-control" formControlName="price"/>
+    <div class="alert-danger" *ngIf="productForm.get('price').invalid && productForm.get('price').touched"
+         style="color: red">
+      Price is greater than or equal to zero
     </div>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control h-auto" formControlName="description"></textarea>
+    <div class="alert-danger" *ngIf="productForm.get('description').invalid && productForm.get('description').touched"
+         style="color: red">
+      Description is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Quantity</label>
+    <input type="number" class="form-control" formControlName="quantity"/>
+    <div class="alert-danger" *ngIf="productForm.get('quantity').invalid && productForm.get('quantity').touched"
+         style="color: red">
+      Quantity is greater than or equal to zero
+    </div>
+  </div>
 
+  <div class="form-group">
+    <label>Category</label>
+    <select class="form-control" (change)="addCategory(addCt.value)" #addCt>
+      <option value="null">Select category</option>
+      <option *ngFor="let a of categoryList" value="{{a.categoryId}}">{{a.categoryName}}</option>
+    </select>
   </div>
+
+  <div class="form-group">
+    <label>Supplier</label>
+    <select class="form-control" (change)="addSupplier(addClient.value)" #addClient>
+      <option value="null">Select supplier</option>
+      <option *ngFor="let supplier of supplierList" value="{{supplier.supplierId}}">{{supplier.supplierName}}</option>
+    </select>
   </div>
-<router-outlet></router-outlet>
+
+  <div class="form-group">
+    <label>Picture</label>
+    <input type="file" class="form-control" accept="image/*" (change)="onSelectFile($event)" multiple>
+  </div>
+  <div class="form-group" style="height: 100px">
+    <div class="image-preview" *ngIf="previewUrl">
+      <div class="float-left" *ngFor="let preview of previewUrl">
+        <img [src]="preview" height="100"/><span>x</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">Create</button>
+  </div>
+</form>
+</div>
