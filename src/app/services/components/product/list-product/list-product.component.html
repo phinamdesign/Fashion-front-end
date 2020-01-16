@@ -31,7 +31,7 @@
   </div>
 <div class="container height" *ngIf="this.status">
   <div class="row">
-    <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of products | async | paginate: {itemsPerPage: 5, currentPage: p}">
+    <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of products | async">
       <div class="card" style="width: 15rem;">
         <div>
           <a class="size">
@@ -54,6 +54,5 @@
     </div>
   </div>
 </div>
-<pagination-controls (pageChange)="p = $event" align="center"></pagination-controls>
 <router-outlet></router-outlet>
 
