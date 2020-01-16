@@ -9,8 +9,14 @@ import {Product} from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
+<<<<<<< HEAD
   private baseUrl = 'http://localhost:8080/api/admin/product';
   private url = 'http://localhost:8080/api/auth/product';
+=======
+
+  private baseUrl = 'http://localhost:8080/api/auth/product';
+
+>>>>>>> master
   constructor(private http: HttpClient) { }
 
   getProduct(id: number): Observable<any> {
