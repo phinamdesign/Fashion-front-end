@@ -13,6 +13,10 @@ import {ListOderDetailComponent} from './components/oderDetail/list-oder-detail/
 import {DetailOderDetailComponent} from './components/oderDetail/detail-oder-detail/detail-oder-detail.component';
 import { UpdateOderDetailComponent } from './components/oderDetail/update-oder-detail/update-oder-detail.component';
 import {CreateOderDetailComponent} from './components/oderDetail/create-oder-detail/create-oder-detail.component';
+import {ListSizeComponent} from './components/size/list-size/list-size.component';
+import {DetailSizeComponent} from './components/size/detail-size/detail-size.component';
+import {UpdateSizeComponent} from './components/size/update-size/update-size.component';
+import {CreateSizeComponent} from './components/size/create-size/create-size.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -56,10 +60,16 @@ const routes: Routes = [
     path: 'category/:id/edit',
     component: CategoryEditComponent
   },
+  // oderdetails
   {path: 'oderdetails', component: ListOderDetailComponent},
-  {path: 'details/:id', component: DetailOderDetailComponent},
+  {path: 'oderdetails/:id', component: DetailOderDetailComponent},
   {path: 'update/:id', component: UpdateOderDetailComponent},
-  {path: 'add', component: CreateOderDetailComponent},
+  {path: 'createoderdetails', component: CreateOderDetailComponent},
+  // size
+  {path: 'sizes', component: ListSizeComponent},
+  {path: 'sizes/:id', component: DetailSizeComponent},
+  {path: 'updatesizes/:id', component: UpdateSizeComponent},
+  {path: 'createsizes', component: CreateSizeComponent},
 ];
 
 @NgModule({
