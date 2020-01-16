@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {SupplierService} from '../../../supplier.service';
 
 @Component({
   selector: 'app-supplier-create',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupplierCreateComponent implements OnInit {
 
-  constructor() { }
+  createForm = new FormGroup({
+    supplierName: new FormControl(''),
+  });
+  constructor(private supplierService: SupplierService) { }
 
   ngOnInit() {
   }
 
+  addSupplier() {
+    console.log('aaa');
+    const {value} = this.createForm;
+    this.supplierService.createSupplier(value).subscribe(next => {
+      this.supplierService;
+      alert('created a new supplier!');
+      this.createForm.reset();
+    });
+  }
 }

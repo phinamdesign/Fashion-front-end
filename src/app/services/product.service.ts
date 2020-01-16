@@ -9,12 +9,12 @@ import {Product} from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/api/auth/product';
-
+  private baseUrl = 'http://localhost:8080/api/admin/product';
+  private url = 'http://localhost:8080/api/auth/product';
   constructor(private http: HttpClient) { }
 
   getProduct(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.url}/${id}`);
   }
   createProduct(product: Product): Observable<any> {
     console.log(product);
@@ -46,10 +46,10 @@ export class ProductService {
   }
 
   getListProduct(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(`${this.url}`);
   }
 
   searchByName(product: Product): Observable<Product[]> {
-    return this.http.post<Product[]>(this.baseUrl + '/search-by-name', product);
+    return this.http.post<Product[]>(this.url + '/search-by-name', product);
   }
 }
