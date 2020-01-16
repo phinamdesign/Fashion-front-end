@@ -14,6 +14,7 @@ import {Supplier} from '../../../models/supplier';
 })
 export class ListProductComponent implements OnInit {
   products: Observable<Product[]>;
+  p = 1;
   private id: number;
   private name: string;
   private image: string;

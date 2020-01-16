@@ -35,6 +35,7 @@ import {CreateOderDetailComponent} from './components/oderDetail/create-oder-det
 import { SupplierListComponent } from './components/suppliers/supplier-list/supplier-list.component';
 import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
 import { SupplierEditComponent } from './components/suppliers/supplier-edit/supplier-edit.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { SupplierEditComponent } from './components/suppliers/supplier-edit/supp
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
