@@ -32,6 +32,15 @@ import {ListOderDetailComponent} from './components/oderDetail/list-oder-detail/
 import {DetailOderDetailComponent} from './components/oderDetail/detail-oder-detail/detail-oder-detail.component';
 import { UpdateOderDetailComponent } from './components/oderDetail/update-oder-detail/update-oder-detail.component';
 import {CreateOderDetailComponent} from './components/oderDetail/create-oder-detail/create-oder-detail.component';
+import { ListSizeComponent } from './components/size/list-size/list-size.component';
+import { DetailSizeComponent } from './components/size/detail-size/detail-size.component';
+import { UpdateSizeComponent } from './components/size/update-size/update-size.component';
+import { CreateSizeComponent } from './components/size/create-size/create-size.component';
+import { ListColorComponent } from './components/color/list-color/list-color.component';
+import { DetailColorComponent } from './components/color/detail-color/detail-color.component';
+import { UpdateColorComponent } from './components/color/update-color/update-color.component';
+import { CreateColorComponent } from './components/color/create-color/create-color.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { SupplierListComponent } from './components/suppliers/supplier-list/supplier-list.component';
 import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
 import { SupplierEditComponent } from './components/suppliers/supplier-edit/supplier-edit.component';
@@ -58,6 +67,7 @@ import { ProductDetailEditComponent } from './components/product-detail/product-
     DetailsCommenterComponent,
     FooterComponent,
     HeaderComponent,
+    HomeComponent,
     SlideShowProductComponent,
     DeleteProductComponent,
     CategoryCreateComponent,
@@ -66,6 +76,15 @@ import { ProductDetailEditComponent } from './components/product-detail/product-
     ListOderDetailComponent,
     DetailOderDetailComponent,
     UpdateOderDetailComponent,
+    CreateOderDetailComponent,
+    ListSizeComponent,
+    DetailSizeComponent,
+    UpdateSizeComponent,
+    CreateSizeComponent,
+    ListColorComponent,
+    DetailColorComponent,
+    UpdateColorComponent,
+    CreateColorComponent,
     CreateOderDetailComponent,
     HomeComponent,
     SupplierListComponent,
@@ -80,7 +99,8 @@ import { ProductDetailEditComponent } from './components/product-detail/product-
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

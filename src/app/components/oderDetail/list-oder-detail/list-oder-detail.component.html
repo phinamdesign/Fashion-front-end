@@ -13,7 +13,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let oderdetail of oderdetails | async">
+      <tr *ngFor="let oderdetail of oderdetails | async | paginate: {itemsPerPage: 5, currentPage: p}">
         <td>{{oderdetail.price}}</td>
         <td>{{oderdetail.quantity}}</td>
         <td><button (click)="deleteOderdetail(oderdetail.id)" class="btn btn-danger">Delete</button>
@@ -22,6 +22,9 @@
         </td>
       </tr>
       </tbody>
+      <a class="border-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </a>
     </table>
   </div>
 </div>

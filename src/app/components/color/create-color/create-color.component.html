@@ -1,0 +1,12 @@
+<h2>
+  Create Size
+</h2>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="number" class="form-control" id="name" required [(ngModel)]="color.name" name="name">
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+  </form>
+</div>

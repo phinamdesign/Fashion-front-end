@@ -20,7 +20,7 @@ export class DetailOderDetailComponent implements OnInit {
     this.oderdetailService.getOderdetail(this.id).subscribe(data => {console.log(data); this.oderdetail = data; }, error => console.log(error));
   }
   list() {
-    this.router.navigate(['']);
+    this.router.navigate(['oderdetails']);
   }
 
 }

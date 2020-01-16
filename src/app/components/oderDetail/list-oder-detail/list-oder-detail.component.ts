@@ -13,8 +13,7 @@ import {any} from 'codelyzer/util/function';
 })
 export class ListOderDetailComponent implements OnInit {
   oderdetails: Observable<any>;
-  // items = [];
-  // pageOfItems: Array<any>;
+  p = 1;
   constructor(private oderdetailService: OderdetailService,
               private router: Router) { }
 
@@ -33,7 +32,7 @@ export class ListOderDetailComponent implements OnInit {
     }
   }
   Oderdetail(id: number) {
-    this.router.navigate(['details', id]);
+    this.router.navigate(['oderdetails', id]);
   }
   updateOderdetail(id: number) {
     this.router.navigate(['update', id]);

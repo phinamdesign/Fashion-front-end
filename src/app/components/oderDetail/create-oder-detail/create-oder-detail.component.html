@@ -1,3 +1,4 @@
+<div class="container">
 <h3> Create Oderdetail</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
@@ -10,5 +11,9 @@
       <input type="number" class="form-control" id="quantity" required [(ngModel)]="oderdetail.quantity" name="quantity">
     </div>
     <button type="submit" class="btn btn-success">Create</button>
+    <br>
+    <br>
+    <button (click)="gotoList()" class="btn btn-info" >Back To List</button>
   </form>
+</div>
 </div>
