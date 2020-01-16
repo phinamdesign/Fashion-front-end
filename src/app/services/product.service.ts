@@ -9,7 +9,7 @@ import {Product} from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/api/admin/product';
+  private baseUrl = 'http://localhost:8080/api/auth/product';
 
   constructor(private http: HttpClient) { }
 

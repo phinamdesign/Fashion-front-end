@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../../../../models/product';
 import {ProductService} from '../../../product.service';
 import {Router} from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CategoryService} from '../../../category.service';
 import {SupplierService} from '../../../supplier.service';
 import {PictureService} from '../../../picture.service';
