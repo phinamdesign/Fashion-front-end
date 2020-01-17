@@ -47,6 +47,10 @@ import { SupplierEditComponent } from './components/suppliers/supplier-edit/supp
 import { ProductDetailCreateComponent } from './components/product-detail/product-detail-create/product-detail-create.component';
 import { ProductDetailListComponent } from './components/product-detail/product-detail-list/product-detail-list.component';
 import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
+import {ProductDetailService} from "./services/product-detail.service";
+import {ColorService} from "./services/color.service";
+import {SizeService} from "./services/size.service";
+import {ProductService} from "./services/product.service";
 
 @NgModule({
   declarations: [
@@ -102,7 +106,7 @@ import { ProductDetailEditComponent } from './components/product-detail/product-
     ReactiveFormsModule,
     NgxPaginationModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, ProductDetailService, ColorService, SizeService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

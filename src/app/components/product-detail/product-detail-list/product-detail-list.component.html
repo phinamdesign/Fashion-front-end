@@ -1,1 +1,42 @@
-<p>product-detail-list works!</p>
+<div *ngIf="info.token;  else loggedOut">
+  <a [routerLink]="['/create/product/detail']">create a new product detail</a>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Product detail-list</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped" border="1px">
+        <thead>
+        <tr>
+          <th>STT</th>
+          <th>Product name</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Category</th>
+          <th>Brand</th>
+          <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let productDetail of productDetails | async; index as i">
+          <td>{{i+1}}</td>
+          <td>{{productDetail.product.name}}</td>
+          <td>{{productDetail.color.name}}</td>
+          <td>{{productDetail.size.name}}</td>
+          <td>{{productDetail.product.category.categoryName}}</td>
+          <td>{{productDetail.product.supplier.supplierName}}</td>
+          <td>{{productDetail.product.price}}</td>
+          <td><button [routerLink]="['/productDetail/'+ productDetail.id+'/edit']" class="btn btn-success">Edit</button></td>
+          <td><button (click)="deleteProductDetail(productDetail.id)" class="btn btn-danger">Delete</button>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <ng-template #loggedOut>
+  <h1>Please login to continue!</h1>
+  <a [routerLink]="['/login']">Login</a>
+</ng-template>

@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductDetail} from '../../../models/productDetail';
+import {Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {Color} from '../../../models/color';
+import {Size} from '../../../models/size';
+import {ProductDetailService} from "../../../services/product-detail.service";
+import {Category} from "../../../models/category";
+import {CategoryService} from "../../../services/category.service";
+import {TokenStorageService} from "../../../auth/token-storage.service";
 
 @Component({
   selector: 'app-product-detail-list',
@@ -7,9 +17,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailListComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  productDetails: Observable<ProductDetail[]>;
+  info: any;
+  constructor(private productDetailService: ProductDetailService,
+              private tokenService: TokenStorageService) {
   }
 
+  reloadData() {
+    this.productDetails = this.productDetailService.getProductDetail();
+  }
+  ngOnInit() {
+    this.reloadData();
+    this.info = {
+      token: this.tokenService.getToken(),
+      username: this
+    };
+  }
+  deleteProductDetail(id: number) {
+    const choice = (confirm('Are you sure to delete this Product detail?'));
+    if (choice) {
+      this.productDetailService.deleteProductDetail(id)
+        .subscribe(
+          data => {
+            console.log(data);
+            this.reloadData();
+          },
+          error => console.log(error)
+        );
+    }
+  }
 }

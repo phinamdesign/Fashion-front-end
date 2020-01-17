@@ -20,6 +20,8 @@ import {CreateSizeComponent} from './components/size/create-size/create-size.com
 import {SupplierListComponent} from './components/suppliers/supplier-list/supplier-list.component';
 import {SupplierCreateComponent} from './components/suppliers/supplier-create/supplier-create.component';
 import {SupplierEditComponent} from './components/suppliers/supplier-edit/supplier-edit.component';
+import {ProductDetailListComponent} from "./components/product-detail/product-detail-list/product-detail-list.component";
+import {ProductDetailCreateComponent} from "./components/product-detail/product-detail-create/product-detail-create.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -86,6 +88,14 @@ const routes: Routes = [
     path: 'supplier/:id/edit',
     component: SupplierEditComponent
   },
+  {
+    path: 'productDetail',
+    component: ProductDetailListComponent
+  },
+  {
+    path: 'create/product/detail',
+    component: ProductDetailCreateComponent
+  }
 ];
 
 @NgModule({
