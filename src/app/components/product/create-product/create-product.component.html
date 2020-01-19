@@ -56,6 +56,24 @@
   </div>
 
   <div class="form-group">
+    <label>Size</label>
+    <select class="form-control" (change)="addSize(addSizes.value)" #addSizes>
+      <option value="null">Select size</option>
+      <option *ngFor="let productDetail of productDetailList" value="{{productDetail.size.id}}">{{productDetail.size.name}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Color</label>
+    <select class="form-control" (change)="addColor(addColors.value)" #addColors>
+      <option value="null">Select color</option>
+      <option *ngFor="let productDetail of productDetailList" value="{{productDetail.color.id}}">{{productDetail.color.name}}</option>
+    </select>
+  </div>
+
+
+
+  <div class="form-group">
     <label>Picture</label>
     <input type="file" class="form-control" accept="image/*" (change)="onSelectFile($event)" multiple>
   </div>

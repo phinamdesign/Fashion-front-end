@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
       data => {
         this.token.saveToken(data.accessToken);
         this.token.saveUsername(data.username);
-        this.token.saveAuthorities(data.authorities);
-        // this.token.saveUserId(data.);
-        // this.token.saveName(data.name);
-        // this.token.saveEmail(data.email);
-        // this.token.saveAvatar(data.avatar);
+        this.token.saveAuthorities(data.roles);
+        this.token.saveUserId(data.id);
+        this.token.saveName(data.name);
+        this.token.saveEmail(data.email);
+        this.token.saveAvatar(data.avatar);
 
         console.log(this.token);
         this.isLoginFailed = false;

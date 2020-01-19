@@ -1,1 +1,44 @@
-<p>create-oder works!</p>
+<h2 class="text-center">Create a new Order</h2>
+<form [formGroup]="createForm" (ngSubmit)=" generateOrder()" class="col-md-6 offset-md-3">
+  <div class="form-group row">
+<!--    <p>product name: {{productDetail.product.name}}</p>-->
+<!--&lt;!&ndash;    <p>description: {{product1.description}}</p>&ndash;&gt;-->
+<!--    <p>price: {{productDetail.product.price}}</p>-->
+<!--    <p>color: {{productDetail.color.name}}</p>-->
+<!--    <p>Size: {{productDetail.size.name}}</p>-->
+<!--    <p>quantity: {{productDetail.quantity}}</p>-->
+
+    <table border="1px">
+      <th>Product name</th>
+      <th>price</th>
+      <th>Color</th>
+      <th>Size</th>
+      <th>Quantity</th>
+      <th>Amount payment</th>
+      <tr>
+        <td>{{productDetail.product.name}}</td>
+        <td>{{productDetail.product.price}}</td>
+        <td>{{productDetail.color.name}}</td>
+        <td>{{productDetail.size.name}}</td>
+        <td>{{productDetail.quantity}}</td>
+      </tr>
+    </table>
+  </div>
+
+<!--  <div class="form-group">-->
+<!--    <input type="date" id="start" name="trip-start"-->
+<!--           value="2018-07-22"-->
+<!--           min="2018-01-01" max="2050-12-31" formControlName="deliveryTime">-->
+<!--  </div>-->
+
+  <div class="form-group">
+    <label>Adress</label>
+    <input type="text" class="form-control" formControlName="deliveryAddress"/>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-info" type="submit">Đặt hàng</button>
+  </div>
+</form>
+
+

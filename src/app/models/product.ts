@@ -1,6 +1,7 @@
 import {Category} from './category';
 import {Supplier} from './supplier';
 import {Picture} from './Picture';
+import {ProductDetail} from "./productDetail";
 
 export class Product {
   id?: number;
@@ -9,6 +10,7 @@ export class Product {
   description?: string;
   quantity?: number;
   category?: any;
-  supplier?: any;
+  supplier?: Supplier;
   pictures?: any[];
+  productDetails?: ProductDetail[];
 }

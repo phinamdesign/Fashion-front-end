@@ -10,6 +10,8 @@ import {AppComponent} from '../../../app.component';
 import {TokenStorageService} from '../../../auth/token-storage.service';
 import {Category} from '../../../models/category';
 import {Supplier} from '../../../models/supplier';
+import {ProductDetailService} from "../../../services/product-detail.service";
+import {ProductDetail} from "../../../models/productDetail";
 
 @Component({
   selector: 'app-create-product',
@@ -22,6 +24,7 @@ export class CreateProductComponent implements OnInit {
   message = false;
   category: any;
   supplier: any;
+  productDetails: any;
   previewUrl: any[];
   useFile: any[];
   pictures: any[];
@@ -30,10 +33,12 @@ export class CreateProductComponent implements OnInit {
   quantity: any;
   supplierList: Supplier[];
   categoryList: Category[];
+  productDetailList: ProductDetail[];
   constructor(
     private categoryService: CategoryService,
     private supplierService: SupplierService,
     private pictureService: PictureService,
+    private productDetailService: ProductDetailService,
     private fb: FormBuilder,
     private router: Router,
     private productService: ProductService,
@@ -57,11 +62,13 @@ export class CreateProductComponent implements OnInit {
     });
     this.supplierService.getAllSupplier().subscribe(next => this.supplierList = next);
     this.categoryService.getCategory().subscribe(next => this.categoryList = next);
+    this.productDetailService.getProductDetail().subscribe(next => this.productDetailList = next);
     this.useFile = [];
     this.previewUrl = [];
     this.pictures = [];
     this.category = [];
     this.supplier = [];
+    this.productDetails = [];
   }
 
   onSubmit() {
@@ -96,6 +103,7 @@ export class CreateProductComponent implements OnInit {
     this.product.pictures = this.pictures;
     this.product.category = this.category;
     this.product.supplier = this.supplier;
+    this.product.productDetails = this.productDetails;
     this.productService.createProduct(this.product).subscribe(next => {
       this.ngOnInit();
       this.message = true;
@@ -128,4 +136,10 @@ export class CreateProductComponent implements OnInit {
   addSupplier(id) {
       this.supplierService.getSupplierById(id).subscribe(next => this.supplier = next);
     }
+  addSize(id) {
+    this.productDetailService.getProductDetailById(id).subscribe(next => this.productDetails = next);
+  }
+  addColor(id) {
+    this.productDetailService.getProductDetailById(id).subscribe(next => this.productDetails = next);
+  }
 }

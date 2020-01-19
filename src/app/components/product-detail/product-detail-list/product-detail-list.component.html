@@ -5,16 +5,20 @@
       <h2>Product detail-list</h2>
     </div>
     <div class="panel-body">
-      <table class="table table-striped" border="1px">
+      <table class="table table-striped" border="2px">
         <thead>
-        <tr>
+        <tr  class="bg-warning text-white">
           <th>STT</th>
           <th>Product name</th>
           <th>Color</th>
           <th>Size</th>
           <th>Category</th>
           <th>Brand</th>
+          <th>Image</th>
           <th>Price</th>
+          <th>Edit</th>
+          <th>Delete</th>
+          <th>Order</th>
         </tr>
         </thead>
         <tbody>
@@ -25,10 +29,11 @@
           <td>{{productDetail.size.name}}</td>
           <td>{{productDetail.product.category.categoryName}}</td>
           <td>{{productDetail.product.supplier.supplierName}}</td>
+          <td><img [src]="productDetail.product.pictures[0].src" class="m-auto mt-10" width="100px" alt=""></td>
           <td>{{productDetail.product.price}}</td>
-          <td><button [routerLink]="['/productDetail/'+ productDetail.id+'/edit']" class="btn btn-success">Edit</button></td>
+          <td><button [routerLink]="['/productDetail/'+ productDetail.id+'/edit']" class="btn btn-info">Edit</button></td>
           <td><button (click)="deleteProductDetail(productDetail.id)" class="btn btn-danger">Delete</button>
-
+          <td><button (click)="order(productDetail.id)" class="btn btn-success" style="display: inline">Mua hàng</button></td>
         </tr>
         </tbody>
       </table>

@@ -4,7 +4,9 @@ import {Product} from './product';
 
 export interface ProductDetail {
   id?: number;
-  size?: Size;
-  color?: Color;
-  product?: Product;
+  size?: any;
+  color?: any;
+  product?: any;
+  quantity?: number;
+  order?: any;
 }

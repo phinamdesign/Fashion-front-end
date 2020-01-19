@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductDetail} from '../../../models/productDetail';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {Color} from '../../../models/color';
 import {Size} from '../../../models/size';
-import {ProductDetailService} from "../../../services/product-detail.service";
-import {Category} from "../../../models/category";
-import {CategoryService} from "../../../services/category.service";
-import {TokenStorageService} from "../../../auth/token-storage.service";
+import {ProductDetailService} from '../../../services/product-detail.service';
+import {Category} from '../../../models/category';
+import {CategoryService} from '../../../services/category.service';
+import {TokenStorageService} from '../../../auth/token-storage.service';
 
 @Component({
   selector: 'app-product-detail-list',
@@ -21,7 +21,9 @@ export class ProductDetailListComponent implements OnInit {
   productDetails: Observable<ProductDetail[]>;
   info: any;
   constructor(private productDetailService: ProductDetailService,
-              private tokenService: TokenStorageService) {
+              private tokenService: TokenStorageService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   reloadData() {
@@ -46,5 +48,8 @@ export class ProductDetailListComponent implements OnInit {
           error => console.log(error)
         );
     }
+  }
+  order(id: number) {
+    this.router.navigate(['order', id]);
   }
 }

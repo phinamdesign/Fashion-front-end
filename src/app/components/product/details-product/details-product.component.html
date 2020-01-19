@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row mb-5">
-<!--    <div class="col-6 offset-3" *ngIf="product">-->
-      <img [src]="[product.pictures[0].src]" class="profile-img-card offset-3" style="width: 25%"/>
+    <!--    <div class="col-6 offset-3" *ngIf="product">-->
+    <img [src]="[product.pictures[0].src]" class="profile-img-card offset-3" style="width: 25%"/>
 
 
-<!--    <div *ngFor="let picture of product.pictures, index as i"><img *ngIf="i!=0" src="{{picture.src}}" height="600px" width="600px">-->
-<!--    </div>-->
+    <!--    <div *ngFor="let picture of product.pictures, index as i"><img *ngIf="i!=0" src="{{picture.src}}" height="600px" width="600px">-->
+    <!--    </div>-->
     <div class="col-12 col-sm-5 col-md-5">
-      <h2>Thông tin chi tiết</h2>
+      <h2>Product detail</h2>
 
       <hr/>
       <div *ngIf="product">
@@ -15,21 +15,22 @@
           <label><b>Name : </b></label> {{product.name}}
         </div>
         <div>
-          <label><b>Price : </b></label> {{product.price}}
+          <label><b>Brand : </b></label> {{product.supplier.supplierName}}
+        </div>
+        <div>
+          <p><b>Price</b> : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
         </div>
         <div>
           <label><b>Description : </b></label> {{product.description}}
         </div>
-        <div>
-          <label><b>Quantity : </b></label> {{product.quantity}}
-        </div>
+        <!--        <div>-->
+        <!--          <label><b>Quantity : </b></label> {{product.quantity}}-->
+        <!--        </div>-->
       </div>
 
       <br>
       <br>
-      <button class="btn btn-success" style="display: inline">Add to cart</button><br>
-      <button (click)="listProduct()" class="btn btn-primary">Back to Employee List</button><br>
-
+      <button (click)="orderDetail(product.id)" class="btn btn-success" style="display: inline">Add to cart</button>
     </div>
   </div>
 </div>

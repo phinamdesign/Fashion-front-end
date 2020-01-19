@@ -46,11 +46,12 @@ import { SupplierCreateComponent } from './components/suppliers/supplier-create/
 import { SupplierEditComponent } from './components/suppliers/supplier-edit/supplier-edit.component';
 import { ProductDetailCreateComponent } from './components/product-detail/product-detail-create/product-detail-create.component';
 import { ProductDetailListComponent } from './components/product-detail/product-detail-list/product-detail-list.component';
-import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
-import {ProductDetailService} from "./services/product-detail.service";
-import {ColorService} from "./services/color.service";
-import {SizeService} from "./services/size.service";
-import {ProductService} from "./services/product.service";
+// import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
+import {ProductDetailService} from './services/product-detail.service';
+import {ColorService} from './services/color.service';
+import {SizeService} from './services/size.service';
+import {ProductService} from './services/product.service';
+import { ProductDetailDetailComponent } from './product-detail-detail/product-detail-detail.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import {ProductService} from "./services/product.service";
     SupplierEditComponent,
     ProductDetailCreateComponent,
     ProductDetailListComponent,
-    ProductDetailEditComponent
+    // ProductDetailEditComponent,
+    ProductDetailDetailComponent
   ],
   imports: [
     BrowserModule,
