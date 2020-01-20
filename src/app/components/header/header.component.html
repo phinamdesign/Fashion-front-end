@@ -17,9 +17,6 @@
           <li class="nav-item">
             <a routerLink="delete-product" class="nav-link" routerLinkActive="active">Delete Product</a>
           </li>
-          <li>
-            <a routerLink="/cart"class="nav-link"><i class="fa fa-shopping-cart"></i></a>
-          </li>
         </ul>
 <!--        <form class="form-inline ml-auto">-->
 <!--          <button type="button" class="btn btn-outline-light" routerLink="login">Login</button>-->
@@ -28,7 +25,7 @@
 <!--        <div *ngIf="info.token">-->
 <!--          <button (click)="logout()" class="btn btn-outline-light">logout</button>-->
 <!--        </div>-->
-        <div *ngIf="this.info.token; else logIn">
+        <div class=" ml-auto" *ngIf="this.info.token; else logIn">
           <div class="btn-group" style="padding-right: 30px">
             <button type="button" class="btn btn-outline-secondary text-light border-1" [routerLink]="'/profile/'">{{info.name}}</button>
             <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split border-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,12 +38,16 @@
             </div>
           </div>
         </div>
+        <div>
+          <a routerLink="/cart"class="nav-link"><i class="fa fa-shopping-cart"></i></a>
+        </div>
         <ng-template #logIn>
           <div class="btn-group ">
             <button class="btn btn-outline-secondary btn-lg border-1 text-light" type="button"  [routerLink]="'/login'" data-toggle="dropdown" >
               Login
             </button>
           </div>
+
         </ng-template>
 
       </div>
