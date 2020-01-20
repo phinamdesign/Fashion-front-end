@@ -7,69 +7,19 @@
     </form>
   </div>
 </div>
-<!--<div class="container" *ngIf="this.listProduct && !this.status">-->
-<!--  <div class="row">-->
-<!--    <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of listProduct">-->
-<!--        <div class="card" style="width: 15rem;">-->
-<!--          <div>-->
-<!--            <a routerLink="details-product" class="size">-->
-<!--              <img class="card-img-top img-thumbnail" (click)="detailsProduct(product.id)" src="{{product.image}}" alt="Card image cap">-->
-<!--            </a>-->
-<!--          </div>-->
-<!--          <div class="card-body" align="center">-->
-<!--            <h5 class="card-title">{{product.name}}</h5>-->
-<!--            <div align="left">-->
-<!--              <p class="card-text">{{product.description}}</p>-->
-<!--              <p>Quantity : <a href="#" class="card-link">{{product.quantity}}</a></p>-->
-<!--              <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>-->
-<!--            </div>-->
-<!--            <button class="btn btn-success">Add to cart</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--<div class="container height" *ngIf="this.status">-->
-<!--  <div class="row">-->
-<!--    <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of products | async">-->
-<!--      <div class="card" style="width: 15rem;">-->
-<!--        <div>-->
-<!--          <a class="size">-->
-<!--            <img class="card-img-top img-thumbnail" width="20px" (click)="detailsProduct(product.id)" src="{{product.image}}" alt="Card image cap">-->
-<!--          </a>-->
-<!--        </div>-->
-<!--        <div class="card-body" align="center">-->
-<!--          <h5 class="card-title">{{product.name}}</h5>-->
-<!--         <div align="left">-->
-<!--           <p class="card-text">{{product.description}}</p>-->
-<!--           <p>Quantity : <a href="#" class="card-link">{{product.quantity}}</a></p>-->
-<!--&lt;!&ndash;           <p>The loai : <a href="#" class="card-link">{{product.category.categoryName}}</a></p>&ndash;&gt;-->
-<!--&lt;!&ndash;           <p>Hang : <a href="#" class="card-link">{{product.supplier.supplierName}}</a></p>&ndash;&gt;-->
-<!--&lt;!&ndash;           <p>Hang : <a href="#" class="card-link">{{product.supplier.supplierName}}</a></p>&ndash;&gt;-->
-<!--           <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>-->
-<!--         </div>-->
-<!--          <button class="btn btn-success">Add to cart</button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div>-->
-
-<!--</div>-->
-<!--<router-outlet></router-outlet>-->
-
-<span class="card">
-  <div *ngFor="let product of listProduct">
-    <div style="width: 200px; float: left;margin-left: 25px">
-      <img class="card-img-top img-thumbnail" (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" class="m-auto mt-10" width="185px">
-      <b>{{product.name}}</b>
-      <div>
-        <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-3 mb-md-4" *ngFor="let product of listProduct">
+      <div class="card" style="width: 15rem;">
+        <img class="card-img-top"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
+        <div class="card-body">
+          <h5 align="center">{{product.name}}</h5>
+          <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+          <div>Brand: {{product.category.categoryName}}</div>
+        </div>
       </div>
-      <div>Brand: {{product.category.categoryName}}</div>
     </div>
   </div>
-</span>
+</div>
 <router-outlet></router-outlet>
 
