@@ -5,6 +5,11 @@ import {UserService} from '../../services/user.service';
 import {AuthService} from '../../auth/auth.service';
 import {AuthLoginInfo} from '../../auth/login-infor';
 import {User} from '../../models/User';
+import {ProductService} from '../../services/product.service';
+import {ShoppingCartService} from '../../services/shopping-cart.service';
+import {Observable, Subscription} from 'rxjs';
+import {Product} from '../../models/product';
+import {ShoppingCart} from '../../models/shopping-cart';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +17,10 @@ import {User} from '../../models/User';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public itemCount: number;
+  public products: Observable<Product[]>;
+  private cartSubscription: Subscription;
+  public cart: Observable<ShoppingCart>;
   user: User;
   loginInfo: AuthLoginInfo;
   returnUrl: string;
@@ -20,9 +29,16 @@ export class HeaderComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private userService: UserService,
+              private productsService: ProductService,
+              private shoppingCartService: ShoppingCartService
   ) { }
 
   ngOnInit() {
+    this.productsService.getListProduct();
+    this.cart = this.shoppingCartService.get();
+    this.cartSubscription = this.cart.subscribe((cart) => {
+      this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+    });
     this.info = {
       name: this.token.getName(),
       token: this.token.getToken(),

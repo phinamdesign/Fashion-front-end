@@ -16,7 +16,8 @@ import {CreateSizeComponent} from './components/admin/size/create-size/create-si
 import {SupplierListComponent} from './components/admin/suppliers/supplier-list/supplier-list.component';
 import {SupplierCreateComponent} from './components/admin/suppliers/supplier-create/supplier-create.component';
 import {SupplierEditComponent} from './components/admin/suppliers/supplier-edit/supplier-edit.component';
-import {CartComponent} from './cart/cart.component';
+import {CartComponent} from './components/cart/cart.component';
+import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -80,6 +81,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent
   }
 ];
 

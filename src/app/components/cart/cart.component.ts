@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Product} from '../models/product';
-import {CartItem} from '../models/cart-item';
-import {ProductDetail} from '../models/productDetail';
+import {Product} from '../../models/product';
+import {CartItem} from '../../models/cart-item';
+import {ProductDetail} from '../../models/productDetail';
 import {Observable, Subscription} from 'rxjs';
-import {ShoppingCart} from '../models/shopping-cart';
-import {ProductService} from '../services/product.service';
-import {ShoppingCartService} from '../services/shopping-cart.service';
-import {ProductDetailService} from '../services/product-detail.service';
+import {ShoppingCart} from '../../models/shopping-cart';
+import {ProductService} from '../../services/product.service';
+import {ShoppingCartService} from '../../services/shopping-cart.service';
+import {ProductDetailService} from '../../services/product-detail.service';
 interface ICartItemWithProduct extends CartItem {
   product: Product;
   totalCost: number;
