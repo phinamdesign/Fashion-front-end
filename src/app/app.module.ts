@@ -25,28 +25,26 @@ import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
 import {SlideShowProductComponent} from './components/slide-show-product/slide-show-product.component';
 import {DeleteProductComponent} from './components/product/delete-product/delete-product.component';
-import { CategoryCreateComponent } from './components/category/category-create/category-create.component';
-import { CategoryEditComponent } from './components/category/category-edit/category-edit.component';
-import { CategoryListComponent } from './components/category/category-list/category-list.component';
-import {ListOderDetailComponent} from './components/oderDetail/list-oder-detail/list-oder-detail.component';
-import {DetailOderDetailComponent} from './components/oderDetail/detail-oder-detail/detail-oder-detail.component';
-import { UpdateOderDetailComponent } from './components/oderDetail/update-oder-detail/update-oder-detail.component';
-import {CreateOderDetailComponent} from './components/oderDetail/create-oder-detail/create-oder-detail.component';
-import { ListSizeComponent } from './components/size/list-size/list-size.component';
-import { DetailSizeComponent } from './components/size/detail-size/detail-size.component';
-import { UpdateSizeComponent } from './components/size/update-size/update-size.component';
-import { CreateSizeComponent } from './components/size/create-size/create-size.component';
-import { ListColorComponent } from './components/color/list-color/list-color.component';
-import { DetailColorComponent } from './components/color/detail-color/detail-color.component';
-import { UpdateColorComponent } from './components/color/update-color/update-color.component';
-import { CreateColorComponent } from './components/color/create-color/create-color.component';
+import { CategoryCreateComponent } from './components/admin/category/category-create/category-create.component';
+import { CategoryEditComponent } from './components/admin/category/category-edit/category-edit.component';
+import { CategoryListComponent } from './components/admin/category/category-list/category-list.component';
+import { ListSizeComponent } from './components/admin/size/list-size/list-size.component';
+import { DetailSizeComponent } from './components/admin/size/detail-size/detail-size.component';
+import { UpdateSizeComponent } from './components/admin/size/update-size/update-size.component';
+import { CreateSizeComponent } from './components/admin/size/create-size/create-size.component';
+import { ListColorComponent } from './components/admin/color/list-color/list-color.component';
+import { DetailColorComponent } from './components/admin/color/detail-color/detail-color.component';
+import { UpdateColorComponent } from './components/admin/color/update-color/update-color.component';
+import { CreateColorComponent } from './components/admin/color/create-color/create-color.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { SupplierListComponent } from './components/suppliers/supplier-list/supplier-list.component';
-import { SupplierCreateComponent } from './components/suppliers/supplier-create/supplier-create.component';
-import { SupplierEditComponent } from './components/suppliers/supplier-edit/supplier-edit.component';
+import { SupplierListComponent } from './components/admin/suppliers/supplier-list/supplier-list.component';
+import { SupplierCreateComponent } from './components/admin/suppliers/supplier-create/supplier-create.component';
+import { SupplierEditComponent } from './components/admin/suppliers/supplier-edit/supplier-edit.component';
 import { ProductDetailCreateComponent } from './components/product-detail/product-detail-create/product-detail-create.component';
 import { ProductDetailListComponent } from './components/product-detail/product-detail-list/product-detail-list.component';
 import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -73,10 +71,6 @@ import { ProductDetailEditComponent } from './components/product-detail/product-
     CategoryCreateComponent,
     CategoryEditComponent,
     CategoryListComponent,
-    ListOderDetailComponent,
-    DetailOderDetailComponent,
-    UpdateOderDetailComponent,
-    CreateOderDetailComponent,
     ListSizeComponent,
     DetailSizeComponent,
     UpdateSizeComponent,
@@ -85,14 +79,15 @@ import { ProductDetailEditComponent } from './components/product-detail/product-
     DetailColorComponent,
     UpdateColorComponent,
     CreateColorComponent,
-    CreateOderDetailComponent,
     HomeComponent,
     SupplierListComponent,
     SupplierCreateComponent,
     SupplierEditComponent,
     ProductDetailCreateComponent,
     ProductDetailListComponent,
-    ProductDetailEditComponent
+    ProductDetailEditComponent,
+    ShoppingCartComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

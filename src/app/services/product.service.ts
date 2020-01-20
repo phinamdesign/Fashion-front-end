@@ -47,7 +47,7 @@ export class ProductService {
   }
 
   getListProduct(): Observable<any> {
-    return this.http.get(`${this.url}`);
+    return this.http.get<Product[]>(`${this.url}`);
   }
 
   searchByName(product: Product): Observable<Product[]> {

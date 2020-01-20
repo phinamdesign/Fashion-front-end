@@ -13,8 +13,9 @@ import {Supplier} from '../../../models/supplier';
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit {
-  products: Observable<Product[]>;
-  p = 1;
+  // products: Product[] = [];
+  content: string;
+  // p = 1;
   private id: number;
   private name: string;
   private image: string;
@@ -42,12 +43,14 @@ export class ListProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.reloadData();
+    this.productService.getListProduct().subscribe(next =>
+      (this.listProduct = next), err =>
+      (this.content = this.content = JSON.parse(err.error).message));
   }
 
-  reloadData() {
-    this.products = this.productService.getListProduct();
-  }
+  // reloadData() {
+  //   this.products = this.productService.getListProduct();
+  // }
 
   searchProduct() {
     const {name} = this.productForm.value;

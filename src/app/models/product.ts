@@ -10,5 +10,5 @@ export class Product {
   quantity?: number;
   category?: any;
   supplier?: any;
-  pictures?: any[];
+  pictures?: Picture[];
 }

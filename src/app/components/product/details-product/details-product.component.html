@@ -1,11 +1,6 @@
 <div class="container">
   <div class="row mb-5">
-<!--    <div class="col-6 offset-3" *ngIf="product">-->
       <img [src]="[product.pictures[0].src]" class="profile-img-card offset-3" style="width: 25%"/>
-
-
-<!--    <div *ngFor="let picture of product.pictures, index as i"><img *ngIf="i!=0" src="{{picture.src}}" height="600px" width="600px">-->
-<!--    </div>-->
     <div class="col-12 col-sm-5 col-md-5">
       <h2>Thông tin chi tiết</h2>
 
@@ -27,9 +22,19 @@
 
       <br>
       <br>
-      <button class="btn btn-success" style="display: inline">Add to cart</button><br>
-      <button (click)="listProduct()" class="btn btn-primary">Back to Employee List</button><br>
+      <p>
+        <button type="button"
+                class="btn btn-outline-primary"
+                (click)="addProductToCart(product, 1)">Thêm vào giỏ
+        </button>
+        <button type="button"
+                class="btn btn-outline-danger"
+                *ngIf="productInCart(product) | async"
+                (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
+        </button>
+      </p>
 
     </div>
   </div>
 </div>
+<app-shopping-cart></app-shopping-cart>
