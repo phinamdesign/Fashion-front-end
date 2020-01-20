@@ -39,10 +39,10 @@
           </div>
         </div>
         <div>
-          <a routerLink="/cart"class="nav-link"><i class="fa fa-shopping-cart"></i>{{itemCount}}</a>
+          <a routerLink="/cart"class="nav-link"><i class="fa fa-shopping-cart text-white"></i><span class="text-white">{{itemCount}}</span></a>
         </div>
-        <ng-template #logIn>
-          <div class="btn-group ">
+        <ng-template #logIn >
+          <div class="btn-group  ml-auto" >
             <button class="btn btn-outline-secondary btn-lg border-1 text-light" type="button"  [routerLink]="'/login'" data-toggle="dropdown" >
               Login
             </button>
