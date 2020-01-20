@@ -1,7 +1,10 @@
 <div class="container p-2 ">
   <div class="table ">
     <div class="row">
-      <div class="col-md-8">
+        <div class="mb-3">
+          <a class="btn btn-info" style="width: 300px"
+             routerLink="/home">Tiếp tục mua hàng</a>
+        </div>
         <table border="1px">
           <tr class="btn-warning text-center">
             <th>PRODUCT</th>
@@ -13,13 +16,16 @@
 
           <tr *ngFor="let item of cartItems" class="text-center">
             <td class="text-primary font-weight-bold">{{item.product.name}}</td>
-            <td>  <img [src]="[item.product.pictures[0].src]" class="profile-img-card offset-3" style="width: 25%"/></td>
+            <td>  <img [src]="[item.product.pictures[0].src]" class="profile-img-card" style="width: 25%"/></td>
             <td>{{item.product.price | currency: 'VND'}}</td>
             <td>{{item.quantity}}</td>
             <td>{{item.totalCost | currency: 'VND'}}</td>
           </tr>
+          <tr>
+            <td>Tổng tiền</td>
+            <td colspan="4" class="text-right"><mark><span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span></mark></td>
+          </tr>
         </table>
-      </div>
 
 <!--      <div class="col-md-4">-->
 <!--        <h4 class="btn btn-success text-center font-weight-bold" style="width: 300px">Mời bạn chọn size</h4>-->
@@ -35,35 +41,12 @@
 <!--              ({{option.salePrice | currency: 'VND'}} trên mỗi sản phẩm)</p>-->
 <!--          </div>-->
 <!--        </div>-->
-<!--        <div><h4>Lưu ý:</h4></div>-->
-<!--        <div>-->
-<!--          <h6>Với hóa đơn trên-->
-<!--            <mark><span class="text-danger">100.000đ</span></mark>-->
-<!--            bạn sẽ được miễn phí ship trong bán kính 5km-->
-<!--          </h6>-->
-<!--        </div>-->
 <!--        <br/>-->
 
-<!--        <div class="col-md-12">-->
-<!--          <h4>-->
-<!--            Tổng hóa đơn:-->
-<!--            <mark><span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span></mark>-->
-<!--          </h4>-->
-<!--        </div>-->
-<!--        <br/>-->
-
-<!--        <div class="col-md-12">-->
-<!--          <h5 class="btn btn-info" style="width: 260px"-->
-<!--              *ngIf="(cart | async).id === undefined">Bạn hãy chọn size trước nhé</h5>-->
-<!--          <a class="btn btn-success" style="width: 260px"-->
-<!--             *ngIf="(cart | async).id !== undefined"-->
-<!--             routerLink="/confirmed">Tiến hành thanh toán</a>-->
-<!--        </div>-->
-<!--        <h5 style="margin-left: 130px">or</h5>-->
-        <div class="row p-2">
-          <div class="text-center">
-            <a class="btn btn-info" style="width: 300px"
-               routerLink="/home">Tiếp tục mua hàng</a>
+        <div class="row  ml-auto mt-3">
+          <div class="col-md-6">
+            <a class="btn btn-success" style="width: 260px"
+               routerLink="/confirmed">Tiến hành thanh toán</a>
           </div>
         </div>
 
