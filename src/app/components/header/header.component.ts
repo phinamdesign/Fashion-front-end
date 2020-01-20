@@ -55,8 +55,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.token.signOut();
-    this.router.navigateByUrl(this.returnUrl);
+    const choice = confirm('Are you sure to logout this page?');
+    if (choice) {
+      this.token.signOut();
+      this.router.navigateByUrl(this.returnUrl);
+    }
   }
 
   gerUserByUserID() {

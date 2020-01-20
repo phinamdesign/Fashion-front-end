@@ -11,6 +11,7 @@ import {ShoppingCartService} from '../../../services/shopping-cart.service';
   styleUrls: ['./details-product.component.css']
 })
 export class DetailsProductComponent implements OnInit {
+  currentRate = 6;
   id: number;
   product: Product;
   public products: Observable<Product[]>;

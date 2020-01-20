@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {TokenStorageService} from '../token-storage.service';
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private authService: AuthService, private token: TokenStorageService, private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    const {username , password} = this.loginForm.value;
+    const {username, password} = this.loginForm.value;
 
     const authLoginInfo = new AuthLoginInfo(username, password);
 
