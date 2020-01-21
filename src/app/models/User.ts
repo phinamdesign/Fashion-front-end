@@ -15,4 +15,7 @@ export interface User {
     name?: string;
   };
   avatar?: string;
+  phone: string;
+  password: string;
+  address: string;
 }

@@ -44,7 +44,8 @@ import { ProductDetailCreateComponent } from './components/product-detail/produc
 import { ProductDetailListComponent } from './components/product-detail/product-detail-list/product-detail-list.component';
 import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './components/cart/cart.component';
+import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { CartComponent } from './cart/cart.component';
     ProductDetailListComponent,
     ProductDetailEditComponent,
     ShoppingCartComponent,
-    CartComponent
+    CartComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

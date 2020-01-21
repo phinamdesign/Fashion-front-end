@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {TokenStorageService} from '../token-storage.service';
@@ -10,7 +10,7 @@ import {AuthLoginInfo} from '../login-infor';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   returnUrl: string;
   errorMessage = '';
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private authService: AuthService, private token: TokenStorageService, private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    const {username , password} = this.loginForm.value;
+    const {username, password} = this.loginForm.value;
 
     const authLoginInfo = new AuthLoginInfo(username, password);
 
@@ -61,6 +62,10 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.reloadPage();
   }
 
 }

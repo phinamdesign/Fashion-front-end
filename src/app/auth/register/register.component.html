@@ -8,7 +8,8 @@
           <span class="input-group-text"> <i class="fa fa-user"></i> </span>
         </div>
         <input name="name" formControlName="name" class="form-control" placeholder="Full name" type="text">
-        <div class="alert alert-warning" role="alert" *ngIf="registerForm.get('name').invalid &&registerForm.get('name').touched">
+        <div class="alert alert-warning" role="alert"
+             *ngIf="registerForm.get('name').invalid &&registerForm.get('name').touched">
           Name invalid(must longer 3 and smaller 50 character)
         </div>
       </div> <!-- form-group// -->
@@ -19,7 +20,8 @@
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
         </div>
         <input name="username" formControlName="username" class="form-control" placeholder="Username" type="text">
-        <div class="alert alert-warning" role="alert" *ngIf="registerForm.get('username').invalid &&registerForm.get('username').touched">
+        <div class="alert alert-warning" role="alert"
+             *ngIf="registerForm.get('username').invalid &&registerForm.get('username').touched">
           UserName invalid(must longer 3 and smaller 50 character)
         </div>
       </div> <!-- form-group// -->
@@ -31,7 +33,8 @@
         </div>
 
         <input name="email text-info" formControlName="email" class="form-control" placeholder="Email" type="email">
-        <div class="alert alert-warning" role="alert" *ngIf="registerForm.get('email').invalid &&registerForm.get('email').touched">
+        <div class="alert alert-warning" role="alert"
+             *ngIf="registerForm.get('email').invalid &&registerForm.get('email').touched">
           Email invalid(must smaller 50 character)
         </div>
       </div> <!-- form-group// -->
@@ -43,19 +46,35 @@
         </div>
 
         <input class="form-control" placeholder="Password" type="password"
-               name="password" formControlName="password">
-        <div class="alert alert-warning" role="alert" *ngIf="registerForm.get('password').invalid &&registerForm.get('password').touched">
+               name="password" formControlName="password" #password>
+        <div class="alert alert-warning" role="alert"
+             *ngIf="registerForm.get('password').invalid &&registerForm.get('password').touched">
           Password invalid(must longer 6 and smaller 100 character)
         </div>
       </div> <!-- form-group// -->
     </label>
+
+    <label class="col text-info"> Confirm Password
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+
+        <input class="form-control" placeholder="Confirm Password" type="password"
+               name="confirmPassword" formControlName="confirmPassword" #ch>
+        <div class="alert alert-warning" role="alert" *ngIf="ch.value !='' && ch.value!= password.value">
+          The password is not the same, please try it one more time!
+        </div>
+      </div> <!-- form-group// -->
+    </label>
+
     <div class="form-group">
-      <button type="submit" class="btn btn-info btn-block" (click)="signUp()"> Create Account  </button>
+      <button type="submit" class="btn btn-info btn-block" (click)="signUp()"> Create Account</button>
       <div *ngIf="isSignUpFailed" class="alert alert-warning">
         Signup failed!<br/>{{errorMessage}}
       </div>
     </div> <!-- form-group// -->
-    <p class="text-center">Have an account? <a [routerLink]="'/login'">Log In</a> </p>
+    <p class="text-center">Have an account? <a [routerLink]="'/login'">Log In</a></p>
   </form>
 </article>
 
