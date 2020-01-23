@@ -10,6 +10,10 @@ import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Observable, Subscription} from 'rxjs';
 import {Product} from '../../models/product';
 import {ShoppingCart} from '../../models/shopping-cart';
+import {Category} from '../../models/category';
+import {CategoryService} from '../../services/category.service';
+import {Supplier} from '../../models/supplier';
+import {SupplierService} from '../../services/supplier.service';
 
 @Component({
   selector: 'app-header',
@@ -21,6 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public products: Observable<Product[]>;
   private cartSubscription: Subscription;
   public cart: Observable<ShoppingCart>;
+  private categories: Category[];
+  private suppliers: Supplier[];
   user: User;
   loginInfo: AuthLoginInfo;
   returnUrl: string;
@@ -30,7 +36,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private router: Router,
               private userService: UserService,
               private productsService: ProductService,
-              private shoppingCartService: ShoppingCartService
+              private shoppingCartService: ShoppingCartService,
+              private categoryService: CategoryService,
+              private supplierService: SupplierService
   ) { }
 
   ngOnInit() {
@@ -51,6 +59,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.info.userId) {
       this.gerUserByUserID();
     }
+    this.categoryService.getCategory().subscribe(next => {
+      this.categories = next;
+    }, error => (console.log(error)));
+    this.supplierService.getAllSupplier().subscribe(next => {
+      this.suppliers = next;
+    }, error => (console.log(error)));
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/login';
   }
 

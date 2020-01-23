@@ -43,7 +43,7 @@ export class ProductService {
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
   getListProduct(): Observable<any> {
@@ -52,5 +52,11 @@ export class ProductService {
 
   searchByName(product: Product): Observable<Product[]> {
     return this.http.post<Product[]>(this.url + '/search-by-name', product);
+  }
+  getListProductByCategoryId(id: number): Observable<any> {
+    return this.http.get<Product[]>(`${this.url}/list/category/${id}`);
+  }
+  getListProductBySupplierId(id: number): Observable<any> {
+    return this.http.get<Product[]>(`${this.url}/list/supplier/${id}`);
   }
 }

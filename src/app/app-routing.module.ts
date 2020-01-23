@@ -18,6 +18,8 @@ import {SupplierCreateComponent} from './components/admin/suppliers/supplier-cre
 import {SupplierEditComponent} from './components/admin/suppliers/supplier-edit/supplier-edit.component';
 import {CartComponent} from './components/cart/cart.component';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
+import {ProductCategoryComponent} from './product-category/product-category.component';
+import {ProductSupplierComponent} from './product-supplier/product-supplier.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -46,6 +48,10 @@ const routes: Routes = [
     component: CreateProductComponent
   },
   {
+    path: 'product-supplier/:id',
+    component: ProductSupplierComponent
+  },
+  {
     path: 'register',
     component: RegisterComponent
   },
@@ -60,6 +66,10 @@ const routes: Routes = [
   {
     path: 'category/:id/edit',
     component: CategoryEditComponent
+  },
+  {
+    path: 'product-category/:id',
+    component: ProductCategoryComponent
   },
   // size
   {path: 'sizes', component: ListSizeComponent},

@@ -82,7 +82,7 @@ export class CreateProductComponent implements OnInit {
     }
     setTimeout(() => {
       this.createProduct();
-    }, 1000);
+    }, 1200);
   }
 
   onSelectFile(event) {

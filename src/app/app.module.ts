@@ -46,6 +46,8 @@ import { ProductDetailEditComponent } from './components/product-detail/product-
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CartComponent } from './components/cart/cart.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
+import { ProductSupplierComponent } from './product-supplier/product-supplier.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,9 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
     ProductDetailEditComponent,
     ShoppingCartComponent,
     CartComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ProductCategoryComponent,
+    ProductSupplierComponent
   ],
   imports: [
     BrowserModule,

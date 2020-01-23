@@ -26,7 +26,7 @@ export class ListSizeComponent implements OnInit {
         error => console.log(error));
     }
   }
-  Sizea(id: number) {
+  Size(id: number) {
     this.router.navigate(['sizes', id]);
   }
   updateSize(id: number) {

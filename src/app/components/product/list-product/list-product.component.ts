@@ -15,7 +15,7 @@ import {Supplier} from '../../../models/supplier';
 export class ListProductComponent implements OnInit {
   // products: Product[] = [];
   content: string;
-  // p = 1;
+  p = 1;
   private id: number;
   private name: string;
   private image: string;

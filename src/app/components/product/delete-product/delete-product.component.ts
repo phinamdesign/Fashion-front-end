@@ -27,14 +27,14 @@ export class DeleteProductComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-   const choice = confirm('Bạn có chắc chắn muốn xoa ?');
+   const choice = confirm('Bạn có chắc chắn muốn xoas ?');
    if (choice) {
      this.productService.deleteProduct(id)
        .subscribe(
          data => {
            console.log(data);
            this.reloadData();
-           this.router.navigate(['product']);
+           this.router.navigate(['delete-product']);
          },
          error => console.log(error)
        );
