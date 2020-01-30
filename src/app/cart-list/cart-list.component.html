@@ -18,12 +18,14 @@
       </td>
       <td>
         <select  name="size" (change)="onChangeSize($event, cart)">
+          <option value="null">Select Size</option>
         <option *ngFor="let size of sizes" value="{{size.id}}"
                 >{{size.name}}</option>
         </select>
       </td>
       <td>
         <select  name="color" (change)="onChangeColor($event, cart)">
+          <option value="null">Select Color</option>
           <option *ngFor="let color of colors" value="{{color.id}}"
           >{{color.name}}</option>
         </select>
