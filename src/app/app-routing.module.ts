@@ -18,8 +18,9 @@ import {SupplierCreateComponent} from './components/admin/suppliers/supplier-cre
 import {SupplierEditComponent} from './components/admin/suppliers/supplier-edit/supplier-edit.component';
 import {CartComponent} from './components/cart/cart.component';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
-import {ProductCategoryComponent} from './product-category/product-category.component';
-import {ProductSupplierComponent} from './product-supplier/product-supplier.component';
+import {ProductCategoryComponent} from './components/product-category/product-category.component';
+import {ProductSupplierComponent} from './components/product-supplier/product-supplier.component';
+import {CartListComponent} from './cart-list/cart-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -95,6 +96,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: UserProfileComponent
+  },
+  {
+    path: 'cart-list',
+    component: CartListComponent
   }
 ];
 

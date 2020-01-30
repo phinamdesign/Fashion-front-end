@@ -8,7 +8,7 @@ import {Category} from '../models/category';
   providedIn: 'root'
 })
 export class CategoryService {
-  private readonly API_URL = 'http://localhost:8080/api/admin/category';
+  private readonly API_URL = 'http://localhost:8080/api/auth/category';
 
   constructor(private http: HttpClient) { }
 

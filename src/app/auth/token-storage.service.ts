@@ -6,7 +6,7 @@ const ID_KEY = 'AuthUserId';
 const NAME_KEY = 'Name';
 const EMAIL_KEY = 'Email';
 const AVATAR_KEY = 'Avatar';
-
+const USER_KEY = 'auth-user'
 @Injectable({
   providedIn: 'root'
 })
@@ -93,5 +93,8 @@ export class TokenStorageService {
     }
 
     return this.roles;
+  }
+  public getUser() {
+    return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
 }

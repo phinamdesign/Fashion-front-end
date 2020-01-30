@@ -1,10 +1,28 @@
 <div class="container-fluid  bg-d mb-5">
   <div class="container">
     <nav class="navbar navbar-expand-md navbar-dark">
-      <a href="#" class="navbar-brand">Brand</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div *ngFor="let category of categories">
+            <a class="dropdown-item" [routerLink]="['/product-category', category.categoryId]">{{category.categoryName}}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Brand
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div *ngFor="let supplier of suppliers">
+            <a class="dropdown-item" [routerLink]="['/product-supplier', supplier.supplierId]">{{supplier.supplierName}}</a>
+          </div>
+        </div>
+      </div>
+
 
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
@@ -19,27 +37,6 @@
           </li>
         </ul>
 
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Category
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div *ngFor="let category of categories">
-              <a class="dropdown-item" [routerLink]="['/product-category', category.categoryId]">{{category.categoryName}}</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Brand
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div *ngFor="let supplier of suppliers">
-              <a class="dropdown-item" [routerLink]="['/product-supplier', supplier.supplierId]">{{supplier.supplierName}}</a>
-            </div>
-          </div>
-        </div>
 
         <div class=" ml-auto" *ngIf="this.info.token; else logIn">
           <div class="btn-group" style="padding-right: 30px">
@@ -56,9 +53,7 @@
             </div>
           </div>
         </div>
-        <div>
-          <a routerLink="/cart"class="nav-link"><i class="fa fa-shopping-cart text-white"></i><span class="text-white">{{itemCount}}</span></a>
-        </div>
+
         <ng-template #logIn >
           <div class="btn-group  ml-auto" >
             <button class="btn btn-outline-secondary btn-lg border-1 text-light" type="button"  [routerLink]="'/login'" data-toggle="dropdown" >
@@ -67,6 +62,7 @@
           </div>
 
         </ng-template>
+        <app-cart></app-cart>
 
       </div>
     </nav>

@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ColorService {
-  private baseUrl = '';
+  private baseUrl = 'http://localhost:8080/api/auth/color';
   constructor(private http: HttpClient) { }
   getColor(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);

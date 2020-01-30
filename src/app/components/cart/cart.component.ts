@@ -1,67 +1,118 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
 import {Product} from '../../models/product';
 import {CartItem} from '../../models/cart-item';
 import {ProductDetail} from '../../models/productDetail';
 import {Observable, Subscription} from 'rxjs';
 import {ShoppingCart} from '../../models/shopping-cart';
 import {ProductService} from '../../services/product.service';
-import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {ProductDetailService} from '../../services/product-detail.service';
-interface ICartItemWithProduct extends CartItem {
-  product: Product;
-  totalCost: number;
-}
-
+import {OrderService} from '../../services/order.service';
+import {TokenStorageService} from '../../auth/token-storage.service';
+import {Router} from '@angular/router';
+import {StorageService} from '../../services/storage.service';
+import {Order} from '../../models/order';
+// interface ICartItemWithProduct extends CartItem {
+//   product: Product;
+//   totalCost: number;
+// }
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, OnDestroy {
-  public orderDetail: Observable<ProductDetail[]>;
-  public cart: Observable<ShoppingCart>;
-  public cartItems: ICartItemWithProduct[];
-  public itemCount: number;
+export class CartComponent implements OnInit {
+  message: string;
+  product: Product;
+  count = 0;
+  order: Order;
+  cart: ProductDetail[];
+  listStorage = [];
 
-  private products: Product[];
-  private cartSubscription: Subscription;
-
-  public constructor(private productsService: ProductService,
-                     private productDetailService: ProductDetailService,
-                     private shoppingCartService: ShoppingCartService) {
+  constructor(private orderService: OrderService,
+              private productDetailService: ProductDetailService,
+              private productService: ProductService,
+              private token: TokenStorageService,
+              private router: Router,
+              private storage: StorageService) {
   }
 
-  public emptyCart(): void {
-    this.shoppingCartService.empty();
-  }
-
-  public setOrderDetail(option: ProductDetail): void {
-    this.shoppingCartService.setOrderDetail(option);
-  }
-
-  public ngOnInit(): void {
-    this.orderDetail = this.productDetailService.getProductDetail();
-    this.cart = this.shoppingCartService.get();
-    this.cartSubscription = this.cart.subscribe((cart) => {
-      this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
-      this.productsService.getListProduct().subscribe((products) => {
-        this.products = products;
-        this.cartItems = cart.items
-          .map((item) => {
-            const product = this.products.find((p) => p.id === item.productId);
-            return {
-              ...item,
-              product,
-              totalCost: product.price * item.quantity
-            };
-          });
+  ngOnInit() {
+    if (this.token.getToken()) {
+      this.orderService.getCart(this.token.getUserId()).subscribe(next => {
+        this.order = next;
+        this.productDetailService.findByOrderId(this.order.id).subscribe(next2 => {
+          this.cart = next2;
+          console.log(next2);
+          this.count = this.cart.length;
+          console.log(this.count);
+          document.getElementById('countCart').innerHTML = next2.length;
+        });
+      }, error => {
+        this.orderService.createItem({
+          user: {id: this.token.getUserId()}
+        }).subscribe(newOrder => {
+        }, errorOder => console.log(errorOder));
       });
-    });
+    }
+    if (this.storage.getCart()) {
+      this.productDetailService.findByOrderId(this.storage.getCart()).subscribe(next => {
+        this.cart = next;
+        console.log((next));
+        this.count = this.cart.length;
+        document.getElementById('countCart').innerHTML = next.length;
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      this.orderService.createItem({}).subscribe(newOrder => {
+        console.log(newOrder);
+        this.storage.saveCart(newOrder);
+      }, errorOrder => {
+        console.log(errorOrder);
+      });
+    }
   }
 
-  public ngOnDestroy(): void {
-    if (this.cartSubscription) {
-      this.cartSubscription.unsubscribe();
+  addCart(idProduct) {
+    if (this.token.getToken()) {
+      this.orderService.getCart(this.token.getUserId()).subscribe(next => {
+        this.order = next;
+        this.productDetailService.findByProduct_IdAndOrder_Id(idProduct, this.order.id).subscribe(next1 => {
+          console.log(next1);
+        }, error => {
+          console.log(error);
+          this.productDetailService.createProductDetail({
+            product: {id: idProduct},
+            order: {id: this.order.id}
+          }).subscribe(next2 => {
+            console.log(next2);
+            this.ngOnInit();
+          }, error2 => {
+            console.log(error2);
+          });
+        });
+      }, error1 => {
+        console.log(error1);
+      });
+    } else {
+      this.productDetailService.findByProduct_IdAndOrder_Id(idProduct, this.storage.getCart()).subscribe(next => {
+        console.log(next);
+      }, error => {
+        console.log(error);
+        this.productDetailService.createProductDetail({
+          product: {id: idProduct},
+          order: {id: this.storage.getCart()}
+        }).subscribe(next1 => {
+          console.log((next1));
+          this.ngOnInit();
+        }, error1 => {
+          console.log(error1);
+        });
+      });
     }
   }
 }
+

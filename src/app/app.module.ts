@@ -43,11 +43,11 @@ import { SupplierEditComponent } from './components/admin/suppliers/supplier-edi
 import { ProductDetailCreateComponent } from './components/product-detail/product-detail-create/product-detail-create.component';
 import { ProductDetailListComponent } from './components/product-detail/product-detail-list/product-detail-list.component';
 import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CartComponent } from './components/cart/cart.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
-import { ProductCategoryComponent } from './product-category/product-category.component';
-import { ProductSupplierComponent } from './product-supplier/product-supplier.component';
+import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { ProductSupplierComponent } from './components/product-supplier/product-supplier.component';
+import { CartListComponent } from './cart-list/cart-list.component';
 
 @NgModule({
   declarations: [
@@ -89,11 +89,11 @@ import { ProductSupplierComponent } from './product-supplier/product-supplier.co
     ProductDetailCreateComponent,
     ProductDetailListComponent,
     ProductDetailEditComponent,
-    ShoppingCartComponent,
     CartComponent,
     UserProfileComponent,
     ProductCategoryComponent,
-    ProductSupplierComponent
+    ProductSupplierComponent,
+    CartListComponent
   ],
   imports: [
     BrowserModule,

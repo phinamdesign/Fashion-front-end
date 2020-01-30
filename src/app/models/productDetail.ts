@@ -9,5 +9,5 @@ export interface ProductDetail {
   product?: Product;
   quantity?: number;
   order?: any;
-  salePrice?: number;
+  // salePrice?: number;
 }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from '../models/product';
-import {Category} from '../models/category';
+import {Product} from '../../models/product';
+import {Category} from '../../models/category';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CategoryService} from '../services/category.service';
-import {ProductService} from '../services/product.service';
-import {SupplierService} from '../services/supplier.service';
-import {Supplier} from '../models/supplier';
+import {CategoryService} from '../../services/category.service';
+import {ProductService} from '../../services/product.service';
+import {SupplierService} from '../../services/supplier.service';
+import {Supplier} from '../../models/supplier';
 
 @Component({
   selector: 'app-product-supplier',

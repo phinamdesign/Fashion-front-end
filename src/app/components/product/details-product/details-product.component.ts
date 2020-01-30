@@ -3,7 +3,8 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 import {Observable, Observer} from 'rxjs';
-import {ShoppingCartService} from '../../../services/shopping-cart.service';
+import {CartComponent} from '../../cart/cart.component';
+// import {ShoppingCartService} from '../../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-details-product',
@@ -14,14 +15,15 @@ export class DetailsProductComponent implements OnInit {
   id: number;
   product: Product;
   public products: Observable<Product[]>;
-
+  //
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     private router: Router,
-    private shoppingCartService: ShoppingCartService
+    private cart: CartComponent,
+    // private shoppingCartService: ShoppingCartService
   ) { }
-
+//
   ngOnInit() {
     this.product = new Product();
     this.id = this.route.snapshot.params.id;
@@ -33,29 +35,47 @@ export class DetailsProductComponent implements OnInit {
         }, error => console.log(error));
     this.products = this.productService.getListProduct();
   }
+//
+//   listProduct() {
+//     this.router.navigate(['product']);
+//   }
+//
+//   public addProductToCart(product: Product): void {
+//     this.shoppingCartService.addItem(product, 1);
+//   }
+//
+//   public removeProductFromCart(product: Product): void {
+//     this.shoppingCartService.addItem(product, -1);
+//   }
+//
+//   public productInCart(product: Product): boolean {
+//     return Observable.create((obs: Observer<boolean>) => {
+//       const sub = this.shoppingCartService
+//         .get()
+//         .subscribe((cart) => {
+//           obs.next(cart.items.some((i) => i.productId === product.id));
+//           obs.complete();
+//         });
+//       sub.unsubscribe();
+//     });
+//   }
+//
+// }
+//   product: Product[] = [];
+//   content: string;
 
-  listProduct() {
-    this.router.navigate(['product']);
+  // constructor(private productService: ProductService,
+  //             private cart: CartComponent,
+  //             private route: ActivatedRoute,
+  //             private router: Router) {
+  // }
+
+  // ngOnInit() {
+  //   this.productService.getListProduct().subscribe(next =>
+  //     (this.product = next), err =>
+  //     (this.content = this.content = JSON.parse(err.error).message));
+  // }
+  addCart(idProduct) {
+    this.cart.addCart(idProduct);
   }
-
-  public addProductToCart(product: Product): void {
-    this.shoppingCartService.addItem(product, 1);
-  }
-
-  public removeProductFromCart(product: Product): void {
-    this.shoppingCartService.addItem(product, -1);
-  }
-
-  public productInCart(product: Product): boolean {
-    return Observable.create((obs: Observer<boolean>) => {
-      const sub = this.shoppingCartService
-        .get()
-        .subscribe((cart) => {
-          obs.next(cart.items.some((i) => i.productId === product.id));
-          obs.complete();
-        });
-      sub.unsubscribe();
-    });
-  }
-
 }

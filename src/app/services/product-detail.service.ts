@@ -17,13 +17,24 @@ export class ProductDetailService {
   getProductDetailById(id: number): Observable<ProductDetail> {
     return this.http.get<ProductDetail>(`${this.API_URL}/${id}`);
   }
-  createProductDetail(productDetail: ProductDetail): Observable<ProductDetail> {
-    return this.http.post<ProductDetail>(this.API_URL, productDetail);
+  // createProductDetail(productDetail: ProductDetail): Observable<ProductDetail> {
+  //   return this.http.post<ProductDetail>(this.API_URL, productDetail);
+  // }
+  createProductDetail(orderItem): Observable<any> {
+    return this.http.post(this.API_URL, orderItem);
   }
-  updateProductDetail(productDetail: ProductDetail): Observable<ProductDetail> {
-    return this.http.put<ProductDetail>(`${this.API_URL}/${productDetail.id}`, productDetail);
+  updateProductDetail(productDetail): Observable<any> {
+    console.log(productDetail);
+    return this.http.put(this.API_URL + '/' + productDetail.id, productDetail);
   }
   deleteProductDetail(id: number): Observable<any> {
     return this.http.delete(`${this.API_URL}/${id}`);
+  }
+  findByOrderId(idOrder): Observable<any> {
+    return this.http.get(this.API_URL + '/cart/' + idOrder);
+  }
+
+  findByProduct_IdAndOrder_Id(idProduct, idOrder): Observable<any> {
+    return this.http.get(this.API_URL + '/cart/' + idProduct + '/' + idOrder);
   }
 }

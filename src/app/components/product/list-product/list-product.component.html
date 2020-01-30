@@ -17,6 +17,7 @@
           <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
           <div>Category: {{product.category.categoryName}}</div>
           <div>Brand: {{product.supplier.supplierName}}</div>
+          <a (click)="addCart(product.id)" class="btn btn-outline-secondary">Add cart</a>
         </div>
       </div>
     </div>

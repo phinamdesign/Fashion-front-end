@@ -6,6 +6,7 @@ import { ProductService } from '../../../services/product.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Category} from '../../../models/category';
 import {Supplier} from '../../../models/supplier';
+import {CartComponent} from '../../cart/cart.component';
 
 @Component({
   selector: 'app-list-product',
@@ -33,7 +34,8 @@ export class ListProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cart: CartComponent
   ) {
     this.activatedRoute.params.subscribe(
       params => {
@@ -76,5 +78,7 @@ export class ListProductComponent implements OnInit {
   detailsProduct(id: number) {
     this.router.navigate(['details', id]);
   }
-
+  addCart(idBook) {
+    this.cart.addCart(idBook);
+  }
 }

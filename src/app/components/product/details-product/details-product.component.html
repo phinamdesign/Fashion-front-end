@@ -1,9 +1,9 @@
 <div class="container">
   <div class="col-md-6 offset-3 mb-3">
-    <app-shopping-cart></app-shopping-cart>
+<!--    <app-shopping-cart></app-shopping-cart>-->
   </div>
 </div>
-<div class="container">
+<div class="container" *ngIf="product.pictures">
   <div class="row mb-5">
       <img [src]="[product.pictures[0].src]" class="profile-img-card offset-3" style="width: 25%"/>
     <div class="col-12 col-sm-5 col-md-5">
@@ -26,18 +26,19 @@
       </div>
 
       <br>
-      <br>
-      <div class="mb-0">
-        <button type="button"
-                class="btn btn-outline-primary mr-2"
-                (click)="addProductToCart(product, 1)">Thêm vào giỏ
-        </button>
-        <button type="button"
-                class="btn btn-outline-danger"
-                *ngIf="productInCart(product) | async"
-                (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
-        </button>
-      </div>
+      <a (click)="addCart(product.id)" class="btn btn-outline-secondary">Add cart</a>
+<!--      <br>-->
+<!--      <div class="mb-0">-->
+<!--        <button type="button"-->
+<!--                class="btn btn-outline-primary mr-2"-->
+<!--                (click)="addProductToCart(product, 1)">Thêm vào giỏ-->
+<!--        </button>-->
+<!--        <button type="button"-->
+<!--                class="btn btn-outline-danger"-->
+<!--                *ngIf="productInCart(product) | async"-->
+<!--                (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này-->
+<!--        </button>-->
+<!--      </div>-->
 
     </div>
   </div>

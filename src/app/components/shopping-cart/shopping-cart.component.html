@@ -1,27 +1,27 @@
-<!--<div class="row p-2">-->
-<!--  <div class="align-content-center">-->
-<!--    <h5>-->
-<!--      Giỏ hàng-->
-<!--      <mark>({{itemCount}} sản phẩm):</mark>-->
-<!--      <span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span>-->
-<!--    </h5>-->
-<!--  </div>-->
-<!--</div>-->
+<!--&lt;!&ndash;<div class="row p-2">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="align-content-center">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h5>&ndash;&gt;-->
+<!--&lt;!&ndash;      Giỏ hàng&ndash;&gt;-->
+<!--&lt;!&ndash;      <mark>({{itemCount}} sản phẩm):</mark>&ndash;&gt;-->
+<!--&lt;!&ndash;      <span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </h5>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-  <div class="row p-2">
-    <div>
-      <a style="display: inline" class="btn btn-outline-warning btn-lg mr-2"
-         [attr.disabled]="itemCount === 0 ? true : null"
-         routerLink="/cart">Giỏ hàng</a>
-      <span class="text">
-        <span class="text-success">({{itemCount}} sản phẩm) : </span>
-        <span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span>
-      </span>
-    </div>
-    <!--  <button type="button"-->
-    <!--          class="btn btn-danger"-->
-    <!--          (click)="emptyCart()"-->
-    <!--          [attr.disabled]="itemCount === 0 ? true : null">-->
-    <!--    Xóa hết sản phẩm-->
-    <!--  </button>-->
-  </div>
+<!--  <div class="row p-2">-->
+<!--    <div>-->
+<!--      <a style="display: inline" class="btn btn-outline-warning btn-lg mr-2"-->
+<!--         [attr.disabled]="itemCount === 0 ? true : null"-->
+<!--         routerLink="/cart">Giỏ hàng</a>-->
+<!--      <span class="text">-->
+<!--        <span class="text-success">({{itemCount}} sản phẩm) : </span>-->
+<!--        <span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span>-->
+<!--      </span>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;  <button type="button"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="btn btn-danger"&ndash;&gt;-->
+<!--    &lt;!&ndash;          (click)="emptyCart()"&ndash;&gt;-->
+<!--    &lt;!&ndash;          [attr.disabled]="itemCount === 0 ? true : null">&ndash;&gt;-->
+<!--    &lt;!&ndash;    Xóa hết sản phẩm&ndash;&gt;-->
+<!--    &lt;!&ndash;  </button>&ndash;&gt;-->
+<!--  </div>-->

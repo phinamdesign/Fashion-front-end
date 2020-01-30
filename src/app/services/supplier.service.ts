@@ -7,7 +7,7 @@ import {Supplier} from '../models/supplier';
   providedIn: 'root'
 })
 export class SupplierService {
-  private readonly API_URL = 'http://localhost:8080/api/admin/supplier';
+  private readonly API_URL = 'http://localhost:8080/api/auth/supplier';
 
   constructor(private http: HttpClient) { }
 
