@@ -22,7 +22,11 @@
       </div>
     </div>
   </div>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <div class="row">
+    <div class="page">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>
 
