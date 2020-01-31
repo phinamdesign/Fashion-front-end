@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {ProductDetail} from '../models/productDetail';
 import {Order} from '../models/order';
@@ -9,6 +9,7 @@ import {SizeService} from '../services/size.service';
 import {Size} from '../models/size';
 import {ColorService} from '../services/color.service';
 import {Color} from '../models/color';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart-list',
@@ -28,7 +29,8 @@ export class CartListComponent implements OnInit {
               private orderService: OrderService,
               private storage: StorageService,
               private sizeService: SizeService,
-              private colorService: ColorService
+              private colorService: ColorService,
+              private router: Router
   ) {
   }
 
@@ -57,11 +59,6 @@ export class CartListComponent implements OnInit {
           console.log(next2);
           this.order.phone = this.order.user.phone;
           this.order.deliveryAddress = this.order.user.address;
-          for (const cart of this.cartList) {
-            this.totalPrice += cart.quantity * cart.product.price;
-          }
-          const total = this.totalPrice;
-          document.getElementById('totalPrice').innerHTML = total.toLocaleString('it-IT', {style: 'currency', currency: 'VND'});
         });
       }, error => {
         console.log(error);
@@ -75,11 +72,6 @@ export class CartListComponent implements OnInit {
           this.cartList = next6;
           this.order.phone = '';
           this.order.deliveryAddress = '';
-          for (const cart of this.cartList) {
-            this.totalPrice += cart.quantity * cart.product.price;
-          }
-          const total = this.totalPrice;
-          document.getElementById('totalPrice').innerHTML = total.toLocaleString('it-IT', {style: 'currency', currency: 'VND'});
         });
       }, error => {
         console.log(error);
@@ -87,9 +79,18 @@ export class CartListComponent implements OnInit {
     }
   }
 
+  total() {
+    this.totalPrice = 0;
+    for (const cart of this.cartList) {
+      this.totalPrice += cart.quantity * cart.product.price;
+    }
+    const total = this.totalPrice;
+    document.getElementById('totalPrice').innerHTML = total.toLocaleString('it-IT', {style: 'currency', currency: 'VND'});
+
+  }
+
   onChangeQuantity(event, cart) {
     // if (this.token.getToken()) {
-    console.log(event.target.value);
     cart.quantity = event.target.value;
     this.productDetailService.updateProductDetail({
       id: cart.id,
@@ -100,15 +101,14 @@ export class CartListComponent implements OnInit {
       order: {id: cart.order.id},
     }).subscribe(next => {
       console.log(next);
-      // this.ngOnInit();
     });
+    this.total();
     // }
   }
 
   onChangeSize(event, cart) {
     // if (this.token.getToken()) {
     cart.size = event.target.value;
-    console.log(event.target.value);
     this.productDetailService.updateProductDetail({
       id: cart.id,
       quantity: cart.quantity,
@@ -118,7 +118,6 @@ export class CartListComponent implements OnInit {
       order: {id: cart.order.id},
     }).subscribe(next => {
       console.log(next);
-      // this.ngOnInit();
     });
     // }
   }
@@ -126,7 +125,6 @@ export class CartListComponent implements OnInit {
   onChangeColor(event, cart) {
     // if (this.token.getToken()) {
     cart.color = event.target.value;
-    console.log(event.target.value);
     this.productDetailService.updateProductDetail({
       id: cart.id,
       quantity: cart.quantity,
@@ -136,7 +134,6 @@ export class CartListComponent implements OnInit {
       order: {id: cart.order.id},
     }).subscribe(next => {
       console.log(next);
-      // this.ngOnInit();
     });
     // }
   }
@@ -156,5 +153,20 @@ export class CartListComponent implements OnInit {
 
   onChangeAddress(event) {
     this.order.deliveryAddress = event.target.value;
+  }
+
+  deleteCart(id: number) {
+    const choice = confirm('Bạn có chắc chắn muốn xóa ?');
+    if (choice) {
+      this.productDetailService.deleteProductDetail(id)
+        .subscribe(
+          data => {
+            console.log(data);
+            window.location.reload();
+            this.router.navigate(['cart-list']);
+          },
+          error => console.log(error)
+        );
+    }
   }
 }

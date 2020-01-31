@@ -34,12 +34,12 @@
       <td><input type="number" style="width: 50px" [value]="cart.quantity" name="quantity"
                  (change)="onChangeQuantity($event, cart)"></td>
       <td>{{cart.product.price * cart.quantity | currency: "VND"}}</td>
+      <td> <button class="btn btn-danger" (click)="deleteCart(cart.id)">Delete</button></td>
     </tr>
     <tr>
       <td>Total price</td>
       <td></td>
-      <td></td>
-      <td id="totalPrice"></td>
+      <td>{{totalPrice| currency: "VND"}}</td>
     </tr>
   </table>
   <input type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#OrderModal" value="Order" *ngIf="token.getToken()">
