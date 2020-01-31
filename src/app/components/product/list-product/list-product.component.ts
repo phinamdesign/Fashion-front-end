@@ -7,6 +7,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Category} from '../../../models/category';
 import {Supplier} from '../../../models/supplier';
 import {CartComponent} from '../../cart/cart.component';
+import {SearchProductByName} from '../../../models/SearchProductByName';
 
 @Component({
   selector: 'app-list-product',
@@ -17,6 +18,7 @@ export class ListProductComponent implements OnInit {
   // products: Product[] = [];
   content: string;
   p = 1;
+  private nameProduct = '';
   private id: number;
   private name: string;
   private image: string;
@@ -58,11 +60,6 @@ export class ListProductComponent implements OnInit {
     const {name} = this.productForm.value;
     const product: Product = {
       id: this.id,
-      price: this.price,
-      description: this.description,
-      quantity: this.quantity,
-      // category: this.category,
-      // supplier: this.supplier,
       name
     };
     this.productService.searchByName(product).subscribe(
@@ -81,4 +78,18 @@ export class ListProductComponent implements OnInit {
   addCart(idBook) {
     this.cart.addCart(idBook);
   }
+
+  // search() {
+  //   const searchNameForm: SearchProductByName = {
+  //     name: this.nameProduct
+  //   };
+  //   this.productService.searchProductByName(searchNameForm).subscribe(
+  //     result => {
+  //       this.listProduct = result;
+  //     }, error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
 }

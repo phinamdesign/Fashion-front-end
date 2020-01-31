@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Product} from '../models/product';
+import {SearchProductByName} from '../models/SearchProductByName';
 
 
 
@@ -52,6 +53,12 @@ export class ProductService {
 
   searchByName(product: Product): Observable<Product[]> {
     return this.http.post<Product[]>(this.url + '/search-by-name', product);
+  }
+  // searchProductByName(product: Product): Observable<Product[]> {
+  //   return this.http.post<Product[]>(this.url + '/search-product-by-name', product);
+  // }
+  searchProductByName(nameProduct: SearchProductByName): Observable<Product[]> {
+    return this.http.post<Product[]>(this.url + '/search-product-by-name', nameProduct);
   }
   getListProductByCategoryId(id: number): Observable<any> {
     return this.http.get<Product[]>(`${this.url}/list/category/${id}`);
