@@ -35,6 +35,10 @@ export class DetailsProductComponent implements OnInit {
         }, error => console.log(error));
     this.products = this.productService.getListProduct();
   }
+
+  backToList() {
+    this.router.navigate(['product']);
+}
 //
 //   listProduct() {
 //     this.router.navigate(['product']);

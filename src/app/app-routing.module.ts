@@ -21,6 +21,10 @@ import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 import {ProductCategoryComponent} from './components/product-category/product-category.component';
 import {ProductSupplierComponent} from './components/product-supplier/product-supplier.component';
 import {CartListComponent} from './cart-list/cart-list.component';
+import {ListColorComponent} from './components/admin/color/list-color/list-color.component';
+import {CreateColorComponent} from './components/admin/color/create-color/create-color.component';
+import {UpdateColorComponent} from './components/admin/color/update-color/update-color.component';
+import {DetailColorComponent} from './components/admin/color/detail-color/detail-color.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -75,8 +79,12 @@ const routes: Routes = [
   // size
   {path: 'sizes', component: ListSizeComponent},
   {path: 'sizes/:id', component: DetailSizeComponent},
-  {path: 'updatesizes/:id', component: UpdateSizeComponent},
-  {path: 'createsizes', component: CreateSizeComponent},
+  {path: 'update-sizes/:id', component: UpdateSizeComponent},
+  {path: 'create-sizes', component: CreateSizeComponent},
+  {path: 'colors', component: ListColorComponent},
+  {path: 'create-colors', component: CreateColorComponent},
+  {path: 'update-colors/:id', component: UpdateColorComponent},
+  {path: 'colors/:id', component: DetailColorComponent},
   {
     path: 'suppliers',
     component: SupplierListComponent
