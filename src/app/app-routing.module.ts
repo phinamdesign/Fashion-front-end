@@ -25,6 +25,7 @@ import {ListColorComponent} from './components/admin/color/list-color/list-color
 import {CreateColorComponent} from './components/admin/color/create-color/create-color.component';
 import {UpdateColorComponent} from './components/admin/color/update-color/update-color.component';
 import {DetailColorComponent} from './components/admin/color/detail-color/detail-color.component';
+import {ActionProductComponent} from './components/product/action-product/action-product.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'delete-product',
     component: DeleteProductComponent
+  },
+  {
+    path: 'action-product',
+    component: ActionProductComponent
   },
   {
     path: 'create-product',
