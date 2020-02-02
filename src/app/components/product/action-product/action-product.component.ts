@@ -6,6 +6,7 @@ import {Supplier} from '../../../models/supplier';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SearchProductByName} from '../../../models/SearchProductByName';
 
 @Component({
   selector: 'app-action-product',
@@ -19,6 +20,7 @@ export class ActionProductComponent implements OnInit {
   content: string;
   // p = 1;
   private id: number;
+  private nameProduct = '';
   private name: string;
   private image: string;
   private price: number;
@@ -51,27 +53,6 @@ export class ActionProductComponent implements OnInit {
     this.reloadData();
   }
 
-  searchProduct() {
-    const {name} = this.productForm.value;
-    const product: Product = {
-      id: this.id,
-      price: this.price,
-      description: this.description,
-      quantity: this.quantity,
-      // category: this.category,
-      // supplier: this.supplier,
-      name
-    };
-    this.productService.searchByName(product).subscribe(
-      result => {
-        this.listProduct = result;
-      }, error => {
-        console.log(error);
-      }
-    );
-    this.status = false;
-  }
-
   detailsProduct(id: number) {
     this.router.navigate(['details', id]);
   }
@@ -93,6 +74,19 @@ export class ActionProductComponent implements OnInit {
         );
       this.router.navigate(['product']);
     }
+  }
+
+  searchProductByName() {
+    const nameForm: SearchProductByName = {
+      nameProduct: this.nameProduct
+    };
+    this.productService.searchProductByName(nameForm).subscribe(
+      result => {
+        this.listProduct = result;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
 }

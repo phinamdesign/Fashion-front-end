@@ -2,8 +2,8 @@
 <div class="container">
   <div class="center">
     <form [formGroup]="productForm" class="form-inline ml-auto">
-      <input type="text" [(ngModel)]="nameProduct" (keydown)="searchProduct()" class="form-control mr-sm-2" formControlName="name" name="name" placeholder="Search">
-      <button (click)="searchProduct()" type="submit" class="btn btn-dark">Search</button>
+      <input type="text" [(ngModel)]="nameProduct" (keydown)="searchProductByName()" class="form-control mr-sm-2" formControlName="name" name="name" placeholder="Search">
+      <button (click)="searchProductByName()" type="submit" class="btn btn-dark">Search</button>
     </form>
   </div>
 </div>

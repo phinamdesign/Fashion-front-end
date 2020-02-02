@@ -56,22 +56,6 @@ export class ListProductComponent implements OnInit {
   //   this.products = this.productService.getListProduct();
   // }
 
-  searchProduct() {
-    const {name} = this.productForm.value;
-    const product: Product = {
-      id: this.id,
-      name
-    };
-    this.productService.searchByName(product).subscribe(
-      result => {
-        this.listProduct = result;
-      }, error => {
-        console.log(error);
-      }
-    );
-    this.status = false;
-  }
-
   detailsProduct(id: number) {
     this.router.navigate(['details', id]);
   }
@@ -79,17 +63,17 @@ export class ListProductComponent implements OnInit {
     this.cart.addCart(idBook);
   }
 
-  // search() {
-  //   const searchNameForm: SearchProductByName = {
-  //     name: this.nameProduct
-  //   };
-  //   this.productService.searchProductByName(searchNameForm).subscribe(
-  //     result => {
-  //       this.listProduct = result;
-  //     }, error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
+  searchProductByName() {
+    const nameForm: SearchProductByName = {
+      nameProduct: this.nameProduct
+    };
+    this.productService.searchProductByName(nameForm).subscribe(
+      result => {
+        this.listProduct = result;
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
 
 }
