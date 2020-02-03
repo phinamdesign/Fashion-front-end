@@ -66,13 +66,13 @@
         <p>
           {{comment.content}}
         </p>
-        <div class="text-left">
+        <div class="text-left" *ngIf="info.name === comment.user.name">
           <!--              edit/delete-->
-          <a #closeModalRef *ngIf="info.name === comment.user.name" class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse" [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
+          <a #closeModalRef class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse" [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             <span><strong>Edit</strong></span>
           </a>
-          <a (click)="getIdComment1(comment.id)" *ngIf="info.name === comment.user.name" class="btn btn-danger a-btn-slide-text"  data-toggle="modal" data-target="#exampleModalCenter">
+          <a (click)="getIdComment1(comment.id)" class="btn btn-danger a-btn-slide-text"  data-toggle="modal" data-target="#exampleModalCenter">
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             <span><strong>Delete</strong></span>
           </a>
