@@ -20,7 +20,7 @@ export class DetailsProductComponent implements OnInit {
   id: number;
   product: Product;
   iShow = false;
-  iEdit = false;
+  iEdit : boolean;
   public products: Observable<Product[]>;
   listCommenter: Commenter[] = [];
   userId: string;
@@ -69,6 +69,7 @@ export class DetailsProductComponent implements OnInit {
       userId: this.token.getUserId(),
       avatar: this.token.getAvatar()
     };
+    this.getAllCommentThisProduct();
   }
 
   backToList() {
@@ -144,7 +145,6 @@ export class DetailsProductComponent implements OnInit {
         console.log(error);
       }
     );
-    this.iEdit = true;
     console.log(commenter);
   }
 

@@ -5,7 +5,7 @@ export interface Commenter {
   id?: string;
   content?: string;
   date?: string;
-  edit?: string;
+  isEdit?: string;
   product?: Product;
   user?: User;
   productId?: string;
