@@ -50,26 +50,29 @@
   <div class="container">
     <h4>Comment</h4>
     <div class="media mb-4" *ngFor="let comment of listCommenter , index as i" >
+      <div *ngIf="comment.user.avatar;else other9">
+        <img class="d-flex mr-3 rounded-circle" src="{{comment.user.avatar}}" style="width: 50px;height: 50px" alt="">
+      </div>
       <ng-template #other9>
         <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
       </ng-template>
       <div class="media-body">
         <div *ngIf="iEdit ; else other4">
-          <label class="text-success"><h6 class="text-secondary">{{comment.date}} (edited)</h6></label>
+          <label class="text-success">{{comment.user.name}}<h6 class="text-secondary">{{comment.date}} (edited)</h6></label>
         </div>
         <ng-template #other4>
-          <label class="text-success">{{comment.product.name}}<h6 class="text-secondary">{{comment.date}}</h6></label>
+          <label class="text-success">{{comment.user.name}}<h6 class="text-secondary">{{comment.date}}</h6></label>
         </ng-template>
         <p>
           {{comment.content}}
         </p>
         <div class="text-left">
           <!--              edit/delete-->
-          <a #closeModalRef  class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse" [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
+          <a #closeModalRef *ngIf="info.name === comment.user.name" class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse" [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             <span><strong>Edit</strong></span>
           </a>
-          <a (click)="getIdComment1(comment.id)" class="btn btn-danger a-btn-slide-text"  data-toggle="modal" data-target="#exampleModalCenter">
+          <a (click)="getIdComment1(comment.id)" *ngIf="info.name === comment.user.name" class="btn btn-danger a-btn-slide-text"  data-toggle="modal" data-target="#exampleModalCenter">
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             <span><strong>Delete</strong></span>
           </a>

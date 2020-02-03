@@ -4,11 +4,11 @@
       <h2 align="center">
         Create Color
       </h2>
-      <div [hidden]="submitted">
+      <div>
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" required [(ngModel)]="color.name" name="name">
+            <input type="text" class="form-control" placeholder="name color" id="name" required [(ngModel)]="color.name" name="name">
           </div>
           <button type="submit" class="btn btn-success">Create</button>
         </form>
