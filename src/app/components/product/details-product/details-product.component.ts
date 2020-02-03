@@ -27,6 +27,7 @@ export class DetailsProductComponent implements OnInit {
   tokenJWT: string;
   idCommenter: string;
   productId: string;
+  info: { name: string; avatar: string; userId: string; authorities: string[]; token: string; username: string };
 
   formCommenterCreate = new FormGroup( {
     contentInput: new FormControl('')
@@ -60,6 +61,14 @@ export class DetailsProductComponent implements OnInit {
           this.product = data;
         }, error => console.log(error));
     this.products = this.productService.getListProduct();
+    this.info = {
+      name: this.token.getName(),
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities(),
+      userId: this.token.getUserId(),
+      avatar: this.token.getAvatar()
+    };
   }
 
   backToList() {
