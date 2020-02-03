@@ -20,12 +20,13 @@ import {CartComponent} from './components/cart/cart.component';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 import {ProductCategoryComponent} from './components/product-category/product-category.component';
 import {ProductSupplierComponent} from './components/product-supplier/product-supplier.component';
-import {CartListComponent} from './cart-list/cart-list.component';
+import {CartListComponent} from './components/cart-list/cart-list.component';
 import {ListColorComponent} from './components/admin/color/list-color/list-color.component';
 import {CreateColorComponent} from './components/admin/color/create-color/create-color.component';
 import {UpdateColorComponent} from './components/admin/color/update-color/update-color.component';
 import {DetailColorComponent} from './components/admin/color/detail-color/detail-color.component';
 import {ActionProductComponent} from './components/product/action-product/action-product.component';
+import {OrderManagerComponent} from './components/admin/order-manager/order-manager.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -113,6 +114,10 @@ const routes: Routes = [
   {
     path: 'cart-list',
     component: CartListComponent
+  },
+  {
+    path: 'order/manager',
+    component: OrderManagerComponent
   }
 ];
 

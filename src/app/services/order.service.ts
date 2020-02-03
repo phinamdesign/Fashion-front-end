@@ -13,8 +13,8 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
 
-  getOrderList(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+  getOrderList(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.url);
   }
 
   getCart(id: string): Observable<Order> {
