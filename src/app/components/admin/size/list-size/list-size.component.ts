@@ -30,7 +30,7 @@ export class ListSizeComponent implements OnInit {
     this.router.navigate(['sizes', id]);
   }
   updateSize(id: number) {
-    this.router.navigate(['updatesizes', id]);
+    this.router.navigate(['update-sizes', id]);
   }
 
 }

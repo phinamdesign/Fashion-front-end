@@ -30,7 +30,7 @@ export class ListColorComponent implements OnInit {
     this.router.navigate(['colors', id]);
   }
   updateColor(id: number) {
-    this.router.navigate(['update', id]);
+    this.router.navigate(['update-colors', id]);
   }
 
 }

@@ -27,18 +27,18 @@
       </div> <!-- form-group// -->
     </label>
     <label class="col text-info">Email
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-        </div>
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+      </div>
 
-        <input name="email text-info" formControlName="email" class="form-control" placeholder="Email" type="email">
-        <div class="alert alert-warning" role="alert"
-             *ngIf="registerForm.get('email').invalid &&registerForm.get('email').touched">
-          Email invalid(must smaller 50 character)
-        </div>
-      </div> <!-- form-group// -->
-    </label>
+      <input name="email text-info" formControlName="email" class="form-control" placeholder="Email" type="email">
+      <div class="alert alert-warning" role="alert"
+           *ngIf="registerForm.get('email').invalid &&registerForm.get('email').touched">
+        Email invalid(must smaller 50 character)
+      </div>
+    </div> <!-- form-group// -->
+  </label>
     <label class="col text-info"> Password
       <div class="form-group input-group">
         <div class="input-group-prepend">

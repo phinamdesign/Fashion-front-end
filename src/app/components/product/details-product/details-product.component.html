@@ -1,45 +1,151 @@
 <div class="container">
-  <div class="col-md-6 offset-3 mb-3">
-<!--    <app-shopping-cart></app-shopping-cart>-->
-  </div>
-</div>
-<div class="container" *ngIf="product.pictures">
-  <div class="row mb-5">
-      <img [src]="[product.pictures[0].src]" class="profile-img-card offset-3" style="width: 25%"/>
-    <div class="col-12 col-sm-5 col-md-5">
-      <h2>Thông tin chi tiết</h2>
-
-      <hr/>
-      <div *ngIf="product">
-        <div>
-          <label><b>Name : </b></label> {{product.name}}
-        </div>
-        <div>
-          <label><b>Price : </b></label> {{product.price}}
-        </div>
-        <div>
-          <label><b>Description : </b></label> {{product.description}}
-        </div>
-        <div>
-          <label><b>Quantity : </b></label> {{product.quantity}}
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-md-12" align="center">
+          <img [src]="[product.pictures[0].src]" width="250px"/>
         </div>
       </div>
-
-      <br>
-      <a (click)="addCart(product.id)" class="btn btn-outline-secondary">Add cart</a>
-<!--      <br>-->
-<!--      <div class="mb-0">-->
-<!--        <button type="button"-->
-<!--                class="btn btn-outline-primary mr-2"-->
-<!--                (click)="addProductToCart(product, 1)">Thêm vào giỏ-->
-<!--        </button>-->
-<!--        <button type="button"-->
-<!--                class="btn btn-outline-danger"-->
-<!--                *ngIf="productInCart(product) | async"-->
-<!--                (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này-->
-<!--        </button>-->
-<!--      </div>-->
-
+      <div class="row m-3">
+        <div class="col-md-3" *ngFor="let image of product.pictures,  index as i">
+          <img src="{{image.src}}" width="80px">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div>
+        <h2>Thông tin chi tiết</h2>
+        <hr/>
+          <div>
+            <label><b>Name : </b></label> {{product.name}}
+          </div>
+          <div>
+            <label><b>Price : </b></label> {{product.price}}
+          </div>
+          <div>
+            <label><b>Description : </b></label> {{product.description}}
+          </div>
+          <div>
+            <label><b>Quantity : </b></label> {{product.quantity}}
+          </div>
+      </div>
+      <div class="row mt-3">
+        <div class="mr-3 ml-3">
+          <a (click)="addCart(product.id)" class="btn btn-outline-success">Add cart</a>
+        </div>
+        <div>
+          <a (click)="backToList()" class="btn btn-outline-warning mr-3">Back to list</a>
+        </div>
+        <div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+            Comment
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!------------ Single Comment ------------->
+  <div class="container">
+    <h4>Comment</h4>
+    <div class="media mb-4" *ngFor="let comment of listCommenter , index as i" >
+      <ng-template #other9>
+        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+      </ng-template>
+      <div class="media-body">
+        <div *ngIf="iEdit ; else other4">
+          <label class="text-success">{{comment.user.name}}<h6 class="text-secondary">{{comment.date}} (edited)</h6></label>
+        </div>
+        <ng-template #other4>
+          <label class="text-success">{{comment.user.name}}<h6 class="text-secondary">{{comment.date}}</h6></label>
+        </ng-template>
+        <p>
+          {{comment.content}}
+        </p>
+        <div class="text-left">
+          <!--              edit/delete-->
+          <a #closeModalRef  class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse" [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            <span><strong>Edit</strong></span>
+          </a>
+          <a (click)="getIdComment1(comment.id)" class="btn btn-danger a-btn-slide-text"  data-toggle="modal" data-target="#exampleModalCenter">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            <span><strong>Delete</strong></span>
+          </a>
+          <div class="collapse" [id]="'collapseExample'+i" >
+            <form>
+              <div class="card card-body">
+                <textarea contenteditable="true" [formControl]="contentUpdate" [value]="comment.content" rows="3"></textarea>
+                <br/>
+                <div class="text-right">
+                  <button class="btn btn-outline-secondary" (click)="closeForm1(closeModalRef)" >Close</button>&nbsp;&nbsp;
+                  <button class="btn btn-outline-primary" (click)="updateCommenter1(comment.id,closeModalRef)">Update</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+<!-- /.row -->
+
+  <!-----------Comment modal-------------->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Comment in here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formCommenterCreate">
+            <div *ngIf="this.tokenJWT" class="form-group">
+              <textarea class="form-control" formControlName="contentInput" rows="3"></textarea>
+            </div>
+            <div>
+              <ng-template #other>
+                <div class="text-center text-secondary">
+                  <h6>You need login before can be comment. <a  [routerLink]="'/login'"  data-dismiss="modal">Login!</a></h6>
+                </div>
+              </ng-template>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
+            <button type="submit" (click)="createCommenter()" class="btn btn-outline-success" data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!------------Modal------------>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark text-center">
+        <h5>Are you sure ?</h5>
+      </div>
+      <div class="modal-footer">
+        <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="deleteComment1(closeModalRef2)">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
