@@ -12,10 +12,6 @@ import {ListProductComponent} from './components/product/list-product/list-produ
 import {CreateProductComponent} from './components/product/create-product/create-product.component';
 import {UpdateProductComponent} from './components/product/update-product/update-product.component';
 import {DetailsProductComponent} from './components/product/details-product/details-product.component';
-import {ListOderComponent} from './components/oder/list-oder/list-oder.component';
-import {DetailsOderComponent} from './components/oder/details-oder/details-oder.component';
-import {CreateOderComponent} from './components/oder/create-oder/create-oder.component';
-import {UpdateOderComponent} from './components/oder/update-oder/update-oder.component';
 import {UpdateCommenterComponent} from './components/commenter/update-commenter/update-commenter.component';
 import {ListCommenterComponent} from './components/commenter/list-commenter/list-commenter.component';
 import {CreateCommenterComponent} from './components/commenter/create-commenter/create-commenter.component';
@@ -60,10 +56,6 @@ import { OrderManagerComponent } from './components/admin/order-manager/order-ma
     CreateProductComponent,
     UpdateProductComponent,
     DetailsProductComponent,
-    ListOderComponent,
-    DetailsOderComponent,
-    CreateOderComponent,
-    UpdateOderComponent,
     UpdateCommenterComponent,
     ListCommenterComponent,
     CreateCommenterComponent,
