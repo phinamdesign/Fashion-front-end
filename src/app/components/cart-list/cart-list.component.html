@@ -34,7 +34,7 @@
       <td><input type="number" style="width: 50px" [value]="cart.quantity" name="quantity"
                  (change)="onChangeQuantity($event, cart)"></td>
       <td>{{cart.product.price * cart.quantity | currency: "VND"}}</td>
-      <td> <button class="btn btn-danger" (click)="deleteCart(cart.id)">Delete</button></td>
+      <td> <button class="btn btn-danger" (click)="deleteCart(cart.id)">Cancel</button></td>
     </tr>
     <tr>
       <td>Total price</td>

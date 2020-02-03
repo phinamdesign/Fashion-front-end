@@ -47,8 +47,9 @@ import { CartComponent } from './components/cart/cart.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
 import { ProductSupplierComponent } from './components/product-supplier/product-supplier.component';
-import { CartListComponent } from './cart-list/cart-list.component';
+import { CartListComponent } from './components/cart-list/cart-list.component';
 import { ActionProductComponent } from './components/product/action-product/action-product.component';
+import { OrderManagerComponent } from './components/admin/order-manager/order-manager.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { ActionProductComponent } from './components/product/action-product/acti
     ProductCategoryComponent,
     ProductSupplierComponent,
     CartListComponent,
-    ActionProductComponent
+    ActionProductComponent,
+    OrderManagerComponent
   ],
   imports: [
     BrowserModule,
