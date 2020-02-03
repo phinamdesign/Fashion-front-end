@@ -1,110 +1,85 @@
-<div>
-  <h3>Your cart</h3>
-  <table class="table table-bordered">
-    <tr>
-      <th>Book</th>
-      <th>Size</th>
-      <th>Color</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Total</th>
-    </tr>
-    <tr *ngFor="let cart of cartList">
-      <td>
-        <img width="200px" src="{{cart.product.pictures[0].src}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{cart.product.name}}</h5>
+<div class="container mb-5">
+  <div>
+    <h3 class="mb-3">#My cart</h3>
+    <table class="table table-bordered text-center">
+      <thead class="bg-warning">
+        <th>Book</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Status</th>
+      </thead>
+      <tr *ngFor="let cart of cartList">
+        <td>
+          <img width="200px" src="{{cart.product.pictures[0].src}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{cart.product.name}}</h5>
+          </div>
+        </td>
+        <td>
+          <select  name="size" (change)="onChangeSize($event, cart)">
+            <option value="null">Select Size</option>
+            <option *ngFor="let size of sizes" value="{{size.id}}"
+            >{{size.name}}</option>
+          </select>
+        </td>
+        <td>
+          <select  name="color" (change)="onChangeColor($event, cart)">
+            <option value="null">Select Color</option>
+            <option *ngFor="let color of colors" value="{{color.id}}"
+            >{{color.name}}</option>
+          </select>
+        </td>
+        <td>{{cart.product.price | currency: "VND" : "đ"}}</td>
+        <td><input type="number" style="width: 50px" [value]="cart.quantity" name="quantity"
+                   (change)="onChangeQuantity($event, cart)"></td>
+        <td>{{cart.product.price * cart.quantity | currency: "VND"}}</td>
+        <td> <button class="btn btn-danger" (click)="deleteCart(cart.id)">Cancel</button></td>
+      </tr>
+      <tr>
+        <td class="text-info"><b>Total price</b></td>
+        <td colspan="6" class="text-right text-info mr-4"><b>{{totalPrice| currency: "VND"}}</b></td>
+      </tr>
+    </table>
+   <div class="row">
+     <div class="col-md-3 offset-9">
+       <input type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#OrderModal" value="Order" *ngIf="token.getToken()">
+       <input type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#OrderModalNoLogin" value="Order" *ngIf="!token.getToken()">
+     </div>
+   </div>
+  </div>
+  <div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="OrderModalLabel"
+       aria-hidden="true" *ngIf="token.getToken()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Fashion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </td>
-      <td>
-        <select  name="size" (change)="onChangeSize($event, cart)">
-          <option value="null">Select Size</option>
-        <option *ngFor="let size of sizes" value="{{size.id}}"
-                >{{size.name}}</option>
-        </select>
-      </td>
-      <td>
-        <select  name="color" (change)="onChangeColor($event, cart)">
-          <option value="null">Select Color</option>
-          <option *ngFor="let color of colors" value="{{color.id}}"
-          >{{color.name}}</option>
-        </select>
-      </td>
-      <td>{{cart.product.price | currency: "VND" : "đ"}}</td>
-      <td><input type="number" style="width: 50px" [value]="cart.quantity" name="quantity"
-                 (change)="onChangeQuantity($event, cart)"></td>
-      <td>{{cart.product.price * cart.quantity | currency: "VND"}}</td>
-      <td> <button class="btn btn-danger" (click)="deleteCart(cart.id)">Cancel</button></td>
-    </tr>
-    <tr>
-      <td>Total price</td>
-      <td></td>
-      <td>{{totalPrice| currency: "VND"}}</td>
-    </tr>
-  </table>
-  <input type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#OrderModal" value="Order" *ngIf="token.getToken()">
-  <input type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#OrderModalNoLogin" value="Order" *ngIf="!token.getToken()">
-</div>
-<div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="OrderModalLabel"
-     aria-hidden="true" *ngIf="token.getToken()">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Vũ Đại Village </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>Please enter delivery information</h3>
-        <form class="card" *ngIf="order">
-          <div class="form-group">
-            <label>Your phone number</label>
-            <input  type="text" [value]="order.user.phone" class="form-control" (change)="onChangePhone($event)"
-                    pattern="^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$">
-          </div>
-          <div>
-            <label>Shipping address</label>
-            <input type="text" value="{{order.user.address}}" class="form-control" (change)="onChangeAddress($event)">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createOrder()">Save</button>
+        <div class="modal-body">
+          <h3>Please enter delivery information</h3>
+          <form class="card" *ngIf="order">
+            <div class="form-group">
+              <label>Your phone number</label>
+              <input  type="text" [value]="order.user.phone" class="form-control" (change)="onChangePhone($event)"
+                      pattern="^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$">
+            </div>
+            <div>
+              <label>Shipping address</label>
+              <input type="text" value="{{order.user.address}}" class="form-control" (change)="onChangeAddress($event)">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createOrder()">Save</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="OrderModalNoLogin" tabindex="-1" role="dialog" aria-labelledby="OrderModalLabel"
-     aria-hidden="true" *ngIf="!token.getToken()">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabelNoLogin">Fashion </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>Please enter delivery information</h3>
-        <form class="card" *ngIf="order">
-          <div class="form-group">
-            <label>Your phone number</label>
-            <input  type="text" class="form-control" (change)="onChangePhone($event)"
-                    pattern="^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$">
-          </div>
-          <div>
-            <label>Shipping address</label>
-            <input type="text" class="form-control" (change)="onChangeAddress($event)">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createOrder()">Save</button>
-      </div>
-    </div>
-  </div>
 </div>
