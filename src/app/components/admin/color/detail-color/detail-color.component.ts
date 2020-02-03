@@ -19,6 +19,6 @@ export class DetailColorComponent implements OnInit {
     this.colorService.getColor(this.id).subscribe(data => {console.log(data); this.color = data; }, error => console.log(error));
   }
 list() {
-    this.router.navigate(['']);
+    this.router.navigate(['colors']);
 }
 }

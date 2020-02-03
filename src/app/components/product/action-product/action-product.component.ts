@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
-import { Product } from '../../../models/product';
-import { ProductService } from '../../../services/product.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {Product} from '../../../models/product';
 import {Category} from '../../../models/category';
 import {Supplier} from '../../../models/supplier';
-import {CartComponent} from '../../cart/cart.component';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ProductService} from '../../../services/product.service';
+import {ActivatedRoute, Router} from '@angular/router';
 import {SearchProductByName} from '../../../models/SearchProductByName';
 
 @Component({
-  selector: 'app-list-product',
-  templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.css']
+  selector: 'app-action-product',
+  templateUrl: './action-product.component.html',
+  styleUrls: ['./action-product.component.css']
 })
-export class ListProductComponent implements OnInit {
+export class ActionProductComponent implements OnInit {
+
   // products: Product[] = [];
+  products: Observable<Product[]>;
   content: string;
-  p = 1;
-  private nameProduct = '';
+  // p = 1;
   private id: number;
+  private nameProduct = '';
   private name: string;
   private image: string;
   private price: number;
@@ -36,8 +37,7 @@ export class ListProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private cart: CartComponent
+    private router: Router
   ) {
     this.activatedRoute.params.subscribe(
       params => {
@@ -50,17 +50,30 @@ export class ListProductComponent implements OnInit {
     this.productService.getListProduct().subscribe(next =>
       (this.listProduct = next), err =>
       (this.content = this.content = JSON.parse(err.error).message));
+    this.reloadData();
   }
-
-  // reloadData() {
-  //   this.products = this.productService.getListProduct();
-  // }
 
   detailsProduct(id: number) {
     this.router.navigate(['details', id]);
   }
-  addCart(idBook) {
-    this.cart.addCart(idBook);
+
+  reloadData() {
+    this.products = this.productService.getListProduct();
+  }
+
+  deleteProduct(id: number) {
+    const choice = confirm('Bạn có chắc chắn muốn xoa ?');
+    if (choice) {
+      this.productService.deleteProduct(id)
+        .subscribe(
+          data => {
+            console.log(data);
+            // this.reloadData();
+          },
+          error => console.log(error)
+        );
+      this.router.navigate(['product']);
+    }
   }
 
   searchProductByName() {
