@@ -54,4 +54,12 @@ export class OrderService {
   changeOrderStatus(id, status): Observable<any> {
     return this.http.put(this.url + '/change-status/' + id, status);
   }
+
+  findByStatusAndUserId(id, status): Observable<any> {
+    return this.http.put(this.url + '/change-status/' + id, status);
+  }
+
+  findAllByUserId(id: string): Observable<any> {
+    return this.http.get<any>(this.url + '/user/' + id);
+  }
 }

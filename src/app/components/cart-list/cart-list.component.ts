@@ -156,7 +156,7 @@ export class CartListComponent implements OnInit {
   }
 
   deleteCart(id: number) {
-    const choice = confirm('Bạn có chắc chắn muốn xóa ?');
+    const choice = confirm('Are you sure to remove this product in your cart ?');
     if (choice) {
       this.productDetailService.deleteProductDetail(id)
         .subscribe(
