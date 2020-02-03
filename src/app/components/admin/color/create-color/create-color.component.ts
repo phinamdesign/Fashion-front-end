@@ -16,7 +16,7 @@ export class CreateColorComponent implements OnInit {
   constructor(private colorService: ColorService, private router: Router) { }
 
   reloadData() {
-    this.colors = this.colorService.getColorList();
+    this.router.navigate(['create-colors']);
   }
 
   ngOnInit() {
@@ -29,15 +29,11 @@ export class CreateColorComponent implements OnInit {
   save() {
     this.colorService.createColor(this.color).subscribe(data => console.log(data), error => console.log(error));
     this.color = new Color();
-    this.gotoList();
   }
   onSubmit() {
     this.submitted = true;
     this.save();
     this.reloadData();
-  }
-  gotoList() {
-    this.router.navigate(['colors']);
   }
 
 }
