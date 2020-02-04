@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Order} from '../../models/order';
-import {OrderService} from '../../services/order.service';
-import {ProductDetailService} from '../../services/product-detail.service';
-import {TokenStorageService} from '../../auth/token-storage.service';
+import {Order} from '../../../models/order';
+import {OrderService} from '../../../services/order.service';
+import {ProductDetailService} from '../../../services/product-detail.service';
+import {TokenStorageService} from '../../../auth/token-storage.service';
 
 @Component({
   selector: 'app-order-user',

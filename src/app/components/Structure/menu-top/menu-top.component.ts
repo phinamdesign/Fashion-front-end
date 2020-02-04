@@ -1,18 +1,18 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import {Product} from '../../models/product';
-import {ShoppingCart} from '../../models/shopping-cart';
-import {Category} from '../../models/category';
-import {Supplier} from '../../models/supplier';
-import {User} from '../../models/User';
-import {AuthLoginInfo} from '../../auth/login-infor';
-import {AuthService} from '../../auth/auth.service';
-import {TokenStorageService} from '../../auth/token-storage.service';
+import {Product} from '../../../models/product';
+import {ShoppingCart} from '../../../models/shopping-cart';
+import {Category} from '../../../models/category';
+import {Supplier} from '../../../models/supplier';
+import {User} from '../../../models/User';
+import {AuthLoginInfo} from '../../../auth/login-infor';
+import {AuthService} from '../../../auth/auth.service';
+import {TokenStorageService} from '../../../auth/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../services/user.service';
-import {ProductService} from '../../services/product.service';
-import {CategoryService} from '../../services/category.service';
-import {SupplierService} from '../../services/supplier.service';
+import {UserService} from '../../../services/user.service';
+import {ProductService} from '../../../services/product.service';
+import {CategoryService} from '../../../services/category.service';
+import {SupplierService} from '../../../services/supplier.service';
 
 @Component({
   selector: 'app-menu-top',

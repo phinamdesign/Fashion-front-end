@@ -17,7 +17,9 @@
       <tr>
         <td>{{i+1}}</td>
         <td>{{a.order.id}}</td>
-        <td>{{a.order.user.username}}</td>
+        <td><div *ngIf="a.order.user">{{a.order.user.username}}</div>
+        <div *ngIf="!a.order.user">unknown user</div>
+        </td>
         <td>{{a.product.name}}</td>
         <td>{{a.size.name}}</td>
         <td>{{a.color.name}}</td>

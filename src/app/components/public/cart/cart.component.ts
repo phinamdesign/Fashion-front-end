@@ -1,16 +1,16 @@
 import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
-import {Product} from '../../models/product';
-import {CartItem} from '../../models/cart-item';
-import {ProductDetail} from '../../models/productDetail';
+import {Product} from '../../../models/product';
+import {CartItem} from '../../../models/cart-item';
+import {ProductDetail} from '../../../models/productDetail';
 import {Observable, Subscription} from 'rxjs';
-import {ShoppingCart} from '../../models/shopping-cart';
-import {ProductService} from '../../services/product.service';
-import {ProductDetailService} from '../../services/product-detail.service';
-import {OrderService} from '../../services/order.service';
-import {TokenStorageService} from '../../auth/token-storage.service';
+import {ShoppingCart} from '../../../models/shopping-cart';
+import {ProductService} from '../../../services/product.service';
+import {ProductDetailService} from '../../../services/product-detail.service';
+import {OrderService} from '../../../services/order.service';
+import {TokenStorageService} from '../../../auth/token-storage.service';
 import {Router} from '@angular/router';
-import {StorageService} from '../../services/storage.service';
-import {Order} from '../../models/order';
+import {StorageService} from '../../../services/storage.service';
+import {Order} from '../../../models/order';
 // interface ICartItemWithProduct extends CartItem {
 //   product: Product;
 //   totalCost: number;

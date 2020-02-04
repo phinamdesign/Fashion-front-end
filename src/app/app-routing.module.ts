@@ -16,21 +16,21 @@ import {CreateSizeComponent} from './components/admin/size/create-size/create-si
 import {SupplierListComponent} from './components/admin/suppliers/supplier-list/supplier-list.component';
 import {SupplierCreateComponent} from './components/admin/suppliers/supplier-create/supplier-create.component';
 import {SupplierEditComponent} from './components/admin/suppliers/supplier-edit/supplier-edit.component';
-import {CartComponent} from './components/cart/cart.component';
+import {CartComponent} from './components/public/cart/cart.component';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
-import {ProductCategoryComponent} from './components/product-category/product-category.component';
-import {ProductSupplierComponent} from './components/product-supplier/product-supplier.component';
-import {CartListComponent} from './components/cart-list/cart-list.component';
+import {ProductCategoryComponent} from './components/admin/product-category/product-category.component';
+import {ProductSupplierComponent} from './components/admin/product-supplier/product-supplier.component';
+import {CartListComponent} from './components/public/cart-list/cart-list.component';
 import {ListColorComponent} from './components/admin/color/list-color/list-color.component';
 import {CreateColorComponent} from './components/admin/color/create-color/create-color.component';
 import {UpdateColorComponent} from './components/admin/color/update-color/update-color.component';
 import {DetailColorComponent} from './components/admin/color/detail-color/detail-color.component';
 import {ActionProductComponent} from './components/product/action-product/action-product.component';
 import {OrderManagerComponent} from './components/admin/order-manager/order-manager.component';
-import {HomeComponent} from './components/home/home.component';
-import {OrderUserComponent} from './components/order-user/order-user.component';
-import {OrderDetailComponent} from './order-detail/order-detail.component';
+import {OrderUserComponent} from './components/public/order-user/order-user.component';
+import {OrderDetailComponent} from './components/public/order-detail/order-detail.component';
 import {UpdateProductComponent} from './components/product/update-product/update-product.component';
+import {HomeComponent} from './components/Structure/home/home.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
