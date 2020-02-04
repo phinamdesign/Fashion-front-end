@@ -38,7 +38,7 @@
       <td *ngIf="order.status != 'normal'">{{order.deliveryAddress}}</td>
       <td *ngIf="order.status != 'normal'"><b>{{order.status}}</b></td>
       <td *ngIf="order.status != 'normal'">
-        <div *ngIf="order.status=='processing'">
+        <div *ngIf="order.status=='processing'|| order.status=='order'">
           <input class="btn btn-info btn-block" value="Cancel" (click)="changeToCancel(order.id)">
         </div>
       </td>
