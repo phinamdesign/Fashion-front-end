@@ -14,7 +14,8 @@
         <thead class="thead-dark">
         <tr>
           <th>Name</th>
-          <th>Quantity</th>
+          <th>Image</th>
+          <th>Balance</th>
           <th>Price</th>
           <th>Description</th>
           <th>Supplier</th>
@@ -26,6 +27,7 @@
         <tbody>
         <tr *ngFor="let product of listProduct">
           <td>{{product.name}}</td>
+          <td><img [src]="product.pictures[0].src" alt="Card image cap" height="100px" width="100px"></td>
           <td>{{product.quantity}}</td>
           <td>{{product.price| currency: 'VND'}}</td>
           <td>{{product.description}}</td>

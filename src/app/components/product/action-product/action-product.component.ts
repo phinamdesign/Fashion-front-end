@@ -50,7 +50,7 @@ export class ActionProductComponent implements OnInit {
     this.productService.getListProduct().subscribe(next =>
       (this.listProduct = next), err =>
       (this.content = this.content = JSON.parse(err.error).message));
-    this.reloadData();
+    // this.reloadData();
   }
 
   detailsProduct(id: number) {
@@ -62,17 +62,19 @@ export class ActionProductComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    const choice = confirm('Bạn có chắc chắn muốn xoa ?');
+    const choice = confirm('Are you sure to delete this product?');
     if (choice) {
       this.productService.deleteProduct(id)
         .subscribe(
           data => {
             console.log(data);
             // this.reloadData();
+            this.ngOnInit();
           },
-          error => console.log(error)
+          error => {console.log(error);
+                    this.ngOnInit(); }
         );
-      this.router.navigate(['product']);
+      // this.router.navigate(['product']);
     }
   }
 
