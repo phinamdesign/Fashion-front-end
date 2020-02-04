@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tr *ngFor="let order of orderList" class="table-bordered">
-      <td *ngIf="order.status != 'normal'">{{ order.id }}</td>
+      <td *ngIf="order.status != 'normal'"><a [routerLink]="['/order-detail', order.id]">{{ order.id }}</a></td>
       <td *ngIf="order.status != 'normal'">
         <div *ngIf="order.user">
           {{order.user.id}}

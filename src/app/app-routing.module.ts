@@ -29,6 +29,7 @@ import {ActionProductComponent} from './components/product/action-product/action
 import {OrderManagerComponent} from './components/admin/order-manager/order-manager.component';
 import {OrderUserComponent} from './components/order-user/order-user.component';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
+import {UpdateProductComponent} from './components/product/update-product/update-product.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'product',
     component: ListProductComponent
+  },
+  {
+    path: 'update-product/:id',
+    component: UpdateProductComponent
   },
   {
     path: 'details/:id',

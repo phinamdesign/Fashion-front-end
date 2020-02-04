@@ -2,6 +2,7 @@
 <table border="1px">
   <th>STT</th>
   <th>Order code</th>
+  <th>Buyer</th>
   <th>Product name</th>
   <th>Size</th>
   <th>Color</th>
@@ -12,6 +13,7 @@
   <tr *ngFor="let a of productDetails; index as i">
     <td>{{i+1}}</td>
     <td>{{a.order.id}}</td>
+    <td>{{a.order.user.username}}</td>
     <td>{{a.product.name}}</td>
     <td>{{a.size.name}}</td>
     <td>{{a.color.name}}</td>
