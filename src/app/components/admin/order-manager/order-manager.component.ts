@@ -3,6 +3,7 @@ import {OrderService} from '../../../services/order.service';
 import {ProductDetailService} from '../../../services/product-detail.service';
 import {Order} from '../../../models/order';
 import {TokenStorageService} from '../../../auth/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-order-manager',
@@ -15,7 +16,8 @@ export class OrderManagerComponent implements OnInit {
 
   constructor(private orderService: OrderService,
               private productDetailService: ProductDetailService,
-              private token: TokenStorageService) {
+              private token: TokenStorageService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -34,5 +36,20 @@ export class OrderManagerComponent implements OnInit {
     this.orderService.changeOrderStatus(idOrder, 'Done').subscribe(next => {
       this.ngOnInit();
     });
+  }
+  deleteOrder(id: number) {
+    const choice = confirm('Are you sure to remove this order ?');
+    if (choice) {
+      this.orderService.deleteOrder(id)
+        .subscribe(
+          data => {
+            console.log(data);
+            // window.location.reload();
+            this.router.navigate(['order/admin/manager']);
+          },
+          error => console.log(error)
+        );
+    }
+    this.ngOnInit();
   }
 }

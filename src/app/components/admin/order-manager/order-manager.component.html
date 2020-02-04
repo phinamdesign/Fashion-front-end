@@ -44,6 +44,9 @@
         <div *ngIf="order.status=='processing'">
           <input class="btn btn-info btn-block" value="Done" (click)="changeToDone(order.id)">
         </div>
+        <div *ngIf="order.status=='Cancel'">
+          <button class="btn btn-danger" (click)="deleteOrder(order.id)">Delete</button>
+        </div>
       </td>
     </tr>
   </table>

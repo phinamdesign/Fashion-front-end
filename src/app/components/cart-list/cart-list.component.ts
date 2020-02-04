@@ -10,6 +10,7 @@ import {Size} from '../../models/size';
 import {ColorService} from '../../services/color.service';
 import {Color} from '../../models/color';
 import {Router} from '@angular/router';
+import {CartComponent} from '../cart/cart.component';
 
 @Component({
   selector: 'app-cart-list',
@@ -30,7 +31,8 @@ export class CartListComponent implements OnInit {
               private storage: StorageService,
               private sizeService: SizeService,
               private colorService: ColorService,
-              private router: Router
+              private router: Router,
+              private cartComponent: CartComponent
   ) {
   }
 
@@ -162,8 +164,8 @@ export class CartListComponent implements OnInit {
         .subscribe(
           data => {
             console.log(data);
-            window.location.reload();
-            this.router.navigate(['cart-list']);
+            this.ngOnInit();
+            this.cartComponent.ngOnInit();
           },
           error => console.log(error)
         );

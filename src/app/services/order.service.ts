@@ -62,4 +62,7 @@ export class OrderService {
   findAllByUserId(id: string): Observable<any> {
     return this.http.get<any>(this.url + '/user/' + id);
   }
+  deleteOrder(id: number): Observable<any> {
+    return this.http.delete<any>(this.url + '/' + id);
+  }
 }
