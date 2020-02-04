@@ -17,17 +17,20 @@
         <h2>Thông tin chi tiết</h2>
         <hr/>
           <div>
-            <label><b>Name : </b></label> {{product.name}}
+            <label><b>Product name : </b></label> {{product.name}}
           </div>
+        <div>
+          <label><b>Brand : </b></label> {{product.supplier.supplierName}}
+        </div>
           <div>
-            <label><b>Price : </b></label> {{product.price}}
+            <label><b>Price : </b></label> {{product.price| currency: 'VND'}}
           </div>
           <div>
             <label><b>Description : </b></label> {{product.description}}
           </div>
-          <div>
-            <label><b>Quantity : </b></label> {{product.quantity}}
-          </div>
+<!--          <div>-->
+<!--            <label><b>Quantity : </b></label> {{product.quantity}}-->
+<!--          </div>-->
       </div>
       <div class="row mt-3">
         <div class="mr-3 ml-3">
