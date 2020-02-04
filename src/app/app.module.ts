@@ -15,7 +15,6 @@ import {DetailsProductComponent} from './components/product/details-product/deta
 import {FooterComponent} from './components/footer/footer.component';
 import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
-import {SlideShowProductComponent} from './components/slide-show-product/slide-show-product.component';
 import {DeleteProductComponent} from './components/product/delete-product/delete-product.component';
 import { CategoryCreateComponent } from './components/admin/category/category-create/category-create.component';
 import { CategoryEditComponent } from './components/admin/category/category-edit/category-edit.component';
@@ -44,6 +43,8 @@ import { ActionProductComponent } from './components/product/action-product/acti
 import { OrderManagerComponent } from './components/admin/order-manager/order-manager.component';
 import { OrderUserComponent } from './components/order-user/order-user.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { MenuTopComponent } from './components/menu-top/menu-top.component';
+import { TopSlideShowComponent } from './components/top-slide-show/top-slide-show.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,6 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    SlideShowProductComponent,
     DeleteProductComponent,
     CategoryCreateComponent,
     CategoryEditComponent,
@@ -83,6 +83,9 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     ProductSupplierComponent,
     CartListComponent,
     ActionProductComponent,
+    OrderManagerComponent,
+    MenuTopComponent,
+    TopSlideShowComponent,
     OrderManagerComponent,
     OrderUserComponent,
     OrderDetailComponent

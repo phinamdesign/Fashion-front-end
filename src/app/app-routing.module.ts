@@ -27,12 +27,17 @@ import {UpdateColorComponent} from './components/admin/color/update-color/update
 import {DetailColorComponent} from './components/admin/color/detail-color/detail-color.component';
 import {ActionProductComponent} from './components/product/action-product/action-product.component';
 import {OrderManagerComponent} from './components/admin/order-manager/order-manager.component';
+import {HomeComponent} from './components/home/home.component';
 import {OrderUserComponent} from './components/order-user/order-user.component';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
 import {UpdateProductComponent} from './components/product/update-product/update-product.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'product', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: 'home',
+    component: HomeComponent
+  },
   {
     path: 'login',
     component: LoginComponent
