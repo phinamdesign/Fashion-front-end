@@ -27,7 +27,7 @@
         <tr *ngFor="let product of listProduct">
           <td>{{product.name}}</td>
           <td>{{product.quantity}}</td>
-          <td>{{product.price}}</td>
+          <td>{{product.price| currency: 'VND'}}</td>
           <td>{{product.description}}</td>
           <td>{{product.supplier.supplierName}}</td>
           <td>{{product.category.categoryName}}</td>
