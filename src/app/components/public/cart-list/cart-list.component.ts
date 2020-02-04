@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {TokenStorageService} from '../../auth/token-storage.service';
-import {ProductDetail} from '../../models/productDetail';
-import {Order} from '../../models/order';
-import {StorageService} from '../../services/storage.service';
-import {ProductDetailService} from '../../services/product-detail.service';
-import {OrderService} from '../../services/order.service';
-import {SizeService} from '../../services/size.service';
-import {Size} from '../../models/size';
-import {ColorService} from '../../services/color.service';
-import {Color} from '../../models/color';
+import {TokenStorageService} from '../../../auth/token-storage.service';
+import {ProductDetail} from '../../../models/productDetail';
+import {Order} from '../../../models/order';
+import {StorageService} from '../../../services/storage.service';
+import {ProductDetailService} from '../../../services/product-detail.service';
+import {OrderService} from '../../../services/order.service';
+import {SizeService} from '../../../services/size.service';
+import {Size} from '../../../models/size';
+import {ColorService} from '../../../services/color.service';
+import {Color} from '../../../models/color';
 import {Router} from '@angular/router';
 import {CartComponent} from '../cart/cart.component';
 

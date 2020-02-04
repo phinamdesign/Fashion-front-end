@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SlideShowProductComponent } from './slide-show-product.component';
+import { TopSlideShowComponent } from './top-slide-show.component';
 
-describe('SlideShowProductComponent', () => {
-  let component: SlideShowProductComponent;
-  let fixture: ComponentFixture<SlideShowProductComponent>;
+describe('TopSlideShowComponent', () => {
+  let component: TopSlideShowComponent;
+  let fixture: ComponentFixture<TopSlideShowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SlideShowProductComponent ]
+      declarations: [ TopSlideShowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SlideShowProductComponent);
+    fixture = TestBed.createComponent(TopSlideShowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

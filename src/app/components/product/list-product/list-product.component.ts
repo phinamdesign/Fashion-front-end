@@ -6,7 +6,7 @@ import { ProductService } from '../../../services/product.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Category} from '../../../models/category';
 import {Supplier} from '../../../models/supplier';
-import {CartComponent} from '../../cart/cart.component';
+import {CartComponent} from '../../public/cart/cart.component';
 import {SearchProductByName} from '../../../models/SearchProductByName';
 
 @Component({

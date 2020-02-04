@@ -42,7 +42,7 @@
 .menu-top a{
   border-bottom: 1px solid white;
 }
-.menu-top a:last-child{
+.last-child{
   border-bottom: none;
 }
 .menu-top{

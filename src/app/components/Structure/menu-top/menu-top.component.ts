@@ -1,26 +1,26 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TokenStorageService} from '../../auth/token-storage.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../services/user.service';
-import {AuthService} from '../../auth/auth.service';
-import {AuthLoginInfo} from '../../auth/login-infor';
-import {User} from '../../models/User';
-import {ProductService} from '../../services/product.service';
-// import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Observable, Subscription} from 'rxjs';
-import {Product} from '../../models/product';
-import {ShoppingCart} from '../../models/shopping-cart';
-import {Category} from '../../models/category';
-import {CategoryService} from '../../services/category.service';
-import {Supplier} from '../../models/supplier';
-import {SupplierService} from '../../services/supplier.service';
+import {Product} from '../../../models/product';
+import {ShoppingCart} from '../../../models/shopping-cart';
+import {Category} from '../../../models/category';
+import {Supplier} from '../../../models/supplier';
+import {User} from '../../../models/User';
+import {AuthLoginInfo} from '../../../auth/login-infor';
+import {AuthService} from '../../../auth/auth.service';
+import {TokenStorageService} from '../../../auth/token-storage.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../../services/user.service';
+import {ProductService} from '../../../services/product.service';
+import {CategoryService} from '../../../services/category.service';
+import {SupplierService} from '../../../services/supplier.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-menu-top',
+  templateUrl: './menu-top.component.html',
+  styleUrls: ['./menu-top.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class MenuTopComponent implements OnInit, OnDestroy {
+
   public itemCount: number;
   public products: Observable<Product[]>;
   private cartSubscription: Subscription;
@@ -94,4 +94,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.reloadPage();
   }
+
 }

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 import {Observable, Observer} from 'rxjs';
-import {CartComponent} from '../../cart/cart.component';
+import {CartComponent} from '../../public/cart/cart.component';
 // import {ShoppingCartService} from '../../../services/shopping-cart.service';
 import {Commenter } from '../../../models/commenter';
 import {CommenterService} from '../../../services/commenter.service';

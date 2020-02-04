@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Order} from '../models/order';
-import {OrderService} from '../services/order.service';
-import {ProductDetailService} from '../services/product-detail.service';
-import {TokenStorageService} from '../auth/token-storage.service';
-import {ProductDetail} from '../models/productDetail';
+import {Order} from '../../../models/order';
+import {OrderService} from '../../../services/order.service';
+import {ProductDetailService} from '../../../services/product-detail.service';
+import {TokenStorageService} from '../../../auth/token-storage.service';
+import {ProductDetail} from '../../../models/productDetail';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
