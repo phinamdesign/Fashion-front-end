@@ -43,6 +43,7 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
 import { ActionProductComponent } from './components/product/action-product/action-product.component';
 import { OrderManagerComponent } from './components/admin/order-manager/order-manager.component';
 import { OrderUserComponent } from './components/order-user/order-user.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { OrderUserComponent } from './components/order-user/order-user.component
     CartListComponent,
     ActionProductComponent,
     OrderManagerComponent,
-    OrderUserComponent
+    OrderUserComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

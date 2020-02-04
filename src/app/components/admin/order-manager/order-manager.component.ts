@@ -45,11 +45,10 @@ export class OrderManagerComponent implements OnInit {
           data => {
             console.log(data);
             // window.location.reload();
-            this.router.navigate(['order/admin/manager']);
+            this.ngOnInit();
           },
           error => console.log(error)
         );
     }
-    this.ngOnInit();
   }
 }

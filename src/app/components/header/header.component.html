@@ -48,11 +48,7 @@
                 <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="create-sizes" class="nav-link" routerLinkActive="active">Create Size</a></li>
               </ul>
             </li>
-            <!------------->
-            <li *ngFor="let role of info.authorities">
-              <a *ngIf="role === 'ROLE_ADMIN'" routerLink="order/admin/manager" class="nav-link" routerLinkActive="active">Order</a>
-            </li>
-            <!-----Fillter---->
+
             <li class="dropdown">
               <a class="dropdown-toggle" href="#" id="navbarDropdown" role="ADMIN" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Supplier filter</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -78,7 +74,10 @@
               <div class="dropdown-menu menu-top" style="background: #34495e">
                 <a class="dropdown-item text-center" [routerLink]="'profile'">My Profile</a>
                 <a class="dropdown-item text-center" [routerLink]="'register'">Register</a>
-                <a class="dropdown-item text-center" [routerLink]="'order/user/manager'">Check my order</a>
+                <div *ngFor="let role of info.authorities">
+                    <a class="dropdown-item text-center" *ngIf="role === 'ROLE_USER'"  [routerLink]="'order/user/manager'">Check order history</a>
+                    <a class="dropdown-item text-center" *ngIf="role === 'ROLE_ADMIN'"  [routerLink]="'order/admin/manager'">Order manager</a>
+                </div>
                 <a class="dropdown-item text-center" (click)="logout()" >Logout</a>
               </div>
             </div>

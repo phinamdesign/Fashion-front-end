@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tr *ngFor="let order of orderList" class="table-bordered">
-      <td *ngIf="order.status != 'normal'">{{ order.id }}</td>
+      <td *ngIf="order.status != 'normal'"><a [routerLink]="['/order-detail', order.id]">{{ order.id }}</a></td>
       <td *ngIf="order.status != 'normal'">
         <div *ngIf="order.user">
           {{order.user.id}}
@@ -39,7 +39,7 @@
       <td *ngIf="order.status != 'normal'"><b>{{order.status}}</b></td>
       <td *ngIf="order.status != 'normal'">
         <div *ngIf="order.status=='processing'|| order.status=='order'">
-          <input class="btn btn-info btn-block" value="Cancel" (click)="changeToCancel(order.id)">
+          <input class="btn btn-info btn-danger" value="Cancel" (click)="changeToCancel(order.id)">
         </div>
       </td>
     </tr>

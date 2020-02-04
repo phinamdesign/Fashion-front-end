@@ -28,6 +28,7 @@ import {DetailColorComponent} from './components/admin/color/detail-color/detail
 import {ActionProductComponent} from './components/product/action-product/action-product.component';
 import {OrderManagerComponent} from './components/admin/order-manager/order-manager.component';
 import {OrderUserComponent} from './components/order-user/order-user.component';
+import {OrderDetailComponent} from './order-detail/order-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'product', pathMatch: 'full'},
@@ -123,6 +124,10 @@ const routes: Routes = [
   {
     path: 'order/user/manager',
     component: OrderUserComponent
+  },
+  {
+    path: 'order-detail/:id',
+    component: OrderDetailComponent
   }
 ];
 
