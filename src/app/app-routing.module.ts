@@ -27,9 +27,14 @@ import {UpdateColorComponent} from './components/admin/color/update-color/update
 import {DetailColorComponent} from './components/admin/color/detail-color/detail-color.component';
 import {ActionProductComponent} from './components/product/action-product/action-product.component';
 import {OrderManagerComponent} from './components/admin/order-manager/order-manager.component';
+import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'product', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: 'home',
+    component: HomeComponent
+  },
   {
     path: 'login',
     component: LoginComponent
