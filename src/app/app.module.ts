@@ -12,10 +12,10 @@ import {ListProductComponent} from './components/product/list-product/list-produ
 import {CreateProductComponent} from './components/product/create-product/create-product.component';
 import {UpdateProductComponent} from './components/product/update-product/update-product.component';
 import {DetailsProductComponent} from './components/product/details-product/details-product.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {HeaderComponent} from './components/header/header.component';
-import {HomeComponent} from './components/home/home.component';
-import {SlideShowProductComponent} from './components/slide-show-product/slide-show-product.component';
+import {FooterComponent} from './components/Structure/footer/footer.component';
+import {HeaderComponent} from './components/Structure/header/header.component';
+import {HomeComponent} from './components/Structure/home/home.component';
+import {SlideShowProductComponent} from './components/Structure/slide-show-product/slide-show-product.component';
 import {DeleteProductComponent} from './components/product/delete-product/delete-product.component';
 import { CategoryCreateComponent } from './components/admin/category/category-create/category-create.component';
 import { CategoryEditComponent } from './components/admin/category/category-edit/category-edit.component';
@@ -35,15 +35,15 @@ import { SupplierEditComponent } from './components/admin/suppliers/supplier-edi
 import { ProductDetailCreateComponent } from './components/product-detail/product-detail-create/product-detail-create.component';
 import { ProductDetailListComponent } from './components/product-detail/product-detail-list/product-detail-list.component';
 import { ProductDetailEditComponent } from './components/product-detail/product-detail-edit/product-detail-edit.component';
-import { CartComponent } from './components/cart/cart.component';
+import { CartComponent } from './components/public/cart/cart.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
-import { ProductCategoryComponent } from './components/product-category/product-category.component';
-import { ProductSupplierComponent } from './components/product-supplier/product-supplier.component';
-import { CartListComponent } from './components/cart-list/cart-list.component';
+import { ProductCategoryComponent } from './components/admin/product-category/product-category.component';
+import { ProductSupplierComponent } from './components/admin/product-supplier/product-supplier.component';
+import { CartListComponent } from './components/public/cart-list/cart-list.component';
 import { ActionProductComponent } from './components/product/action-product/action-product.component';
 import { OrderManagerComponent } from './components/admin/order-manager/order-manager.component';
-import { OrderUserComponent } from './components/order-user/order-user.component';
-import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { OrderUserComponent } from './components/public/order-user/order-user.component';
+import { OrderDetailComponent } from './components/public/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [

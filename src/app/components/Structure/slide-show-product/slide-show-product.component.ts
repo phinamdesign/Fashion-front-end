@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from '../../services/product.service';
+import {ProductService} from '../../../services/product.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Product} from '../../models/product';
+import {Product} from '../../../models/product';
 
 @Component({
   selector: 'app-slide-show-product',
