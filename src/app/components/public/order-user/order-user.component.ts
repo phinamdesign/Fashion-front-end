@@ -3,6 +3,7 @@ import {Order} from '../../../models/order';
 import {OrderService} from '../../../services/order.service';
 import {ProductDetailService} from '../../../services/product-detail.service';
 import {TokenStorageService} from '../../../auth/token-storage.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-user',
@@ -18,7 +19,9 @@ export class OrderUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.findAllByUserId(this.token.getUserId()).subscribe(next => {
+    this.orderService.findAllByUserId(this.token.getUserId()).pipe(
+      map(res => res.sort((a, b) => a.date < b.date ? 1 : -1))
+    ).subscribe(next => {
       this.orderList = next;
     });
   }

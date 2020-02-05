@@ -4,6 +4,7 @@ import {ProductDetailService} from '../../../services/product-detail.service';
 import {Order} from '../../../models/order';
 import {TokenStorageService} from '../../../auth/token-storage.service';
 import {Router} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-manager',
@@ -21,7 +22,9 @@ export class OrderManagerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.getOrderList().subscribe(next => {
+    this.orderService.getOrderList().pipe(
+      map(res => res.sort((a, b) => a.date < b.date ? 1 : -1))
+    ).subscribe(next => {
       this.orderList = next;
     });
   }
