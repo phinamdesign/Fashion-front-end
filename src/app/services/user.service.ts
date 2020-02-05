@@ -20,17 +20,17 @@ export class UserService {
   //   return this.http.get<Diary[]>(this.svUserUrl + userId + '/diary' );
   // }
 
-  getUserById(userId: string): Observable<User> {
-    return this.http.get<User>(`${this.userUrl}/${userId}`);
-  }
-
-  getListUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.userUrl);
-  }
-
-  deleteUserById(id: string): Observable<void> {
-    return this.http.delete<void>(this.userUrl + id);
-  }
+  // getUserById(userId: string): Observable<User> {
+  //   return this.http.get<User>(`${this.userUrl}/${userId}`);
+  // }
+  //
+  // getListUser(): Observable<User[]> {
+  //   return this.http.get<User[]>(this.userUrl);
+  // }
+  //
+  // deleteUserById(id: string): Observable<void> {
+  //   return this.http.delete<void>(this.userUrl + id);
+  // }
 
   // searchUserByName(user: SearchUserByName): Observable<User[]> {
   //   return this.http.post<User[]>(this.svUserUrl + 'search-by-name' , user);
