@@ -44,6 +44,7 @@ import { OrderUserComponent } from './components/public/order-user/order-user.co
 import { OrderDetailComponent } from './components/public/order-detail/order-detail.component';
 import {MenuTopComponent} from './components/Structure/menu-top/menu-top.component';
 import {TopSlideShowComponent} from './components/Structure/top-slide-show/top-slide-show.component';
+import { IntroduceComponent } from './components/Structure/introduce/introduce.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import {TopSlideShowComponent} from './components/Structure/top-slide-show/top-s
     TopSlideShowComponent,
     OrderManagerComponent,
     OrderUserComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    IntroduceComponent
   ],
   imports: [
     BrowserModule,
