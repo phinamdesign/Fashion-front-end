@@ -90,13 +90,9 @@
             </div>
 
           </ng-template>
-          <div *ngFor="let role of info.authorities">
-            <div *ngIf="role != 'ROLE_ADMIN'">
+            <div *ngIf="!isAdminRole">
               <app-cart></app-cart>
             </div>
-          </div>
-
-
         </div>
       </nav>
     </div>

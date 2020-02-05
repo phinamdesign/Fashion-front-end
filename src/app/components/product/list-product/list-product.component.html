@@ -16,8 +16,8 @@
           <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
           <div>Category: {{product.category.categoryName}}</div>
           <div>Brand: {{product.supplier.supplierName}}</div>
-         <div class="mt-3" align="center" *ngFor="let role of info.authorities">
-           <button *ngIf="role != 'ROLE_ADMIN'" class="btn btn-outline-secondary text-center"><a (click)="addCart(product.id)">Add cart</a></button>
+         <div class="mt-3" align="center">
+           <button *ngIf="!isAdminRole" class="btn btn-outline-secondary text-center"><a (click)="addCart(product.id)">Add cart</a></button>
          </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ import {UserService} from '../../../services/user.service';
 import {ProductService} from '../../../services/product.service';
 import {CategoryService} from '../../../services/category.service';
 import {SupplierService} from '../../../services/supplier.service';
+import {CartComponent} from '../../public/cart/cart.component';
 
 @Component({
   selector: 'app-menu-top',
@@ -20,6 +21,10 @@ import {SupplierService} from '../../../services/supplier.service';
   styleUrls: ['./menu-top.component.css']
 })
 export class MenuTopComponent implements OnInit, OnDestroy {
+  private roles: string[];
+  isLoggedIn = false;
+  isAdminRole = false;
+  username: string;
 
   public itemCount: number;
   public products: Observable<Product[]>;
@@ -36,28 +41,23 @@ export class MenuTopComponent implements OnInit, OnDestroy {
               private router: Router,
               private userService: UserService,
               private productsService: ProductService,
-              // private shoppingCartService: ShoppingCartService,
               private categoryService: CategoryService,
-              private supplierService: SupplierService
+              private supplierService: SupplierService,
+              private cartComponent: CartComponent
   ) { }
 
   ngOnInit() {
     this.productsService.getListProduct();
-    // this.cart = this.shoppingCartService.get();
-    // this.cartSubscription = this.cart.subscribe((cart) => {
-    //   this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
-    // });
     this.info = {
       name: this.token.getName(),
       token: this.token.getToken(),
       username: this.token.getUsername(),
       authorities: this.token.getAuthorities(),
       userId: this.token.getUserId(),
-      avatar: this.token.getAvatar()
+      avatar: this.token.getAvatar(),
     };
     console.log(this.info);
     if (this.info.userId) {
-      // this.gerUserByUserID();
     }
     this.categoryService.getCategory().subscribe(next => {
       this.categories = next;
@@ -66,6 +66,16 @@ export class MenuTopComponent implements OnInit, OnDestroy {
       this.suppliers = next;
     }, error => (console.log(error)));
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/login';
+
+    this.isLoggedIn = !!this.token.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.token.getUser();
+      this.roles = this.info.authorities;
+
+      this.isAdminRole = this.roles.includes('ROLE_ADMIN');
+      this.username = user.username;
+    }
   }
 
   logout() {
@@ -74,6 +84,7 @@ export class MenuTopComponent implements OnInit, OnDestroy {
       this.token.signOut();
       this.router.navigateByUrl(this.returnUrl);
       // this.ngOnDestroy();
+      this.cartComponent.ngOnInit();
       this.ngOnInit();
     }
   }

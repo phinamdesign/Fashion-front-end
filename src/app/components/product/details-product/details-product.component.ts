@@ -18,6 +18,10 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./details-product.component.css']
 })
 export class DetailsProductComponent implements OnInit {
+  private roles: string[];
+  isLoggedIn = false;
+  isAdminRole = false;
+  username: string;
   id: number;
   product: Product;
   iShow = false;
@@ -72,6 +76,15 @@ export class DetailsProductComponent implements OnInit {
       avatar: this.token.getAvatar()
     };
     this.getAllCommentThisProduct();
+    this.isLoggedIn = !!this.token.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.token.getUser();
+      this.roles = this.info.authorities;
+
+      this.isAdminRole = this.roles.includes('ROLE_ADMIN');
+      this.username = user.username;
+    }
   }
 
   backToList() {
