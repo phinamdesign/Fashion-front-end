@@ -57,7 +57,7 @@ export class MenuTopComponent implements OnInit, OnDestroy {
     };
     console.log(this.info);
     if (this.info.userId) {
-      this.gerUserByUserID();
+      // this.gerUserByUserID();
     }
     this.categoryService.getCategory().subscribe(next => {
       this.categories = next;
@@ -73,19 +73,20 @@ export class MenuTopComponent implements OnInit, OnDestroy {
     if (choice) {
       this.token.signOut();
       this.router.navigateByUrl(this.returnUrl);
-      this.ngOnDestroy();
+      // this.ngOnDestroy();
+      this.ngOnInit();
     }
   }
 
-  gerUserByUserID() {
-    this.userService.getUserById(this.info.userId).subscribe(
-      result => {
-        this.user = result;
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
+  // gerUserByUserID() {
+  //   this.userService.getUserById(this.info.userId).subscribe(
+  //     result => {
+  //       this.user = result;
+  //     }, error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   reloadPage() {
     window.location.reload();

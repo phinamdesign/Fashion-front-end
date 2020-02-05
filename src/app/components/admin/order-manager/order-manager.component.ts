@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../../services/order.service';
 import {ProductDetailService} from '../../../services/product-detail.service';
 import {Order} from '../../../models/order';
@@ -37,6 +37,7 @@ export class OrderManagerComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
   deleteOrder(id: number) {
     const choice = confirm('Are you sure to remove this order ?');
     if (choice) {
@@ -47,7 +48,10 @@ export class OrderManagerComponent implements OnInit {
             // window.location.reload();
             this.ngOnInit();
           },
-          error => console.log(error)
+          error => {
+            console.log(error);
+            this.ngOnInit();
+          }
         );
     }
   }

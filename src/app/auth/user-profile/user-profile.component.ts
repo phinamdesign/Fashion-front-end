@@ -52,7 +52,7 @@ export class UserProfileComponent implements OnInit {
       avatar: this.token.getAvatar(),
     };
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/login';
-    this.getUser();
+    // this.getUser();
   }
 
   updatePassword(closeButton: HTMLInputElement) {
@@ -115,15 +115,15 @@ export class UserProfileComponent implements OnInit {
       this.filePath = reader.result;
     };
   }
-  getUser() {
-    if (this.token) {
-      this.userService.getUserById(this.token.getUserId()).subscribe(
-        result => {
-          this.user = result;
-        }, error1 => {
-          console.log(error1);
-        }
-      );
-    }
-  }
+  // getUser() {
+  //   if (this.token) {
+  //     this.userService.getUserById(this.token.getUserId()).subscribe(
+  //       result => {
+  //         this.user = result;
+  //       }, error1 => {
+  //         console.log(error1);
+  //       }
+  //     );
+  //   }
+  // }
 }
