@@ -8,6 +8,7 @@ import {Category} from '../../../models/category';
 import {Supplier} from '../../../models/supplier';
 import {CartComponent} from '../../public/cart/cart.component';
 import {SearchProductByName} from '../../../models/SearchProductByName';
+import {TokenStorageService} from '../../../auth/token-storage.service';
 
 @Component({
   selector: 'app-list-product',
@@ -29,6 +30,8 @@ export class ListProductComponent implements OnInit {
   private category: Category;
   private supplier: Supplier;
   listProduct: Product[] = [];
+  info: { name: string; avatar: string; userId: string; authorities: string[]; token: string; username: string };
+
   productForm = new FormGroup({
     name: new FormControl('')
   });
@@ -37,7 +40,8 @@ export class ListProductComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private cart: CartComponent
+    private cart: CartComponent,
+    private token: TokenStorageService
   ) {
     this.activatedRoute.params.subscribe(
       params => {
@@ -50,6 +54,14 @@ export class ListProductComponent implements OnInit {
     this.productService.getListProduct().subscribe(next =>
       (this.listProduct = next), err =>
       (this.content = this.content = JSON.parse(err.error).message));
+    this.info = {
+      name: this.token.getName(),
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities(),
+      userId: this.token.getUserId(),
+      avatar: this.token.getAvatar()
+    };
   }
 
   // reloadData() {
