@@ -1,3 +1,12 @@
 .product_image {
   max-height: 200px;
 }
+.icon{
+  font-size: 25px;
+  margin-right: 5px;
+}
+.count{
+  font-size: 20px;
+  color: red;
+  border-radius: 15px;
+}

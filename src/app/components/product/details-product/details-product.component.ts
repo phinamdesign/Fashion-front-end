@@ -20,7 +20,7 @@ export class DetailsProductComponent implements OnInit {
   id: number;
   product: Product;
   iShow = false;
-  iEdit : boolean;
+  iEdit: boolean;
   public products: Observable<Product[]>;
   listCommenter: Commenter[] = [];
   userId: string;
