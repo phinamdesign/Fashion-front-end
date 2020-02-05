@@ -145,8 +145,16 @@ export class CartListComponent implements OnInit {
     this.orderService.toOrder(this.order).subscribe(next => {
       console.log(next);
       this.storage.remove();
-      window.location.reload();
+      // window.location.reload();
+      this.ngOnInit();
     });
+    const choice = confirm('Create order is succeed, do you want to see your order history?');
+    if (choice) {
+            this.router.navigate(['order/user/manager']);
+  } else {
+      this.router.navigate(['']);
+    }
+    this.cartComponent.ngOnInit();
   }
 
   onChangePhone(event) {

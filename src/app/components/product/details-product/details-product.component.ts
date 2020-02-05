@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
-import { Product } from '../../../models/product';
-import { ProductService } from '../../../services/product.service';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Product} from '../../../models/product';
+import {ProductService} from '../../../services/product.service';
 import {Observable, Observer} from 'rxjs';
 import {CartComponent} from '../../public/cart/cart.component';
 // import {ShoppingCartService} from '../../../services/shopping-cart.service';
-import {Commenter } from '../../../models/commenter';
+import {Commenter} from '../../../models/commenter';
 import {CommenterService} from '../../../services/commenter.service';
 import {TokenStorageService} from '../../../auth/token-storage.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {FormControl, FormGroup} from '@angular/forms';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-details-product',
@@ -29,7 +30,7 @@ export class DetailsProductComponent implements OnInit {
   productId: string;
   info: { name: string; avatar: string; userId: string; authorities: string[]; token: string; username: string };
 
-  formCommenterCreate = new FormGroup( {
+  formCommenterCreate = new FormGroup({
     contentInput: new FormControl('')
   });
   contentUpdate = new FormControl();
@@ -39,7 +40,7 @@ export class DetailsProductComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cart: CartComponent,
-    private commenterService: CommenterService ,
+    private commenterService: CommenterService,
     private domSanitizer: DomSanitizer,
     private token: TokenStorageService
     // private shoppingCartService: ShoppingCartService
@@ -50,6 +51,7 @@ export class DetailsProductComponent implements OnInit {
     this.userId = this.token.getUserId();
     this.tokenJWT = this.token.getToken();
   }
+
 //
   ngOnInit() {
     this.product = new Product();
@@ -74,10 +76,12 @@ export class DetailsProductComponent implements OnInit {
 
   backToList() {
     this.router.navigate(['product']);
-}
+  }
 
   getAllCommentThisProduct() {
-    this.commenterService.getAllCommenterByProductId(this.productId).subscribe(
+    this.commenterService.getAllCommenterByProductId(this.productId).pipe(
+      map(res => res.sort((a, b) => a.date < b.date ? 1 : -1))
+    ).subscribe(
       result => {
         this.listCommenter = result;
       }, error => {
@@ -99,10 +103,10 @@ export class DetailsProductComponent implements OnInit {
     }
 
     const commenter: Commenter = {
-      productId: this.productId ,
+      productId: this.productId,
       content: contentInput,
-      user : {
-        id : this.token.getUserId(),
+      user: {
+        id: this.token.getUserId(),
         name: this.token.getName(),
         phone: this.token.getPhone(),
         address: this.token.getAddress(),
@@ -111,7 +115,7 @@ export class DetailsProductComponent implements OnInit {
     };
     this.commenterService.createCommenter(commenter).subscribe(
       result => {
-        console.log(result , 'ok');
+        console.log(result, 'ok');
         this.getAllCommentThisProduct();
         this.formCommenterCreate.reset();
       }, error => {
@@ -135,7 +139,7 @@ export class DetailsProductComponent implements OnInit {
       return this.closeForm(closeModalRef);
     }
     const commenter: Commenter = {
-      id: commenterId ,
+      id: commenterId,
       content: this.contentUpdate.value
     };
     this.commenterService.editComment(commenter).subscribe(
@@ -158,6 +162,7 @@ export class DetailsProductComponent implements OnInit {
       }
     );
   }
+
 //
 //   listProduct() {
 //     this.router.navigate(['product']);

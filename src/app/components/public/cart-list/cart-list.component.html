@@ -33,7 +33,7 @@
           </select>
         </td>
         <td>{{cart.product.price | currency: "VND" : "đ"}}</td>
-        <td><input type="number" style="width: 50px" [value]="cart.quantity" name="quantity"
+        <td><input type="number" step="1" style="width: 50px" [value]="cart.quantity" name="quantity"
                    (change)="onChangeQuantity($event, cart)"></td>
         <td>{{cart.product.price * cart.quantity | currency: "VND"}}</td>
         <td> <button class="btn btn-danger" (click)="deleteCart(cart.id)">Delete</button></td>
