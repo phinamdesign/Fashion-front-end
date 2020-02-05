@@ -17,6 +17,10 @@ import {TokenStorageService} from '../../../auth/token-storage.service';
 })
 export class ListProductComponent implements OnInit {
   // products: Product[] = [];
+  private roles: string[];
+  isLoggedIn = false;
+  isAdminRole = false;
+  username: string;
   content: string;
   p = 1;
   private nameProduct = '';
@@ -62,6 +66,15 @@ export class ListProductComponent implements OnInit {
       userId: this.token.getUserId(),
       avatar: this.token.getAvatar()
     };
+    this.isLoggedIn = !!this.token.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.token.getUser();
+      this.roles = this.info.authorities;
+
+      this.isAdminRole = this.roles.includes('ROLE_ADMIN');
+      this.username = user.username;
+    }
   }
 
   // reloadData() {

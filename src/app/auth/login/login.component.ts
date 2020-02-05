@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.token.saveName(data.name);
         this.token.saveEmail(data.email);
         this.token.saveAvatar(data.avatar);
+        this.token.saveUser(data);
 
         console.log(this.token);
         this.isLoginFailed = false;
