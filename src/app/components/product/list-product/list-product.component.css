@@ -21,3 +21,16 @@
 .page{
   margin: 0px auto;
 }
+.imageProduct{
+  overflow: hidden;
+  width: 238px;
+  height: 238px;
+}
+.imageProduct img{
+  transition: 0.5s;
+}
+.imageProduct:hover img{
+  cursor: pointer;
+  transition: 0.5s;
+  transform: scale(1.3);
+}
