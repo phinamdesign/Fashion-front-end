@@ -4,6 +4,7 @@ import {AuthService} from '../auth.service';
 import {TokenStorageService} from '../token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthLoginInfo} from '../login-infor';
+import {CartComponent} from '../../components/public/cart/cart.component';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
 
   constructor(private authService: AuthService, private token: TokenStorageService, private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private cartComponent: CartComponent) {
   }
 
   ngOnInit() {
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.isLoggedIn = true;
         this.roles = this.token.getAuthorities();
         this.router.navigateByUrl(this.returnUrl);
+        this.cartComponent.ngOnInit();
       },
       error => {
         console.log(error);

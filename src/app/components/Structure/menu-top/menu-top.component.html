@@ -74,9 +74,9 @@
               <div class="dropdown-menu menu-top" style="background: #34495e">
                 <a class="dropdown-item text-center" [routerLink]="'profile'">My Profile</a>
                 <a class="dropdown-item text-center" [routerLink]="'register'">Register</a>
-                <div *ngFor="let role of info.authorities">
-                  <a class="dropdown-item text-center" *ngIf="role === 'ROLE_USER'"  [routerLink]="'order/user/manager'">Check order history</a>
-                  <a class="dropdown-item text-center" *ngIf="role === 'ROLE_ADMIN'"  [routerLink]="'order/admin/manager'">Order manager</a>
+                <div>
+                  <a class="dropdown-item text-center"  *ngIf="!isAdminRole" [routerLink]="'order/user/manager'">Check order history</a>
+                  <a class="dropdown-item text-center" *ngIf="isAdminRole" [routerLink]="'order/admin/manager'">Order manager</a>
                 </div>
                 <a class="dropdown-item text-center last-child" (click)="logout()" >Logout</a>
               </div>
