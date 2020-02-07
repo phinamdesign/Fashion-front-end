@@ -158,7 +158,7 @@ export class CartListComponent implements OnInit {
     // });
     const choice = confirm('Create order is succeed, do you want to see your order history?');
     if (choice) {
-            this.router.navigate(['order/user/manager']);
+            this.router.navigate(['order/user/filter']);
   } else {
       this.router.navigate(['']);
     }

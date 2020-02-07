@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {OrderService} from '../../../services/order.service';
 import {ProductDetailService} from '../../../services/product-detail.service';
 import {Order} from '../../../models/order';
 import {TokenStorageService} from '../../../auth/token-storage.service';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
+import {OrderFilterComponent} from '../order-filter/order-filter.component';
 
 @Component({
   selector: 'app-order-manager',
@@ -12,21 +13,20 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./order-manager.component.css']
 })
 export class OrderManagerComponent implements OnInit {
-
-  orderList: Order[];
+  @Input() orderList;
+  @Output() updateList = new EventEmitter();
+  // orderList: Order[];
 
   constructor(private orderService: OrderService,
               private productDetailService: ProductDetailService,
               private token: TokenStorageService,
-              private router: Router) {
+              private router: Router,
+              private orderFilterComponent: OrderFilterComponent) {
   }
 
   ngOnInit() {
-    this.orderService.getOrderList().pipe(
-      map(res => res.sort((a, b) => a.date < b.date ? 1 : -1))
-    ).subscribe(next => {
-      this.orderList = next;
-    });
+    this.orderService.getOrderList();
+    this.orderFilterComponent.ngOnInit();
   }
 
   changeToProcessing(idOrder) {

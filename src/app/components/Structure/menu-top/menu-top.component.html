@@ -75,8 +75,8 @@
                 <a class="dropdown-item text-center" [routerLink]="'profile'">My Profile</a>
                 <a class="dropdown-item text-center" [routerLink]="'register'">Register</a>
                 <div>
-                  <a class="dropdown-item text-center"  *ngIf="!isAdminRole" [routerLink]="'order/user/manager'">Check order history</a>
-                  <a class="dropdown-item text-center" *ngIf="isAdminRole" [routerLink]="'order/admin/manager'">Order manager</a>
+                  <a class="dropdown-item text-center"  *ngIf="!isAdminRole" [routerLink]="'order/user/filter'">Check order history</a>
+                  <a class="dropdown-item text-center" *ngIf="isAdminRole" [routerLink]="'order/admin/filter'">Order manager</a>
                 </div>
                 <a class="dropdown-item text-center last-child" (click)="logout()" >Logout</a>
               </div>
