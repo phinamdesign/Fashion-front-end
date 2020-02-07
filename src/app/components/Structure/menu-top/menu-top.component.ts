@@ -66,15 +66,11 @@ export class MenuTopComponent implements OnInit, OnDestroy {
       this.suppliers = next;
     }, error => (console.log(error)));
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/login';
-
     this.isLoggedIn = !!this.token.getToken();
 
     if (this.isLoggedIn) {
-      const user = this.token.getUser();
       this.roles = this.info.authorities;
-
       this.isAdminRole = this.roles.includes('ROLE_ADMIN');
-      this.username = user.username;
     }
   }
 
@@ -82,10 +78,10 @@ export class MenuTopComponent implements OnInit, OnDestroy {
     const choice = confirm('Are you sure to logout this page?');
     if (choice) {
       this.token.signOut();
-      this.router.navigateByUrl(this.returnUrl);
+      this.router.navigateByUrl('/');
       // this.ngOnDestroy();
-      this.cartComponent.ngOnInit();
       this.ngOnInit();
+      this.cartComponent.ngOnInit();
     }
   }
 

@@ -50,6 +50,8 @@ export class UserProfileComponent implements OnInit {
       userId: this.token.getUserId(),
       email: this.token.getEmail(),
       avatar: this.token.getAvatar(),
+      phone: this.token.getPhone(),
+      address: this.token.getAddress()
     };
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/login';
     // this.getUser();
