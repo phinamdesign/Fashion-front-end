@@ -31,6 +31,8 @@ import {OrderUserComponent} from './components/public/order-user/order-user.comp
 import {OrderDetailComponent} from './components/public/order-detail/order-detail.component';
 import {UpdateProductComponent} from './components/product/update-product/update-product.component';
 import {HomeComponent} from './components/Structure/home/home.component';
+import {OrderFilterComponent} from './components/admin/order-filter/order-filter.component';
+import {OrderUserFilterComponent} from './components/public/order-user-filter/order-user-filter.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -138,6 +140,14 @@ const routes: Routes = [
   {
     path: 'order-detail/:id',
     component: OrderDetailComponent
+  },
+  {
+    path: 'order/admin/filter',
+    component: OrderFilterComponent
+  },
+  {
+    path: 'order/user/filter',
+    component: OrderUserFilterComponent
   }
 ];
 
