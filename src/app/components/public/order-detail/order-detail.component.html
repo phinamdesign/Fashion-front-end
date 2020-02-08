@@ -11,6 +11,7 @@
       <th>Quantity</th>
       <th>Date order</th>
       <th>Product price</th>
+      <th>Payment</th>
       <th>Amount</th>
     </thead>
     <tbody *ngFor="let a of productDetails; index as i">
@@ -26,7 +27,8 @@
         <td>{{a.quantity}}</td>
         <td>{{a.order.date | date: 'dd/MM/yyyy'}}</td>
         <td>{{a.product.price| currency: 'VND'}}</td>
-        <td><b class=" text-info">{{a.order.total| currency: 'VND'}}</b></td>
+        <td>{{a.payment.name}}</td>
+        <td><b class=" text-info">{{a.product.price * a.quantity| currency: 'VND'}}</b></td>
       </tr>
 <!--      <tr>-->
 <!--        <td>Tổng tiển</td>-->

@@ -5,6 +5,7 @@ import {ProductDetailService} from '../../../services/product-detail.service';
 import {TokenStorageService} from '../../../auth/token-storage.service';
 import {map} from 'rxjs/operators';
 import {OrderUserFilterComponent} from '../order-user-filter/order-user-filter.component';
+import {Payment} from '../../../models/payment';
 
 @Component({
   selector: 'app-order-user',
@@ -13,6 +14,7 @@ import {OrderUserFilterComponent} from '../order-user-filter/order-user-filter.c
 })
 export class OrderUserComponent implements OnInit {
   // orderList: Order[];
+  payments: Payment[] = [];
   @Input() orderList;
   @Output() updateList = new EventEmitter();
 

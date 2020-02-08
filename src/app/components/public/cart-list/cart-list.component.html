@@ -6,6 +6,7 @@
         <th>Book</th>
         <th>Size</th>
         <th>Color</th>
+        <th>Payment</th>
         <th>Price</th>
         <th>Quantity</th>
         <th>Total</th>
@@ -30,6 +31,13 @@
             <option value="null">Select Color</option>
             <option *ngFor="let color of colors" value="{{color.id}}"
             >{{color.name}}</option>
+          </select>
+        </td>
+        <td>
+          <select  name="payment" (change)="onChangePayment($event, cart)">
+            <option value="null">Select Payment</option>
+            <option *ngFor="let payment of payments" value="{{payment.id}}"
+            >{{payment.name}}</option>
           </select>
         </td>
         <td>{{cart.product.price | currency: "VND" : "đ"}}</td>

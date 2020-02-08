@@ -11,6 +11,8 @@ import {ColorService} from '../../../services/color.service';
 import {Color} from '../../../models/color';
 import {Router} from '@angular/router';
 import {CartComponent} from '../cart/cart.component';
+import {Payment} from '../../../models/payment';
+import {PaymentService} from '../../../services/payment.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -24,6 +26,7 @@ export class CartListComponent implements OnInit {
   totalPrice = 0;
   sizes: Size[] = [];
   colors: Color[] = [];
+  payments: Payment[] = [];
 
   constructor(private productDetailService: ProductDetailService,
               private token: TokenStorageService,
@@ -31,6 +34,7 @@ export class CartListComponent implements OnInit {
               private storage: StorageService,
               private sizeService: SizeService,
               private colorService: ColorService,
+              private paymentService: PaymentService,
               private router: Router,
               private cartComponent: CartComponent
   ) {
@@ -52,6 +56,15 @@ export class CartListComponent implements OnInit {
     }, () => {
       console.log('complete');
     });
+
+    this.paymentService.getPaymentList().subscribe(next => {
+      this.payments = next;
+    }, error => {
+      console.log(error);
+    }, () => {
+      console.log('complete');
+    });
+
     if (this.token.getToken()) {
       this.totalPrice = 0;
       this.orderService.getCart(this.token.getUserId()).subscribe(next => {
@@ -99,6 +112,7 @@ export class CartListComponent implements OnInit {
       quantity: cart.quantity,
       size: {id: cart.size},
       color: {id: cart.color},
+      payment: {id: cart.payment},
       product: {id: cart.product.id},
       order: {id: cart.order.id},
     }).subscribe(next => {
@@ -116,6 +130,7 @@ export class CartListComponent implements OnInit {
       quantity: cart.quantity,
       size: {id: cart.size},
       color: {id: cart.color},
+      payment: {id: cart.payment},
       product: {id: cart.product.id},
       order: {id: cart.order.id},
     }).subscribe(next => {
@@ -132,6 +147,24 @@ export class CartListComponent implements OnInit {
       quantity: cart.quantity,
       size: {id: cart.size},
       color: {id: cart.color},
+      payment: {id: cart.payment},
+      product: {id: cart.product.id},
+      order: {id: cart.order.id},
+    }).subscribe(next => {
+      console.log(next);
+    });
+    // }
+  }
+
+  onChangePayment(event, cart) {
+    // if (this.token.getToken()) {
+    cart.payment = event.target.value;
+    this.productDetailService.updateProductDetail({
+      id: cart.id,
+      quantity: cart.quantity,
+      size: {id: cart.size},
+      color: {id: cart.color},
+      payment: {id: cart.payment},
       product: {id: cart.product.id},
       order: {id: cart.order.id},
     }).subscribe(next => {
@@ -171,6 +204,10 @@ export class CartListComponent implements OnInit {
 
   onChangeAddress(event) {
     this.order.deliveryAddress = event.target.value;
+  }
+
+  addPayment(event) {
+    this.order.payment = event.target.value;
   }
 
   deleteCart(id: number) {

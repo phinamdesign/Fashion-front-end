@@ -15,6 +15,7 @@ export class OrderDetailComponent implements OnInit {
 
   orderList: Order[];
   productDetails: ProductDetail[];
+  sum = 0;
 
   constructor(private orderService: OrderService,
               private productDetailService: ProductDetailService,
