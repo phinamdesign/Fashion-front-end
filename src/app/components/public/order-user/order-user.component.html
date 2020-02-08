@@ -26,7 +26,7 @@
       </td>
       <td *ngIf="order.status != 'normal'">
         <div *ngIf="order.user">
-          {{order.user.username}}
+          {{order.user.name}}
         </div>
         <div *ngIf="!order.user">
           Unknown user
