@@ -23,14 +23,14 @@
 }
 .imageProduct{
   overflow: hidden;
-  width: 238px;
-  height: 238px;
+
 }
 .imageProduct img{
   transition: 0.5s;
+  height: 238px;
 }
 .imageProduct:hover img{
   cursor: pointer;
   transition: 0.5s;
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
