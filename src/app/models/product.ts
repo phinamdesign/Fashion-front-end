@@ -11,4 +11,5 @@ export class Product {
   category?: any;
   supplier?: any;
   pictures?: Picture[];
+  date?: string;
 }

@@ -15,6 +15,7 @@
         </div>
         <div class="card-body">
           <h5 align="center">{{product.name}}</h5>
+          <p>{{product.date}}</p>
           <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
           <div>Category: {{product.category.categoryName}}</div>
           <div>Brand: {{product.supplier.supplierName}}</div>
