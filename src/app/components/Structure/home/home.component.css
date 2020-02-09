@@ -6,7 +6,7 @@ ul li{
 .brand{
   margin: 0px auto;
 }
-.clearfix:after {
+.fix:after {
   content: ".";
   display: block;
   clear: both;
@@ -15,7 +15,7 @@ ul li{
   height: 0;
 }
 
-.clearfix {
+.fix {
   clear: both;
   display: block;
 }

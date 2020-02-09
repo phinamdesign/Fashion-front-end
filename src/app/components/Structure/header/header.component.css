@@ -1,6 +1,5 @@
 .bg-top{
   background-color: #ecf0f1;
-  margin-bottom: 0px;
 }
 ul li{
   float: left;
@@ -13,10 +12,10 @@ ul li{
 ul li a{
   display: block;
 }
-.logo{
-
-}
 .cart{
   margin-left: 73px;
+}
+.marquee{
+  border-top: 1px solid #ecf0f1;
 }
 
