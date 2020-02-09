@@ -1,0 +1,25 @@
+ul li{
+  list-style: none;
+  float: left;
+  margin-right: 40px;
+}
+.brand{
+  margin: 0px auto;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  clear: both;
+  display: block;
+}
+.sale img{
+  display: inline-block;
+  width: 500px;
+}

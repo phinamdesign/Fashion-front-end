@@ -3,4 +3,134 @@
     <app-top-slide-show></app-top-slide-show>
   </div>
 </div>
+<!---------Bran-logo-------->
+<div class="container">
+  <div class="row">
+    <div class="brand">
+      <ul class="clearfix">
+        <li><a href=""><img src="../../../../assets/images/logo-brand/converse.jpg" alt=""></a></li>
+        <li><a href=""><img src="../../../../assets/images/logo-brand/VANS.jpg" alt=""></a></li>
+        <li><a href=""><img src="../../../../assets/images/logo-brand/PALLADIUM.jpg" alt=""></a></li>
+        <li><a href=""><img src="../../../../assets/images/logo-brand/supra.png" alt=""></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!---------Sale-slide-------->
+<div class="container mb-5">
+   <div class="sale" align="center">
+     <img class="mr-5" src="../../../../assets/images/banner/SALE-70_-1-20-1a-590x220.jpg" alt="">
+     <img src="../../../../assets/images/banner/SALE-70_-1-20-1-590x220.jpg" alt="">
+   </div>
+</div>
+<!---------Converse list-------->
+<div class="container">
+  <div class="row mb-3">
+    <div class="mb-3">
+      <img src="../../../../assets/images/banner/danh-muc-converse-sneaker-1-20.jpg" alt="">
+    </div>
+    <div *ngFor="let product of listProduct | paginate: {itemsPerPage: 8,currentPage: p}">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Converse'">
+          <div class="card" style="width: 15rem;">
+            <div class="imageProduct">
+              <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
+            </div>
+            <div class="card-body">
+              <h5 align="center">{{product.name}}</h5>
+              <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+              <div>Brand: {{product.supplier.supplierName}}</div>
+              <div class="mt-3" align="center" *ngFor="let role of info.authorities">
+                <button *ngIf="role != 'ROLE_ADMIN'" class="btn btn-outline-secondary text-center"><a (click)="addCart(product.id)">Add cart</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------Vans list-------->
+<div class="container">
+  <div class="row mb-3">
+    <div class="mb-3">
+      <img src="../../../../assets/images/banner/danh-muc-vans-sneaker-1-20.jpg" alt="">
+    </div>
+    <div *ngFor="let product of listProduct | paginate: {itemsPerPage: 8,currentPage: p}">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Vans'">
+          <div class="card" style="width: 15rem;">
+            <div class="imageProduct">
+              <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
+            </div>
+            <div class="card-body">
+              <h5 align="center">{{product.name}}</h5>
+              <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+              <div>Brand: {{product.supplier.supplierName}}</div>
+              <div class="mt-3" align="center" *ngFor="let role of info.authorities">
+                <button *ngIf="role != 'ROLE_ADMIN'" class="btn btn-outline-secondary text-center"><a (click)="addCart(product.id)">Add cart</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------Palladium list-------->
+<div class="container">
+  <div class="row mb-3">
+    <div class="mb-3">
+      <img src="../../../../assets/images/banner/danh-muc-palladium-1-20.jpg" alt="">
+    </div>
+    <div *ngFor="let product of listProduct | paginate: {itemsPerPage: 8,currentPage: p}">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Palladium'">
+          <div class="card" style="width: 15rem;">
+            <div class="imageProduct">
+              <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
+            </div>
+            <div class="card-body">
+              <h5 align="center">{{product.name}}</h5>
+              <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+              <div>Brand: {{product.supplier.supplierName}}</div>
+              <div class="mt-3" align="center" *ngFor="let role of info.authorities">
+                <button *ngIf="role != 'ROLE_ADMIN'" class="btn btn-outline-secondary text-center"><a (click)="addCart(product.id)">Add cart</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------Supra list-------->
+<div class="container">
+  <div class="row mb-3">
+    <div class="mb-3">
+      <img src="../../../../assets/images/banner/danh-muc-supra-1-20.jpg" alt="">
+    </div>
+    <div *ngFor="let product of listProduct | paginate: {itemsPerPage: 8,currentPage: p}">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Supra'">
+          <div class="card" style="width: 15rem;">
+            <div class="imageProduct">
+              <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
+            </div>
+            <div class="card-body">
+              <h5 align="center">{{product.name}}</h5>
+              <p>Price : <a href="#" class="card-link">{{product.price | currency : 'VND' : true : '1.0-0'}}</a></p>
+              <div>Brand: {{product.supplier.supplierName}}</div>
+              <div class="mt-3" align="center" *ngFor="let role of info.authorities">
+                <button *ngIf="role != 'ROLE_ADMIN'" class="btn btn-outline-secondary text-center"><a (click)="addCart(product.id)">Add cart</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
