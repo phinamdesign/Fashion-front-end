@@ -51,6 +51,7 @@ import { SecurityComponent } from './components/Structure/policy/security/securi
 import { TransportComponent } from './components/Structure/policy/transport/transport.component';
 import { GuaranteeComponent } from './components/Structure/policy/guarantee/guarantee.component';
 import { RegulationsComponent } from './components/Structure/policy/regulations/regulations.component';
+import { HeaderComponent } from './components/Structure/header/header.component';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { RegulationsComponent } from './components/Structure/policy/regulations/
     SecurityComponent,
     TransportComponent,
     GuaranteeComponent,
-    RegulationsComponent
+    RegulationsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
