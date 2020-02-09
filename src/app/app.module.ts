@@ -47,6 +47,10 @@ import {TopSlideShowComponent} from './components/Structure/top-slide-show/top-s
 import { OrderFilterComponent } from './components/admin/order-filter/order-filter.component';
 import {OrderUserFilterComponent} from './components/public/order-user-filter/order-user-filter.component';
 import { AboutComponent } from './components/Structure/about/about.component';
+import { SecurityComponent } from './components/Structure/policy/security/security.component';
+import { TransportComponent } from './components/Structure/policy/transport/transport.component';
+import { GuaranteeComponent } from './components/Structure/policy/guarantee/guarantee.component';
+import { RegulationsComponent } from './components/Structure/policy/regulations/regulations.component';
 
 
 @NgModule({
@@ -93,7 +97,11 @@ import { AboutComponent } from './components/Structure/about/about.component';
     OrderDetailComponent,
     OrderFilterComponent,
     OrderUserFilterComponent,
-    AboutComponent
+    AboutComponent,
+    SecurityComponent,
+    TransportComponent,
+    GuaranteeComponent,
+    RegulationsComponent
   ],
   imports: [
     BrowserModule,

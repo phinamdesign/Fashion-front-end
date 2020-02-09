@@ -33,6 +33,11 @@ import {UpdateProductComponent} from './components/product/update-product/update
 import {HomeComponent} from './components/Structure/home/home.component';
 import {OrderFilterComponent} from './components/admin/order-filter/order-filter.component';
 import {OrderUserFilterComponent} from './components/public/order-user-filter/order-user-filter.component';
+import {RegulationsComponent} from './components/Structure/policy/regulations/regulations.component';
+import {TransportComponent} from './components/Structure/policy/transport/transport.component';
+import {SecurityComponent} from './components/Structure/policy/security/security.component';
+import {GuaranteeComponent} from './components/Structure/policy/guarantee/guarantee.component';
+import {AboutComponent} from './components/Structure/about/about.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -148,7 +153,22 @@ const routes: Routes = [
   {
     path: 'order/user/filter',
     component: OrderUserFilterComponent
-  }
+  },
+  {
+    path: 'regulation', component: RegulationsComponent
+  },
+  {
+    path: 'transport', component: TransportComponent
+  },
+  {
+    path: 'security', component: SecurityComponent
+  },
+  {
+    path: 'guarantee', component: GuaranteeComponent
+  },
+  {
+    path: 'about', component: AboutComponent
+  },
 ];
 
 @NgModule({

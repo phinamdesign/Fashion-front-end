@@ -77,4 +77,10 @@ footer .input-group-addon {
   padding: 12px 0;
   font-size:14px;
 }
+.support li{
+  list-style: none;
+}
+.support li i{
+  color: #2995de;
+}
 
