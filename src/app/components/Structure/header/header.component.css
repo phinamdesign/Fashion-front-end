@@ -11,6 +11,12 @@ ul li{
 }
 ul li a{
   display: block;
+  color: black;
+  cursor: pointer;
+}
+ul li a:hover{
+  color: #dd4f43;
+  text-decoration: none;
 }
 .cart{
   margin-left: 73px;

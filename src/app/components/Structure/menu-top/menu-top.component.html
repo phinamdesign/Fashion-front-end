@@ -7,48 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="active"><a routerLink="home" class="nav-link" routerLinkActive="active">Home<span class="sr-only">(current)</span></a></li>
+            <li><a routerLink="home" class="nav-link" routerLinkActive="active">Home<span class="sr-only">(current)</span></a></li>
+            <li><a routerLink="about" class="nav-link" routerLinkActive="active">About<span class="sr-only">(current)</span></a></li>
+            <li><a routerLink="product" class="nav-link" routerLinkActive="active">Product<span class="sr-only">(current)</span></a></li>
+            <li> <a class="dropdown-item text-center" [routerLink]="'order/user/filter'">Check order history</a></li>
             <!------------->
-            <li class="dropdown">
-              <a class="dropdown-toggle" href="#" id="navbarDropdown" role="ADMIN" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a routerLink="product" class="nav-link" routerLinkActive="active">List</a></li>
-                <li *ngFor="let role of info.authorities"><a *ngIf="role === 'ROLE_ADMIN'" routerLink="create-product"  class="nav-link" routerLinkActive="active">Create Product</a></li>
-                <li *ngFor="let role of info.authorities"><a *ngIf="role === 'ROLE_ADMIN'" routerLink="action-product" class="nav-link" routerLinkActive="active">Action Product</a></li>
-              </ul>
-            </li>
-            <!------------->
-            <li class="dropdown" *ngFor="let role of info.authorities">
-              <a *ngIf="role === 'ROLE_ADMIN'" class="dropdown-toggle" href="#" id="navbarDropdown" role="ADMIN" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="categories" class="nav-link" routerLinkActive="active">List Category</a></li>
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="create/category" class="nav-link" routerLinkActive="active">Create Category</a></li>
-              </ul>
-            </li>
-            <!------------->
-            <li class="dropdown" *ngFor="let role of info.authorities">
-              <a *ngIf="role === 'ROLE_ADMIN'" class="dropdown-toggle" href="#" id="navbarDropdown" role="ADMIN" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Supplier</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="suppliers" class="nav-link" routerLinkActive="active">List Supplier</a></li>
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="create/supplier" class="nav-link" routerLinkActive="active">Create supplier</a></li>
-              </ul>
-            </li>
-            <li class="dropdown" *ngFor="let role of info.authorities">
-              <a *ngIf="role === 'ROLE_ADMIN'" class="dropdown-toggle" href="#" id="navbarDropdown" role="ADMIN" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Color</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="colors" class="nav-link" routerLinkActive="active">List Color</a></li>
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="create-colors" class="nav-link" routerLinkActive="active">Create Color</a></li>
-              </ul>
-            </li>
-            <!------------->
-            <li class="dropdown" *ngFor="let role of info.authorities">
-              <a *ngIf="role === 'ROLE_ADMIN'" class="dropdown-toggle" href="#" id="navbarDropdown" role="ADMIN" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Size</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="sizes" class="nav-link" routerLinkActive="active">List Size</a></li>
-                <li><a *ngIf="role === 'ROLE_ADMIN'" routerLink="create-sizes" class="nav-link" routerLinkActive="active">Create Size</a></li>
-              </ul>
-            </li>
-
             <li class="dropdown">
               <a class="dropdown-toggle" href="#" id="navbarDropdown" role="ADMIN" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Supplier filter</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -90,9 +53,9 @@
             </div>
 
           </ng-template>
-            <div *ngIf="!isAdminRole">
-              <app-cart></app-cart>
-            </div>
+<!--            <div *ngIf="!isAdminRole">-->
+<!--              <app-cart></app-cart>-->
+<!--            </div>-->
         </div>
       </nav>
     </div>

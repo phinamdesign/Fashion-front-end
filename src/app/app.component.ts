@@ -12,7 +12,10 @@ export class AppComponent implements OnInit {
   isShow = false;
   topPosToStartShowing = 200;
   isShowBt: boolean;
-
+  isLoggedIn = false;
+  isAdminRole = false;
+  username: string;
+  info: { name: string; avatar: string; userId: string; authorities: string[]; token: string; username: string };
   constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
@@ -30,6 +33,23 @@ export class AppComponent implements OnInit {
         this.authority = 'user';
         return true;
       });
+    }
+    this.info = {
+      name: this.tokenStorage.getName(),
+      token: this.tokenStorage.getToken(),
+      username: this.tokenStorage.getUsername(),
+      authorities: this.tokenStorage.getAuthorities(),
+      userId: this.tokenStorage.getUserId(),
+      avatar: this.tokenStorage.getAvatar()
+    };
+    this.isLoggedIn = !!this.tokenStorage.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorage.getUser();
+      this.roles = this.info.authorities;
+
+      this.isAdminRole = this.roles.includes('ROLE_ADMIN');
+      this.username = user.username;
     }
   }
   setIsShow(isShow: boolean) {
