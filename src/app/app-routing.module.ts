@@ -205,7 +205,7 @@ const routes: Routes = [
     canActivate: [AdminGuardService]
   },
   {
-    path: 'order/filter',
+    path: 'order/user/filter',
     component: OrderUserFilterComponent,
     canActivate: [UserGuardService]
   },
