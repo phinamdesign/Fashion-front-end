@@ -32,6 +32,7 @@ export class UpdateSizeComponent implements OnInit {
   }
   onSubmit() {
     this.updateSize();
+    alert('update is successful!');
   }
   gotoList() {
     this.reloadData();

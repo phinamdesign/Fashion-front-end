@@ -33,6 +33,7 @@ export class CreateColorComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.save();
+    alert('Created color is successful!')
     this.reloadData();
   }
 
