@@ -55,6 +55,9 @@ import { HeaderComponent } from './components/Structure/header/header.component'
 import { AdminMenuComponent } from './components/Structure/admin-menu/admin-menu.component';
 import { ListUserComponent } from './components/admin/user-manager/list-user/list-user.component';
 import { UserDetailsComponent } from './components/admin/user-manager/user-details/user-details.component';
+import { PaymentListComponent } from './components/public/payment/payment-list/payment-list.component';
+import { PaymentCreateComponent } from './components/public/payment/payment-create/payment-create.component';
+import { PaymentUpdateComponent } from './components/public/payment/payment-update/payment-update.component';
 
 
 @NgModule({
@@ -110,6 +113,10 @@ import { UserDetailsComponent } from './components/admin/user-manager/user-detai
     AdminMenuComponent,
     ListUserComponent,
     UserDetailsComponent,
+    AdminMenuComponent,
+    PaymentListComponent,
+    PaymentCreateComponent,
+    PaymentUpdateComponent
   ],
   imports: [
     BrowserModule,

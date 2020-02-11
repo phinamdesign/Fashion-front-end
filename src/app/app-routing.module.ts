@@ -38,6 +38,9 @@ import {TransportComponent} from './components/Structure/policy/transport/transp
 import {SecurityComponent} from './components/Structure/policy/security/security.component';
 import {GuaranteeComponent} from './components/Structure/policy/guarantee/guarantee.component';
 import {AboutComponent} from './components/Structure/about/about.component';
+import {PaymentCreateComponent} from './components/public/payment/payment-create/payment-create.component';
+import {PaymentListComponent} from './components/public/payment/payment-list/payment-list.component';
+import {PaymentUpdateComponent} from './components/public/payment/payment-update/payment-update.component';
 import {ListUserComponent} from './components/admin/user-manager/list-user/list-user.component';
 import {UserDetailsComponent} from './components/admin/user-manager/user-details/user-details.component';
 
@@ -176,6 +179,18 @@ const routes: Routes = [
   },
   {
     path: 'user-detail/:id', component: UserDetailsComponent
+  },
+  {
+    path: 'payment/create',
+    component: PaymentCreateComponent
+  },
+  {
+    path: 'payment/list',
+    component: PaymentListComponent
+  },
+  {
+    path: 'payment/:id',
+    component: PaymentUpdateComponent
   }
 ];
 

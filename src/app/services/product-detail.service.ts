@@ -20,8 +20,9 @@ export class ProductDetailService {
   // createProductDetail(productDetail: ProductDetail): Observable<ProductDetail> {
   //   return this.http.post<ProductDetail>(this.API_URL, productDetail);
   // }
-  createProductDetail(orderItem): Observable<any> {
-    return this.http.post(this.API_URL, orderItem);
+  createProductDetail(productDetail): Observable<any> {
+    console.log(productDetail);
+    return this.http.post(this.API_URL, productDetail);
   }
   updateProductDetail(productDetail): Observable<any> {
     console.log(productDetail);
