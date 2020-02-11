@@ -38,6 +38,8 @@ import {TransportComponent} from './components/Structure/policy/transport/transp
 import {SecurityComponent} from './components/Structure/policy/security/security.component';
 import {GuaranteeComponent} from './components/Structure/policy/guarantee/guarantee.component';
 import {AboutComponent} from './components/Structure/about/about.component';
+import {ListUserComponent} from './components/admin/user-manager/list-user/list-user.component';
+import {UserDetailsComponent} from './components/admin/user-manager/user-details/user-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -169,6 +171,12 @@ const routes: Routes = [
   {
     path: 'about', component: AboutComponent
   },
+  {
+    path: 'user', component: ListUserComponent
+  },
+  {
+    path: 'user-detail/:id', component: UserDetailsComponent
+  }
 ];
 
 @NgModule({

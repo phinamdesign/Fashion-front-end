@@ -53,6 +53,8 @@ import { GuaranteeComponent } from './components/Structure/policy/guarantee/guar
 import { RegulationsComponent } from './components/Structure/policy/regulations/regulations.component';
 import { HeaderComponent } from './components/Structure/header/header.component';
 import { AdminMenuComponent } from './components/Structure/admin-menu/admin-menu.component';
+import { ListUserComponent } from './components/admin/user-manager/list-user/list-user.component';
+import { UserDetailsComponent } from './components/admin/user-manager/user-details/user-details.component';
 
 
 @NgModule({
@@ -105,7 +107,9 @@ import { AdminMenuComponent } from './components/Structure/admin-menu/admin-menu
     GuaranteeComponent,
     RegulationsComponent,
     HeaderComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    ListUserComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,31 +16,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // getDiaryByUser(userId: string): Observable<Diary[]> {
-  //   return this.http.get<Diary[]>(this.svUserUrl + userId + '/diary' );
-  // }
+  getListUser(): Observable<User[]> {
+    return this.http.get<User[]>(this.userUrl);
+  }
 
-  // getUserById(userId: string): Observable<User> {
-  //   return this.http.get<User>(`${this.userUrl}/${userId}`);
-  // }
-  //
-  // getListUser(): Observable<User[]> {
-  //   return this.http.get<User[]>(this.userUrl);
-  // }
-  //
-  // deleteUserById(id: string): Observable<void> {
-  //   return this.http.delete<void>(this.userUrl + id);
-  // }
+  getUser(id: string): Observable<any> {
+    return this.http.get(`${this.userUrl}/${id}`);
+  }
 
-  // searchUserByName(user: SearchUserByName): Observable<User[]> {
-  //   return this.http.post<User[]>(this.svUserUrl + 'search-by-name' , user);
-  // }
-  //
-  // uploadUserAvatar(file: FormData, userId: string): Observable<FileForm> {
-  //   const headers = new HttpHeaders();
-  //   headers.append('Content-Type', 'multipart/form-data');
-  //   headers.append('Accept', 'application/json');
-  //
-  //   return this.http.post<FileForm>(this.svUserAvatarUrl + userId, file, {headers});
-  // }
+  deleteUserById(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.userUrl}/${id}`);
+  }
 }
