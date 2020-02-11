@@ -76,16 +76,12 @@ export class ListProductComponent implements OnInit {
       this.username = user.username;
     }
   }
-
-  // reloadData() {
-  //   this.products = this.productService.getListProduct();
-  // }
-
   detailsProduct(id: number) {
     this.router.navigate(['details', id]);
   }
   addCart(idBook) {
     this.cart.addCart(idBook);
+    alert('You just added this product in your cart');
   }
 
   searchProductByName() {

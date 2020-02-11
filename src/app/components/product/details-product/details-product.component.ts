@@ -176,47 +176,8 @@ export class DetailsProductComponent implements OnInit {
     );
   }
 
-//
-//   listProduct() {
-//     this.router.navigate(['product']);
-//   }
-//
-//   public addProductToCart(product: Product): void {
-//     this.shoppingCartService.addItem(product, 1);
-//   }
-//
-//   public removeProductFromCart(product: Product): void {
-//     this.shoppingCartService.addItem(product, -1);
-//   }
-//
-//   public productInCart(product: Product): boolean {
-//     return Observable.create((obs: Observer<boolean>) => {
-//       const sub = this.shoppingCartService
-//         .get()
-//         .subscribe((cart) => {
-//           obs.next(cart.items.some((i) => i.productId === product.id));
-//           obs.complete();
-//         });
-//       sub.unsubscribe();
-//     });
-//   }
-//
-// }
-//   product: Product[] = [];
-//   content: string;
-
-  // constructor(private productService: ProductService,
-  //             private cart: CartComponent,
-  //             private route: ActivatedRoute,
-  //             private router: Router) {
-  // }
-
-  // ngOnInit() {
-  //   this.productService.getListProduct().subscribe(next =>
-  //     (this.product = next), err =>
-  //     (this.content = this.content = JSON.parse(err.error).message));
-  // }
-  addCart(idProduct) {
+ addCart(idProduct) {
     this.cart.addCart(idProduct);
+    alert('You just added this product in your cart');
   }
 }
