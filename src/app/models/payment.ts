@@ -1,4 +1,4 @@
-export class Payment {
-  id: number;
-  name: string;
+export interface Payment {
+  id?: number;
+  name?: string;
 }

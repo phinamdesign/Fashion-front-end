@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 import {CartComponent} from '../cart/cart.component';
 import {Payment} from '../../../models/payment';
 import {PaymentService} from '../../../services/payment.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cart-list',
@@ -27,6 +28,7 @@ export class CartListComponent implements OnInit {
   sizes: Size[] = [];
   colors: Color[] = [];
   payments: Payment[] = [];
+  cartForm: FormGroup;
 
   constructor(private productDetailService: ProductDetailService,
               private token: TokenStorageService,
@@ -36,7 +38,8 @@ export class CartListComponent implements OnInit {
               private colorService: ColorService,
               private paymentService: PaymentService,
               private router: Router,
-              private cartComponent: CartComponent
+              private cartComponent: CartComponent,
+              private fb: FormBuilder,
   ) {
   }
 
@@ -65,6 +68,16 @@ export class CartListComponent implements OnInit {
       console.log('complete');
     });
 
+    this.cartForm = this.fb.group({
+      id: '',
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      // tslint:disable-next-line:max-line-length
+      phone: ['', [Validators.required, Validators.pattern('^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$')]],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', [Validators.required, Validators.minLength(3)]],
+      payment: ['', [Validators.required, Validators.minLength(3)]],
+    });
     if (this.token.getToken()) {
       this.totalPrice = 0;
       this.orderService.getCart(this.token.getUserId()).subscribe(next => {
@@ -74,6 +87,15 @@ export class CartListComponent implements OnInit {
           console.log(next2);
           this.order.phone = this.order.user.phone;
           this.order.deliveryAddress = this.order.user.address;
+          this.cartForm.patchValue({
+            id: this.order.user.id,
+            username: this.order.user.username,
+            password: this.order.user.password,
+            email: this.order.user.email,
+            phone: this.order.user.phone,
+            address: this.order.user.address,
+            payment: this.payments[0].id
+          });
         });
       }, error => {
         console.log(error);
@@ -85,14 +107,16 @@ export class CartListComponent implements OnInit {
         this.order = nextCart;
         this.productDetailService.findByOrderId(this.storage.getCart()).subscribe(next6 => {
           this.cartList = next6;
-          this.order.phone = '';
-          this.order.deliveryAddress = '';
+          this.cartForm.patchValue({
+            phone: this.order.phone = '',
+            address: this.order.deliveryAddress = '',
+            payment:  this.payments[0].id
         });
       }, error => {
         console.log(error);
       });
-    }
-  }
+    });
+  }}
 
   total() {
     this.totalPrice = 0;
@@ -103,7 +127,6 @@ export class CartListComponent implements OnInit {
     // document.getElementById('totalPrice').innerHTML = total.toLocaleString('it-IT', {style: 'currency', currency: 'VND'});
 
   }
-
   onChangeQuantity(event, cart) {
     // if (this.token.getToken()) {
     cart.quantity = event.target.value;
@@ -112,7 +135,6 @@ export class CartListComponent implements OnInit {
       quantity: cart.quantity,
       size: {id: cart.size},
       color: {id: cart.color},
-      payment: {id: cart.payment},
       product: {id: cart.product.id},
       order: {id: cart.order.id},
     }).subscribe(next => {
@@ -130,7 +152,6 @@ export class CartListComponent implements OnInit {
       quantity: cart.quantity,
       size: {id: cart.size},
       color: {id: cart.color},
-      payment: {id: cart.payment},
       product: {id: cart.product.id},
       order: {id: cart.order.id},
     }).subscribe(next => {
@@ -147,24 +168,6 @@ export class CartListComponent implements OnInit {
       quantity: cart.quantity,
       size: {id: cart.size},
       color: {id: cart.color},
-      payment: {id: cart.payment},
-      product: {id: cart.product.id},
-      order: {id: cart.order.id},
-    }).subscribe(next => {
-      console.log(next);
-    });
-    // }
-  }
-
-  onChangePayment(event, cart) {
-    // if (this.token.getToken()) {
-    cart.payment = event.target.value;
-    this.productDetailService.updateProductDetail({
-      id: cart.id,
-      quantity: cart.quantity,
-      size: {id: cart.size},
-      color: {id: cart.color},
-      payment: {id: cart.payment},
       product: {id: cart.product.id},
       order: {id: cart.order.id},
     }).subscribe(next => {
@@ -174,6 +177,8 @@ export class CartListComponent implements OnInit {
   }
 
   createOrder() {
+    const {value} = this.cartForm;
+    this.order.payment = {id: value.payment};
     this.order.total = this.totalPrice;
     this.orderService.toOrder(this.order).subscribe(next => {
       console.log(next);
@@ -191,8 +196,8 @@ export class CartListComponent implements OnInit {
     // });
     const choice = confirm('Create order is succeed, do you want to see your order history?');
     if (choice) {
-            this.router.navigate(['order/user/filter']);
-  } else {
+      this.router.navigate(['order/user/filter']);
+    } else {
       this.router.navigate(['']);
     }
     this.cartComponent.ngOnInit();
@@ -205,10 +210,9 @@ export class CartListComponent implements OnInit {
   onChangeAddress(event) {
     this.order.deliveryAddress = event.target.value;
   }
-
-  addPayment(event) {
-    this.order.payment = event.target.value;
-  }
+  // onChangePayment(event) {
+  //   this.order.payment.id = event.target.value;
+  // }
 
   deleteCart(id: number) {
     const choice = confirm('Are you sure to remove this product in your cart ?');

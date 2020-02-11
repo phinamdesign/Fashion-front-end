@@ -38,6 +38,9 @@ import {TransportComponent} from './components/Structure/policy/transport/transp
 import {SecurityComponent} from './components/Structure/policy/security/security.component';
 import {GuaranteeComponent} from './components/Structure/policy/guarantee/guarantee.component';
 import {AboutComponent} from './components/Structure/about/about.component';
+import {PaymentCreateComponent} from './components/public/payment/payment-create/payment-create.component';
+import {PaymentListComponent} from './components/public/payment/payment-list/payment-list.component';
+import {PaymentUpdateComponent} from './components/public/payment/payment-update/payment-update.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -169,6 +172,18 @@ const routes: Routes = [
   {
     path: 'about', component: AboutComponent
   },
+  {
+    path: 'payment/create',
+    component: PaymentCreateComponent
+  },
+  {
+    path: 'payment/list',
+    component: PaymentListComponent
+  },
+  {
+    path: 'payment/:id',
+    component: PaymentUpdateComponent
+  }
 ];
 
 @NgModule({

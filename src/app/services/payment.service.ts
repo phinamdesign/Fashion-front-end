@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Payment} from '../models/payment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
 
-  private baseUrl = 'http://localhost:8080/api/auth/payment';
+  private readonly API_URL = 'http://localhost:8080/api/auth/payment';
+
   constructor(private http: HttpClient) { }
-  getPayment(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
-  }
+
   getPaymentList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get<any>(`${this.API_URL}`);
   }
-  // tslint:disable-next-line:ban-types
-  createPayment(payment: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, payment);
+  getPaymentById(id: number): Observable<Payment> {
+    return this.http.get<Payment>(`${this.API_URL}/${id}`);
+  }
+  createPayment(payment: Payment): Observable<Payment> {
+    return this.http.post<Payment>(this.API_URL, payment);
   }
   deletePayment(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
+    return this.http.delete(`${this.API_URL}/${id}`);
   }
-  updatePayment(id: number, value: any): Observable<object> {
-    return this.http.put(`${this.baseUrl}/${id}`, value);
+  updatePayment(payment: Payment): Observable<any> {
+    return this.http.put<any>(`${this.API_URL}/${payment.id}`, payment);
   }
+  // getCategory(): Observable<any> {
+  //   return this.http.get(`${this.API_URL}`);
+  // }
 }

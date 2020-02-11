@@ -53,6 +53,9 @@ import { GuaranteeComponent } from './components/Structure/policy/guarantee/guar
 import { RegulationsComponent } from './components/Structure/policy/regulations/regulations.component';
 import { HeaderComponent } from './components/Structure/header/header.component';
 import { AdminMenuComponent } from './components/Structure/admin-menu/admin-menu.component';
+import { PaymentListComponent } from './components/public/payment/payment-list/payment-list.component';
+import { PaymentCreateComponent } from './components/public/payment/payment-create/payment-create.component';
+import { PaymentUpdateComponent } from './components/public/payment/payment-update/payment-update.component';
 
 
 @NgModule({
@@ -105,7 +108,10 @@ import { AdminMenuComponent } from './components/Structure/admin-menu/admin-menu
     GuaranteeComponent,
     RegulationsComponent,
     HeaderComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    PaymentListComponent,
+    PaymentCreateComponent,
+    PaymentUpdateComponent
   ],
   imports: [
     BrowserModule,
