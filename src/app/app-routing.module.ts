@@ -43,9 +43,14 @@ import {PaymentListComponent} from './components/public/payment/payment-list/pay
 import {PaymentUpdateComponent} from './components/public/payment/payment-update/payment-update.component';
 import {ListUserComponent} from './components/admin/user-manager/list-user/list-user.component';
 import {UserDetailsComponent} from './components/admin/user-manager/user-details/user-details.component';
+import {AdminGuardService} from './services/admin-guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  // {
+  //   path: '**',
+  //   component: RegisterComponent
+  // },
   {
     path: 'home',
     component: HomeComponent
@@ -60,39 +65,48 @@ const routes: Routes = [
   },
   {
     path: 'product',
-    component: ListProductComponent
+    component: ListProductComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'update-product/:id',
-    component: UpdateProductComponent
+    component: UpdateProductComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'details/:id',
-    component: DetailsProductComponent
+    component: DetailsProductComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'delete-product',
-    component: DeleteProductComponent
+    component: DeleteProductComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'action-product',
-    component: ActionProductComponent
+    component: ActionProductComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'create-product',
-    component: CreateProductComponent
+    component: CreateProductComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'product-supplier/:id',
-    component: ProductSupplierComponent
+    component: ProductSupplierComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'categories',
-    component: CategoryListComponent
+    component: CategoryListComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'create/category',
@@ -107,25 +121,58 @@ const routes: Routes = [
     component: ProductCategoryComponent
   },
   // size
-  {path: 'sizes', component: ListSizeComponent},
-  {path: 'sizes/:id', component: DetailSizeComponent},
-  {path: 'update-sizes/:id', component: UpdateSizeComponent},
-  {path: 'create-sizes', component: CreateSizeComponent},
-  {path: 'colors', component: ListColorComponent},
-  {path: 'create-colors', component: CreateColorComponent},
-  {path: 'update-colors/:id', component: UpdateColorComponent},
-  {path: 'colors/:id', component: DetailColorComponent},
+  {
+    path: 'sizes',
+    component: ListSizeComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'sizes/:id',
+    component: DetailSizeComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'update-sizes/:id',
+    component: UpdateSizeComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'create-sizes',
+    component: CreateSizeComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'colors',
+    component: ListColorComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'create-colors',
+    component: CreateColorComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'update-colors/:id',
+    component: UpdateColorComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'colors/:id', component: DetailColorComponent,
+    canActivate: [AdminGuardService]},
   {
     path: 'suppliers',
-    component: SupplierListComponent
+    component: SupplierListComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'create/supplier',
-    component: SupplierCreateComponent
+    component: SupplierCreateComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'supplier/:id/edit',
-    component: SupplierEditComponent
+    component: SupplierEditComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'cart',
@@ -141,11 +188,13 @@ const routes: Routes = [
   },
   {
     path: 'order/admin/manager',
-    component: OrderManagerComponent
+    component: OrderManagerComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'order/user/manager',
-    component: OrderUserComponent
+    component: OrderUserComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'order-detail/:id',
@@ -153,7 +202,8 @@ const routes: Routes = [
   },
   {
     path: 'order/admin/filter',
-    component: OrderFilterComponent
+    component: OrderFilterComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'order/user/filter',
@@ -175,22 +225,29 @@ const routes: Routes = [
     path: 'about', component: AboutComponent
   },
   {
-    path: 'user', component: ListUserComponent
+    path: 'user',
+    component: ListUserComponent,
+    canActivate: [AdminGuardService]
   },
   {
-    path: 'user-detail/:id', component: UserDetailsComponent
+    path: 'user-detail/:id',
+    component: UserDetailsComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'payment/create',
-    component: PaymentCreateComponent
+    component: PaymentCreateComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'payment/list',
-    component: PaymentListComponent
+    component: PaymentListComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'payment/:id',
-    component: PaymentUpdateComponent
+    component: PaymentUpdateComponent,
+    canActivate: [AdminGuardService]
   }
 ];
 

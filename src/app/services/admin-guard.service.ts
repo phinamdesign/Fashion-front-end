@@ -13,7 +13,7 @@ export class AdminGuardService implements CanActivate {
 
   canActivate(): boolean {
     if (this.token.getToken()) {
-      for (const role of this.token.getUser().roles) {
+      for (const role of this.token.getAuthorities()) {
         if (role === 'ROLE_ADMIN') {
           return true;
         }
