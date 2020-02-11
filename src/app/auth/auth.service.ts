@@ -15,6 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  public isAuthorized = false;
   private loginUrl = 'http://localhost:8080/api/auth/signin';
   private signupUrl = 'http://localhost:8080/api/auth/signup';
   private changPassword = 'http://localhost:8080/api/auth/update-password';

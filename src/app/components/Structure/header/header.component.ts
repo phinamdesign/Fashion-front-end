@@ -65,6 +65,7 @@ export class HeaderComponent implements OnInit {
       // this.ngOnDestroy();
       this.ngOnInit();
       this.cartComponent.ngOnInit();
+      window.location.reload();
     }
   }
 
