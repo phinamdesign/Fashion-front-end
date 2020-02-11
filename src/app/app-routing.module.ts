@@ -44,13 +44,10 @@ import {PaymentUpdateComponent} from './components/public/payment/payment-update
 import {ListUserComponent} from './components/admin/user-manager/list-user/list-user.component';
 import {UserDetailsComponent} from './components/admin/user-manager/user-details/user-details.component';
 import {AdminGuardService} from './services/admin-guard.service';
+import {UserGuardService} from './services/user-guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  // {
-  //   path: '**',
-  //   component: RegisterComponent
-  // },
   {
     path: 'home',
     component: HomeComponent
@@ -65,8 +62,7 @@ const routes: Routes = [
   },
   {
     path: 'product',
-    component: ListProductComponent,
-    canActivate: [AdminGuardService]
+    component: ListProductComponent
   },
   {
     path: 'update-product/:id',
@@ -75,8 +71,7 @@ const routes: Routes = [
   },
   {
     path: 'details/:id',
-    component: DetailsProductComponent,
-    canActivate: [AdminGuardService]
+    component: DetailsProductComponent
   },
   {
     path: 'delete-product',
@@ -95,8 +90,7 @@ const routes: Routes = [
   },
   {
     path: 'product-supplier/:id',
-    component: ProductSupplierComponent,
-    canActivate: [AdminGuardService]
+    component: ProductSupplierComponent
   },
   {
     path: 'register',
@@ -110,11 +104,13 @@ const routes: Routes = [
   },
   {
     path: 'create/category',
-    component: CategoryCreateComponent
+    component: CategoryCreateComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'category/:id/edit',
-    component: CategoryEditComponent
+    component: CategoryEditComponent,
+    canActivate: [AdminGuardService]
   },
   {
     path: 'product-category/:id',
@@ -176,7 +172,8 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    component: CartComponent
+    component: CartComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'profile',
@@ -184,7 +181,8 @@ const routes: Routes = [
   },
   {
     path: 'cart-list',
-    component: CartListComponent
+    component: CartListComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'order/admin/manager',
@@ -194,11 +192,12 @@ const routes: Routes = [
   {
     path: 'order/user/manager',
     component: OrderUserComponent,
-    canActivate: [AdminGuardService]
+    canActivate: [UserGuardService]
   },
   {
     path: 'order-detail/:id',
-    component: OrderDetailComponent
+    component: OrderDetailComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'order/admin/filter',
@@ -206,8 +205,9 @@ const routes: Routes = [
     canActivate: [AdminGuardService]
   },
   {
-    path: 'order/user/filter',
-    component: OrderUserFilterComponent
+    path: 'order/filter',
+    component: OrderUserFilterComponent,
+    canActivate: [UserGuardService]
   },
   {
     path: 'regulation', component: RegulationsComponent
