@@ -36,14 +36,14 @@
       <td *ngIf="order.status != 'normal'">{{order.date | date: 'dd/MM/yyyy | hh:mm:ss'}}</td>
       <td *ngIf="order.status != 'normal'">{{order.phone}}</td>
       <td *ngIf="order.status != 'normal'">{{order.deliveryAddress}}</td>
-      <td *ngIf="order.status != 'normal'">{{order.payment. name}}</td>
+      <td *ngIf="order.status != 'normal'">{{order.payment.name}}</td>
       <td *ngIf="order.status != 'normal'">{{order.status}}</td>
       <td *ngIf="order.status != 'normal'">
         <div *ngIf="order.status=='order'">
           <input class="btn btn-info btn-block" value="Accept" (click)="changeToProcessing(order.id)">
         </div>
         <div *ngIf="order.status=='processing'">
-          <input class="btn btn-info btn-block" value="Done" (click)="changeToDone(order.id)">
+          <input class="btn btn-success btn-block" value="Done" (click)="changeToDone(order.id)">
         </div>
         <div *ngIf="order.status=='Cancel'">
           <button class="btn btn-danger" (click)="deleteOrder(order.id)">Delete</button>
