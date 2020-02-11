@@ -53,7 +53,7 @@ export class SupplierEditComponent implements OnInit {
     this.supplierService.updateSupplier(value).subscribe(
       next => {
         alert('Edit this supplier is successful!');
-        this.router.navigate(['supplier']);
+        this.router.navigate(['suppliers']);
       },
       error => console.log(error)
     );

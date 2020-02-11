@@ -7,10 +7,10 @@
       <div [hidden]="submitted">
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name"> Size name</label>
             <input type="number" class="form-control" id="name" required [(ngModel)]="size.name" name="name">
           </div>
-          <button type="submit" class="btn btn-success">Create</button>
+          <button type="submit" class="btn btn-info">Create new size</button>
         </form>
       </div>
     </div>

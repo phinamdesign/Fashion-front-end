@@ -27,6 +27,7 @@ save() {
 onSubmit() {
     this.submitted = true;
     this.save();
+    alert('created a new size is successful!');
 }
 gotoList() {
     this.router.navigate(['sizes']);
