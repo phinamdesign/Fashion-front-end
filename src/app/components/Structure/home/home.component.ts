@@ -85,6 +85,7 @@ export class HomeComponent implements OnInit {
   }
   addCart(idBook) {
     this.cart.addCart(idBook);
+    alert('You just added this product in your cart');
   }
 
   searchProductByName() {

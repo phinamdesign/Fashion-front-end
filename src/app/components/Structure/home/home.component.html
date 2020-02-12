@@ -24,13 +24,13 @@
    </div>
 </div>
 <!---------Converse list-------->
-<div class="container">
-  <div class="row mb-3">
-      <img src="../../../../assets/images/banner/danh-muc-converse-sneaker-1-20.jpg" alt="">
+<div class="container mb-3">
+  <div class="row mb-4">
+    <img src="../../../../assets/images/banner/danh-muc-converse-sneaker-1-20.jpg" width="1115px" alt="">
   </div>
   <div class="row">
     <div *ngFor="let product of listProduct">
-      <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Converse'">
+      <div class="col-12 col-sm-6 col-md-3 mb-4 ml" *ngIf="product.supplier.supplierName === 'Converse'">
         <div class="card mr" style="width: 15rem;">
           <div class="imageProduct">
             <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
@@ -51,12 +51,12 @@
 
 <!---------Vans list-------->
 <div class="container">
-  <div class="row mb-3">
-    <img src="../../../../assets/images/banner/danh-muc-vans-sneaker-1-20.jpg" alt="">
+  <div class="row mb-4">
+    <img src="../../../../assets/images/banner/danh-muc-vans-sneaker-1-20.jpg" width="1115px" alt="">
   </div>
   <div class="row">
     <div *ngFor="let product of listProduct">
-      <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Vans'">
+      <div class="col-12 col-sm-6 col-md-3 mb-4 ml" *ngIf="product.supplier.supplierName === 'Vans'">
         <div class="card mr" style="width: 15rem;">
           <div class="imageProduct">
             <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
@@ -76,12 +76,12 @@
 </div>
 <!---------Palladium list-------->
 <div class="container">
-  <div class="row mb-3">
-    <img src="../../../../assets/images/banner/danh-muc-palladium-1-20.jpg" alt="">
+  <div class="row mb-4">
+    <img src="../../../../assets/images/banner/danh-muc-palladium-1-20.jpg" width="1115px" alt="">
   </div>
   <div class="row">
     <div *ngFor="let product of listProduct">
-      <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Palladium'">
+      <div class="col-12 col-sm-6 col-md-3 mb-4 ml" *ngIf="product.supplier.supplierName === 'Palladium'">
         <div class="card mr" style="width: 15rem;">
           <div class="imageProduct">
             <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">
@@ -101,12 +101,12 @@
 </div>
 <!---------Supra list-------->
 <div class="container">
-  <div class="row mb-3">
-    <img src="../../../../assets/images/banner/danh-muc-supra-1-20.jpg" alt="">
+  <div class="row mb-4">
+    <img src="../../../../assets/images/banner/danh-muc-supra-1-20.jpg" width="1115px" alt="">
   </div>
   <div class="row">
     <div *ngFor="let product of listProduct">
-      <div class="col-12 col-sm-6 col-md-3 mb-4" *ngIf="product.supplier.supplierName === 'Supra'">
+      <div class="col-12 col-sm-6 col-md-3 mb-4 ml" *ngIf="product.supplier.supplierName === 'Supra'">
         <div class="card mr" style="width: 15rem;">
           <div class="imageProduct">
             <img class="card-img-top img-thumbnail" title="{{product.name}}"  (click)="detailsProduct(product.id)" [src]="product.pictures[0].src" alt="Card image cap">

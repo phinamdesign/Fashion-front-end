@@ -17,10 +17,10 @@ export class UserGuardService implements CanActivate{
           return true;
         }
       }
-      this.router.navigate(['/home']);
+      this.router.navigate(['/product']);
       return false;
     } else {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/product']);
       return false;
     }
   }
